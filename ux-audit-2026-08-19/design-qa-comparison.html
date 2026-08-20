@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Emotional Life Support design QA comparison</title>
+    <style>
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 32px; color: #0d2a4c; background: #e8e0d6; font: 15px/1.4 Arial, sans-serif; }
+      h1 { margin: 0 0 24px; font-size: 24px; }
+      h2 { margin: 0 0 12px; font-size: 16px; }
+      .comparison { margin-bottom: 36px; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; }
+      .panel { padding: 16px; border-radius: 12px; background: white; }
+      img { width: 100%; height: auto; display: block; border: 1px solid #d8cdbf; }
+      .mobile img { max-height: 760px; object-fit: contain; object-position: top; background: #f7f1e8; }
+    </style>
+  </head>
+  <body>
+    <h1>Design QA · approved concepts beside the implementation</h1>
+    <section class="comparison">
+      <div class="panel"><h2>Approved hero concept · 1504 × 1046</h2><img src="preview-hero-desktop.png" alt="Approved desktop hero concept" /></div>
+      <div class="panel"><h2>Implemented hero · 1504 × 1046</h2><img src="screenshots/implementation-desktop-final.png" alt="Implemented desktop hero" /></div>
+    </section>
+    <section class="comparison mobile">
+      <div class="panel"><h2>Approved booking direction</h2><img src="preview-booking-mobile.png" alt="Approved booking concept" /></div>
+      <div class="panel"><h2>Implemented booking handoff · 390 × 844 viewport</h2><img src="screenshots/implementation-booking-mobile-final.png" alt="Implemented mobile booking card" /></div>
+    </section>
+    <section class="comparison mobile">
+      <div class="panel"><h2>Approved pricing direction</h2><img src="preview-pricing-mobile.png" alt="Approved pricing concept" /></div>
+      <div class="panel"><h2>Implemented comparable plans · 390 × 844 viewport</h2><img src="screenshots/implementation-pricing-mobile-final.png" alt="Implemented mobile pricing plans" /></div>
+    </section>
+  </body>
+</html>

@@ -1,0 +1,411 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Emotional Life Support — Visual UX audit</title>
+  <style>
+    :root {
+      --paper: #f4ecdf;
+      --paper-2: #fffaf2;
+      --navy: #102f4f;
+      --ink: #172638;
+      --muted: #66707a;
+      --line: #d9cdbd;
+      --terracotta: #b53b29;
+      --olive: #34412d;
+      --yes: #2f6b50;
+      --no: #8c4138;
+      --shadow: 0 18px 55px rgba(33, 39, 37, .09);
+      --sans: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --serif: Georgia, "Times New Roman", serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: var(--sans);
+      line-height: 1.55;
+    }
+
+    button, select { font: inherit; }
+
+    button { cursor: pointer; }
+
+    .shell { width: min(1240px, calc(100% - 36px)); margin: 0 auto; }
+
+    .masthead {
+      padding: 56px 0 36px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .eyebrow {
+      margin: 0 0 14px;
+      color: var(--terracotta);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    h1, h2, h3 { color: var(--navy); font-family: var(--serif); font-weight: 400; line-height: 1.04; }
+
+    h1 { max-width: 900px; margin: 0; font-size: clamp(2.7rem, 6vw, 5.5rem); letter-spacing: -.045em; }
+
+    .intro { max-width: 780px; margin: 24px 0 0; font-size: 1.08rem; }
+
+    .scope-note {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin-top: 34px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--line);
+    }
+
+    .scope-note div { padding: 18px; background: rgba(255,255,255,.52); }
+    .scope-note strong { display: block; margin-bottom: 4px; color: var(--navy); }
+
+    .concepts { padding: 54px 0 24px; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 22px; }
+    .section-head h2 { margin: 0; font-size: clamp(2.1rem, 4vw, 3.8rem); letter-spacing: -.03em; }
+    .section-head p { max-width: 520px; margin: 0; color: var(--muted); }
+
+    .concept-grid { display: grid; grid-template-columns: 1.7fr .8fr .8fr; gap: 18px; }
+    .concept-card { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: var(--paper-2); box-shadow: var(--shadow); }
+    .concept-card img { display: block; width: 100%; aspect-ratio: 16/10; object-fit: cover; object-position: top; background: #eee7dd; }
+    .concept-card.mobile img { aspect-ratio: 3/4; }
+    .concept-card figcaption { padding: 16px 18px 18px; }
+    .concept-card strong { display: block; color: var(--navy); }
+    .concept-card span { color: var(--muted); font-size: .9rem; }
+
+    .review-toolbar {
+      position: sticky;
+      top: 12px;
+      z-index: 20;
+      display: grid;
+      grid-template-columns: 1fr auto auto auto;
+      gap: 10px;
+      align-items: center;
+      margin: 40px 0 22px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: rgba(255, 250, 242, .94);
+      box-shadow: 0 10px 30px rgba(27, 39, 44, .1);
+      backdrop-filter: blur(14px);
+    }
+
+    .progress strong { color: var(--navy); }
+    .progress-bar { height: 7px; margin-top: 8px; overflow: hidden; border-radius: 999px; background: #e7ddd0; }
+    .progress-bar span { display: block; width: 0; height: 100%; background: var(--terracotta); transition: width .2s ease; }
+
+    .toolbar-button {
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--navy);
+      background: white;
+      font-weight: 750;
+    }
+
+    .toolbar-button.primary { border-color: var(--terracotta); color: white; background: var(--terracotta); }
+
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+    .filter { min-height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--navy); }
+    .filter[aria-pressed="true"] { border-color: var(--navy); background: var(--navy); color: white; }
+
+    .recommendations { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; padding-bottom: 60px; }
+
+    .rec-card { display: grid; grid-template-columns: 155px 1fr; min-height: 300px; overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: rgba(255,255,255,.56); }
+    .rec-card[hidden] { display: none; }
+    .rec-card[data-decision="yes"] { box-shadow: inset 0 0 0 2px var(--yes); }
+    .rec-card[data-decision="no"] { box-shadow: inset 0 0 0 2px var(--no); opacity: .78; }
+    .rec-visual { position: relative; min-height: 100%; overflow: hidden; background: #e4dacc; }
+    .rec-visual img { width: 100%; height: 100%; min-height: 300px; object-fit: cover; object-position: var(--pos, top); }
+    .rec-number { position: absolute; top: 12px; left: 12px; min-width: 38px; padding: 7px 9px; border-radius: 9px; color: white; background: var(--navy); font-weight: 850; text-align: center; }
+
+    .rec-body { display: flex; flex-direction: column; padding: 20px; }
+    .meta { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 10px; }
+    .tag { padding: 4px 8px; border-radius: 999px; background: #eee3d5; color: #5f5146; font-size: .72rem; font-weight: 800; letter-spacing: .04em; text-transform: uppercase; }
+    .tag.high { color: #7f2e20; background: #f3d6ce; }
+    .tag.quick { color: #315e48; background: #dcecdf; }
+    .rec-body h3 { margin: 0 0 10px; font-size: 1.55rem; letter-spacing: -.02em; }
+    .rec-body p { margin: 0 0 12px; }
+    .why { color: var(--muted); font-size: .92rem; }
+    .evidence { margin-top: auto; padding-top: 10px; color: #756a61; font-size: .78rem; }
+
+    .decision { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px; }
+    .decision button { min-height: 44px; border: 1px solid var(--line); border-radius: 10px; background: white; color: var(--ink); font-weight: 800; }
+    .decision .yes[aria-pressed="true"] { border-color: var(--yes); color: white; background: var(--yes); }
+    .decision .no[aria-pressed="true"] { border-color: var(--no); color: white; background: var(--no); }
+
+    .summary-panel { margin: 0 0 80px; padding: 26px; border-radius: 18px; color: white; background: var(--navy); }
+    .summary-panel h2 { margin: 0 0 10px; color: white; font-size: 2.2rem; }
+    .summary-panel p { margin: 0 0 18px; color: #dbe5ed; }
+    textarea { width: 100%; min-height: 190px; resize: vertical; padding: 16px; border: 0; border-radius: 12px; color: var(--ink); background: white; font: .9rem/1.5 var(--sans); }
+    .summary-actions { display: flex; gap: 10px; margin-top: 12px; }
+    .summary-actions button { min-height: 44px; padding: 0 18px; border: 1px solid #8295a8; border-radius: 10px; color: white; background: transparent; font-weight: 800; }
+    .summary-actions .copy { border-color: var(--terracotta); background: var(--terracotta); }
+
+    .evidence-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; padding: 0 0 70px; }
+    .evidence-strip img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: top; border: 1px solid var(--line); border-radius: 12px; }
+
+    @media (max-width: 980px) {
+      .concept-grid { grid-template-columns: 1fr 1fr; }
+      .concept-card:first-child { grid-column: 1 / -1; }
+      .recommendations { grid-template-columns: 1fr; }
+      .review-toolbar { grid-template-columns: 1fr 1fr 1fr; }
+      .progress { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 640px) {
+      .shell { width: min(100% - 24px, 1240px); }
+      .masthead { padding-top: 34px; }
+      .scope-note { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 12px; }
+      .concept-grid { grid-template-columns: 1fr; }
+      .concept-card:first-child { grid-column: auto; }
+      .review-toolbar { top: 6px; grid-template-columns: 1fr 1fr; }
+      .progress { grid-column: 1 / -1; }
+      .toolbar-button.primary { grid-column: 1 / -1; }
+      .rec-card { grid-template-columns: 104px 1fr; }
+      .rec-visual img { min-height: 340px; }
+      .rec-body { padding: 17px 15px; }
+      .rec-body h3 { font-size: 1.35rem; }
+      .evidence-strip { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="masthead">
+    <div class="shell">
+      <p class="eyebrow">Visual UX review · 19 August 2026</p>
+      <h1>Emotional Life Support</h1>
+      <p class="intro">A focused review of the homepage journey: understanding the offer, trusting Chris, choosing support and booking a free hour. The site already has a thoughtful visual voice; these recommendations concentrate on clarity, reassurance and momentum.</p>
+      <div class="scope-note">
+        <div><strong>Overall health</strong>Strong foundation; needs a clearer conversion path.</div>
+        <div><strong>Reviewed</strong>Desktop at 1440px and mobile at 390px.</div>
+        <div><strong>Decision format</strong>Choose Yes or No on every recommendation.</div>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="concepts" aria-labelledby="concept-title">
+      <div class="section-head">
+        <h2 id="concept-title">Three visual directions</h2>
+        <p>Illustrative mockups based on the captured site. They show clusters of ideas, not final production designs.</p>
+      </div>
+      <div class="concept-grid">
+        <figure class="concept-card">
+          <img src="preview-hero-desktop.png" alt="Illustrative desktop hero with a compact booking button and reassurance strip">
+          <figcaption><strong>Hero and reassurance</strong><span>Supports recommendations 1–8.</span></figcaption>
+        </figure>
+        <figure class="concept-card mobile">
+          <img src="preview-booking-mobile.png" alt="Illustrative compact mobile booking journey and time selector">
+          <figcaption><strong>Shorter booking journey</strong><span>Supports recommendations 15–20.</span></figcaption>
+        </figure>
+        <figure class="concept-card mobile">
+          <img src="preview-pricing-mobile.png" alt="Illustrative mobile pricing section with a reassuring free-call panel">
+          <figcaption><strong>Calmer pricing entry</strong><span>Supports recommendations 21–26.</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section aria-labelledby="recommendations-title">
+      <div class="section-head">
+        <h2 id="recommendations-title">26 recommendations</h2>
+        <p>High-impact items should be considered first. “Quick win” means the change is likely small relative to its visible benefit.</p>
+      </div>
+
+      <div class="review-toolbar" aria-label="Review controls">
+        <div class="progress"><strong id="progressText">0 of 26 reviewed</strong><div class="progress-bar"><span id="progressFill"></span></div></div>
+        <button class="toolbar-button" id="yesAll" type="button">Yes to all</button>
+        <button class="toolbar-button" id="noAll" type="button">No to all</button>
+        <button class="toolbar-button primary" id="jumpSummary" type="button">Review summary</button>
+      </div>
+
+      <div class="filters" aria-label="Recommendation filters">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All 26</button>
+        <button class="filter" type="button" data-filter="high" aria-pressed="false">High impact</button>
+        <button class="filter" type="button" data-filter="quick" aria-pressed="false">Quick wins</button>
+        <button class="filter" type="button" data-filter="unreviewed" aria-pressed="false">Unreviewed</button>
+      </div>
+
+      <div class="recommendations" id="recommendations"></div>
+    </section>
+
+    <section class="summary-panel" id="summary" aria-labelledby="summary-title">
+      <h2 id="summary-title">Your decisions</h2>
+      <p>This summary updates automatically. Copy it and paste it back into our conversation.</p>
+      <textarea id="decisionSummary" readonly aria-label="Decision summary"></textarea>
+      <div class="summary-actions">
+        <button class="copy" id="copySummary" type="button">Copy decisions</button>
+        <button id="clearDecisions" type="button">Clear all</button>
+      </div>
+    </section>
+
+    <section aria-labelledby="evidence-title">
+      <div class="section-head">
+        <h2 id="evidence-title">Captured evidence</h2>
+        <p>These are current-site screenshots captured during this audit, not mockups.</p>
+      </div>
+      <div class="evidence-strip">
+        <img src="screenshots/01-hero-desktop.png" alt="Current desktop homepage hero">
+        <img src="screenshots/05-pricing-desktop.png" alt="Current desktop pricing section">
+        <img src="screenshots/07-hero-mobile.png" alt="Current mobile homepage hero">
+        <img src="screenshots/11-calendar-mobile.png" alt="Current mobile embedded calendar near the pricing transition">
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const recs = [
+      {id:1, category:'Journey', priority:'high', quick:true, title:'Add a booking action to the header', recommendation:'Place a compact terracotta “Book a free hour” button at the end of the desktop navigation and expose the same action in the mobile menu.', why:'The primary action disappears once a visitor leaves the hero, even though the page is very long.', evidence:'Desktop hero; mobile menu', image:'preview-hero-desktop.png', pos:'top'},
+      {id:2, category:'Mobile', priority:'high', quick:true, title:'Give the mobile brand mark more room', recommendation:'Use a slightly smaller wordmark or a shorter mobile lockup so the name and menu button do not compete across the top row.', why:'At 390px the wordmark fills most of the header and makes the menu feel squeezed.', evidence:'Mobile hero and menu', image:'screenshots/08-menu-mobile.png', pos:'top'},
+      {id:3, category:'Trust', priority:'high', quick:true, title:'Add a reassurance strip below the hero', recommendation:'Show four concise facts: free 60-minute call, private and confidential, no pressure to continue, and non-clinical support.', why:'These answer likely objections before a visitor commits to scrolling or booking.', evidence:'Hero concept', image:'preview-hero-desktop.png', pos:'bottom'},
+      {id:4, category:'Hero', priority:'medium', quick:true, title:'Tighten the hero’s vertical rhythm', recommendation:'Bring the CTA and its reassurance copy closer to the headline block and reduce the empty gap above the button.', why:'The current composition is elegant but the main action feels detached from the promise.', evidence:'Desktop hero', image:'screenshots/01-hero-desktop.png', pos:'center'},
+      {id:5, category:'Copy', priority:'high', quick:false, title:'Say who the service is for sooner', recommendation:'Add a short three-part “This may help if…” row for leaving, divorcing and rebuilding directly after the hero.', why:'Visitors currently need to travel several sections before they can quickly recognise their situation.', evidence:'Process section', image:'screenshots/04-process-desktop.png', pos:'top'},
+      {id:6, category:'Trust', priority:'high', quick:false, title:'Introduce Chris above the first long text section', recommendation:'Add a small byline card near the hero: portrait, name, first-hand divorce experience and listening roles, linking to the full story.', why:'The hero photograph is not Chris, so the identity of the person providing support is unclear at first glance.', evidence:'Hero and About section', image:'screenshots/03-about-desktop.png', pos:'center'},
+      {id:7, category:'Trust', priority:'high', quick:false, title:'Use one cohesive portrait style', recommendation:'Replace the casual About selfie with a calm, professionally lit portrait that visually matches the quality of the hero image.', why:'The shift from polished hero photography to a casual selfie reduces the otherwise premium, considered feel.', evidence:'About section', image:'screenshots/03-about-desktop.png', pos:'left'},
+      {id:8, category:'Copy', priority:'medium', quick:true, title:'Turn the hero reassurance into scannable lines', recommendation:'Keep the current meaning but format the two small paragraphs as two short, visually separated reassurance points.', why:'The current small copy is valuable but easy to skip beneath the button.', evidence:'Desktop hero', image:'preview-hero-desktop.png', pos:'left'},
+      {id:9, category:'Content', priority:'high', quick:false, title:'Shorten the two opening narrative sections', recommendation:'Reduce each to a headline, one concise paragraph and one highlighted takeaway; move fuller context further down or into an expandable detail.', why:'The page asks for a large reading commitment before showing Chris, the process or the booking route.', evidence:'First two desktop sections', image:'screenshots/02-support-desktop.png', pos:'top'},
+      {id:10, category:'Hierarchy', priority:'medium', quick:true, title:'Reduce the number of oversized display headlines', recommendation:'Keep the largest serif treatment for major turning points and use a smaller section heading scale for supporting sections.', why:'Repeated very large headlines create a beautiful rhythm but make every section feel equally important.', evidence:'Support and process sections', image:'screenshots/02-support-desktop.png', pos:'top'},
+      {id:11, category:'Navigation', priority:'medium', quick:false, title:'Add a quiet “You are here” cue', recommendation:'Highlight the current desktop navigation item while scrolling and retain a compact sticky header after the hero.', why:'The long single page offers few location cues once visitors move away from the top.', evidence:'Desktop flow', image:'screenshots/01-hero-desktop.png', pos:'top'},
+      {id:12, category:'Mobile', priority:'medium', quick:true, title:'Make the open menu feel more anchored', recommendation:'Align the menu panel to both page margins, add a clear “Close menu” state and include the booking action at its foot.', why:'The current floating panel works, but it overlaps the hero and omits the page’s primary action.', evidence:'Mobile menu', image:'screenshots/08-menu-mobile.png', pos:'top'},
+      {id:13, category:'About', priority:'medium', quick:true, title:'Break the biography into digestible proof points', recommendation:'Lead with a two-sentence introduction, then show first-hand experience, ANDYSMANCLUB and Samaritans training as three short rows.', why:'The strongest trust signals are buried inside one dense paragraph.', evidence:'About section', image:'screenshots/03-about-desktop.png', pos:'right'},
+      {id:14, category:'Process', priority:'medium', quick:true, title:'Make the three life stages easier to recognise', recommendation:'Give Leaving, Divorcing and Rebuilding a short emotional cue and one concrete example each, keeping all three the same height.', why:'The current stage row is clean but the descriptions are broad and visually similar.', evidence:'Process section', image:'screenshots/04-process-desktop.png', pos:'top'},
+      {id:15, category:'Booking', priority:'high', quick:false, title:'Compress the booking introduction', recommendation:'Show the three steps as compact numbered rows so the calendar begins much sooner, especially on mobile.', why:'The mobile screen can display most of the dark introduction without showing any actual booking control.', evidence:'Mobile booking', image:'preview-booking-mobile.png', pos:'top'},
+      {id:16, category:'Booking', priority:'high', quick:false, title:'Use a first-party-looking booking card', recommendation:'Place availability in a cream card using the site’s own type, spacing and controls, even if HubSpot remains behind the interaction.', why:'The embedded widget feels visually separate from the rest of the site.', evidence:'Booking concept and current calendar', image:'preview-booking-mobile.png', pos:'center'},
+      {id:17, category:'Booking', priority:'high', quick:false, title:'Fix the mobile calendar fit', recommendation:'Use a dedicated responsive booking page or an integration that does not crop the calendar and leave a large blank area below it.', why:'The captured mobile widget is narrow, visually clipped and followed by unused space before pricing.', evidence:'Mobile calendar', image:'screenshots/11-calendar-mobile.png', pos:'top'},
+      {id:18, category:'Booking', priority:'medium', quick:true, title:'Show timezone beside the first available dates', recommendation:'Expose the visitor’s timezone before they choose a day and keep it close to the time options.', why:'Timezone is important for remote support but appears late inside the third-party widget.', evidence:'Desktop calendar', image:'screenshots/01-home-desktop.png', pos:'center'},
+      {id:19, category:'Trust', priority:'high', quick:true, title:'State that booking needs no payment', recommendation:'Add “You won’t be asked for payment” next to the first booking control and repeat “no pressure to continue”.', why:'A clear transactional reassurance matters before a visitor enters a scheduling flow.', evidence:'Booking concept', image:'preview-booking-mobile.png', pos:'bottom'},
+      {id:20, category:'Booking', priority:'medium', quick:false, title:'Remove third-party promotional branding', recommendation:'Hide the HubSpot promotional footer if the plan permits, or move booking to a cleaner branded page.', why:'The promotional link interrupts a sensitive, premium service journey.', evidence:'Desktop and mobile calendar', image:'screenshots/11-calendar-mobile.png', pos:'top'},
+      {id:21, category:'Pricing', priority:'high', quick:true, title:'Prepare visitors before showing four-figure prices', recommendation:'Add a small “Not sure what you need?” panel with the free-hour CTA directly before the plans.', why:'The jump from emotional reassurance to £1,000–£10,000 per month is visually abrupt.', evidence:'Pricing concept', image:'preview-pricing-mobile.png', pos:'top'},
+      {id:22, category:'Pricing', priority:'high', quick:false, title:'Make the plans genuinely comparable', recommendation:'Use the same rows in every card: monthly price, weekly time, contact rhythm, best for and what is included.', why:'The current cards vary in copy length, making the differences harder to understand at a glance.', evidence:'Desktop pricing', image:'screenshots/05-pricing-desktop.png', pos:'center'},
+      {id:23, category:'Pricing', priority:'medium', quick:true, title:'Separate the concierge offer visually', recommendation:'Move Divorce Concierge into a full-width “Bespoke support” panel below the two fixed plans rather than giving it the strongest card colour.', why:'The dark card currently dominates the section even though it is the most specialised option.', evidence:'Desktop pricing', image:'screenshots/05-pricing-desktop.png', pos:'right'},
+      {id:24, category:'Pricing', priority:'high', quick:true, title:'Add a next action to every plan', recommendation:'Use a calm text action such as “Discuss this option” and keep the free-hour route nearby.', why:'The current pricing cards explain the packages but provide no immediate decision path.', evidence:'Pricing concept', image:'preview-pricing-mobile.png', pos:'bottom'},
+      {id:25, category:'Safety', priority:'high', quick:true, title:'Surface a concise scope note earlier', recommendation:'Place one sentence near the first CTA stating that this is non-clinical support, with a link to full safety information.', why:'The complete scope is responsible and clear, but visitors only reach it at the end of a long page.', evidence:'Safety section', image:'screenshots/06-safety-desktop.png', pos:'top'},
+      {id:26, category:'Safety', priority:'medium', quick:true, title:'Turn urgent resources into distinct action rows', recommendation:'Use separate high-contrast cards or rows with prominent call and visit actions; keep the “only if safe” warning attached to domestic-abuse help.', why:'The information is strong, but the current text-heavy presentation slows urgent scanning.', evidence:'Safety section', image:'screenshots/06-safety-desktop.png', pos:'bottom'}
+    ];
+
+    const storageKey = 'els-ux-audit-decisions-v1';
+    let decisions = JSON.parse(localStorage.getItem(storageKey) || '{}');
+    let activeFilter = 'all';
+    const container = document.querySelector('#recommendations');
+
+    function renderCards() {
+      container.innerHTML = recs.map(rec => {
+        const decision = decisions[rec.id] || '';
+        const classes = [rec.priority === 'high' ? 'high' : '', rec.quick ? 'quick' : ''].filter(Boolean).join(' ');
+        const visible = activeFilter === 'all' || activeFilter === rec.priority || (activeFilter === 'quick' && rec.quick) || (activeFilter === 'unreviewed' && !decision);
+        return `<article class="rec-card" data-id="${rec.id}" data-priority="${rec.priority}" data-quick="${rec.quick}" data-decision="${decision}" ${visible ? '' : 'hidden'}>
+          <div class="rec-visual" style="--pos:${rec.pos}">
+            <img src="${rec.image}" alt="Visual reference for recommendation ${rec.id}: ${rec.title}">
+            <span class="rec-number">${String(rec.id).padStart(2,'0')}</span>
+          </div>
+          <div class="rec-body">
+            <div class="meta"><span class="tag">${rec.category}</span><span class="tag ${classes}">${rec.priority === 'high' ? 'High impact' : 'Medium impact'}</span>${rec.quick ? '<span class="tag quick">Quick win</span>' : ''}</div>
+            <h3>${rec.title}</h3>
+            <p>${rec.recommendation}</p>
+            <p class="why">Why: ${rec.why}</p>
+            <div class="evidence">Evidence: ${rec.evidence}</div>
+            <div class="decision" role="group" aria-label="Decision for recommendation ${rec.id}">
+              <button class="yes" type="button" data-choice="yes" aria-pressed="${decision === 'yes'}">Yes</button>
+              <button class="no" type="button" data-choice="no" aria-pressed="${decision === 'no'}">No</button>
+            </div>
+          </div>
+        </article>`;
+      }).join('');
+      updateSummary();
+    }
+
+    function setDecision(id, choice) {
+      decisions[id] = choice;
+      localStorage.setItem(storageKey, JSON.stringify(decisions));
+      renderCards();
+    }
+
+    function updateSummary() {
+      const yes = recs.filter(rec => decisions[rec.id] === 'yes');
+      const no = recs.filter(rec => decisions[rec.id] === 'no');
+      const unreviewed = recs.filter(rec => !decisions[rec.id]);
+      const reviewed = yes.length + no.length;
+      document.querySelector('#progressText').textContent = `${reviewed} of ${recs.length} reviewed`;
+      document.querySelector('#progressFill').style.width = `${Math.round(reviewed / recs.length * 100)}%`;
+      document.querySelector('#decisionSummary').value = [
+        'Emotional Life Support website review decisions',
+        '',
+        `YES (${yes.length}): ${yes.length ? yes.map(r => `${r.id}. ${r.title}`).join('; ') : 'None'}`,
+        '',
+        `NO (${no.length}): ${no.length ? no.map(r => `${r.id}. ${r.title}`).join('; ') : 'None'}`,
+        '',
+        `UNREVIEWED (${unreviewed.length}): ${unreviewed.length ? unreviewed.map(r => r.id).join(', ') : 'None'}`
+      ].join('\n');
+    }
+
+    container.addEventListener('click', event => {
+      const button = event.target.closest('[data-choice]');
+      if (!button) return;
+      const card = button.closest('.rec-card');
+      setDecision(card.dataset.id, button.dataset.choice);
+    });
+
+    document.querySelector('#yesAll').addEventListener('click', () => {
+      recs.forEach(rec => decisions[rec.id] = 'yes');
+      localStorage.setItem(storageKey, JSON.stringify(decisions));
+      renderCards();
+    });
+
+    document.querySelector('#noAll').addEventListener('click', () => {
+      recs.forEach(rec => decisions[rec.id] = 'no');
+      localStorage.setItem(storageKey, JSON.stringify(decisions));
+      renderCards();
+    });
+
+    document.querySelector('#clearDecisions').addEventListener('click', () => {
+      decisions = {};
+      localStorage.removeItem(storageKey);
+      renderCards();
+    });
+
+    document.querySelector('#jumpSummary').addEventListener('click', () => document.querySelector('#summary').scrollIntoView({behavior:'smooth'}));
+
+    document.querySelector('#copySummary').addEventListener('click', async event => {
+      const text = document.querySelector('#decisionSummary').value;
+      const button = event.currentTarget;
+      const old = button.textContent;
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(text);
+        copied = true;
+      } catch (error) {
+        const field = document.querySelector('#decisionSummary');
+        field.focus();
+        field.select();
+        copied = document.execCommand('copy');
+      }
+      button.textContent = copied ? 'Copied' : 'Select and copy the text';
+      setTimeout(() => button.textContent = old, 1400);
+    });
+
+    document.querySelectorAll('.filter').forEach(button => button.addEventListener('click', () => {
+      activeFilter = button.dataset.filter;
+      document.querySelectorAll('.filter').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
+      renderCards();
+    }));
+
+    renderCards();
+  </script>
+</body>
+</html>
