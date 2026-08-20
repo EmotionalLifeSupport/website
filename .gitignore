@@ -1,9 +1,21 @@
+# OS files
 .DS_Store
 Thumbs.db
+
+# Research, docs, and audit folders
+*.docx
+*.csv
+01-Discovery-Kickoff-and-Phase-0.md
+output/
+report_work/
+storybrand-wireframe/
+ux-audit-*/
+tmp/
+
+# Build & temp
 node_modules/
 .next/
 .openai/
 .vinext/
 .wrangler/
-tmp/
 *.log
