@@ -7,7 +7,7 @@ const { default: worker } = await import(workerUrl.href);
 
 const basePath = process.env.BASE_PATH || "/website";
 
-// Render routes and fix HTML subpaths
+// Render routes and fix HTML subpaths & static images
 for (const route of routes) {
   const response = await worker.fetch(
     new Request(`http://localhost${route}`, {
@@ -36,6 +36,18 @@ for (const route of routes) {
   let html = await response.text();
 
   if (basePath) {
+    // 1. Convert Next.js image endpoint URLs to direct static assets
+    html = html.replace(/src="\/_next\/image\?url=%2F([^"&]+)[^"]*"/g, (match, filename) => {
+      return `src="${basePath}/${filename}"`;
+    });
+
+    // Strip dynamic Next.js srcSet / imageSrcSet attributes so static img src is used cleanly
+    html = html.replace(/\s(srcSet|srcset)="[^"]*"/gi, "");
+
+    // Fix React hydration / RSC payload image strings
+    html = html.replaceAll("/_next/image?url=%2F", `${basePath}/`);
+
+    // 2. Adjust internal route links
     html = html.replaceAll(`href="/_next/`, `href="${basePath}/_next/`);
     html = html.replaceAll(`src="/_next/`, `src="${basePath}/_next/`);
     html = html.replaceAll(`href="/chris"`, `href="${basePath}/chris"`);
@@ -46,7 +58,6 @@ for (const route of routes) {
     html = html.replaceAll(`src="/chris-amc.jpg"`, `src="${basePath}/chris-amc.jpg"`);
     html = html.replaceAll(`src="/hero-calm-relief-woman-v3.png"`, `src="${basePath}/hero-calm-relief-woman-v3.png"`);
     html = html.replaceAll(`src="/paper-texture.png"`, `src="${basePath}/paper-texture.png"`);
-    html = html.replaceAll(`/_next/image?url=%2F`, `${basePath}/_next/image?url=%2F`);
   }
 
   const targetDir = route === "/" ? "dist/client" : path.join("dist/client", route.slice(1));
