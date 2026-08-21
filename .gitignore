@@ -1,21 +1,20 @@
-# OS files
+# Node / Next / Vinext / Wrangler
+node_modules/
+.next/
+.vinext/
+.wrangler/
+dist/
+*.log
+
+# OS & Temp
 .DS_Store
 Thumbs.db
+tmp/
 
-# Research, docs, and audit folders
+# Research & background docs (kept locally)
 *.docx
 *.csv
 01-Discovery-Kickoff-and-Phase-0.md
 output/
 report_work/
-storybrand-wireframe/
 ux-audit-*/
-tmp/
-
-# Build & temp
-node_modules/
-.next/
-.openai/
-.vinext/
-.wrangler/
-*.log
