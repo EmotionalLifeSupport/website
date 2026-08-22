@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteNavigation from "./components/SiteNavigation";
 import SiteFooter from "./components/SiteFooter";
+import Testimonials from "./components/Testimonials";
 
 export const metadata: Metadata = {
   title: "Emotional Life Support",
@@ -190,6 +191,8 @@ export default function Home() {
             </div>
           </div>
         </section>
+
+        <Testimonials />
 
         <section className="page-section process-section" id="process" aria-labelledby="journey-title">
           <p className="section-kicker">Where you are now</p>

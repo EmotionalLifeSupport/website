@@ -1761,3 +1761,128 @@ footer a:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Testimonials Section (Concept 1: Stacked Accordion Cards) */
+.testimonials-section {
+  padding-top: var(--section-space);
+  padding-bottom: var(--section-space);
+}
+
+.testimonials-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.testimonial-card {
+  background-color: var(--paper-light);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(1.5rem, 3vw, 2.25rem);
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.testimonial-card:hover {
+  border-color: var(--navy-soft);
+}
+
+.testimonial-card[open] {
+  background-color: #ffffff;
+  border-color: var(--navy);
+  box-shadow: 0 8px 30px rgba(13, 42, 76, 0.06);
+}
+
+.testimonial-summary {
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+}
+
+.testimonial-summary::-webkit-details-marker,
+.testimonial-summary::marker {
+  display: none;
+}
+
+.testimonial-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.testimonial-meta {
+  flex: 1;
+}
+
+.testimonial-headline {
+  margin: 0 0 0.5rem 0;
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 2.5vw, 2.25rem);
+  line-height: 1.15;
+  color: var(--navy);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.testimonial-author {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--terracotta);
+  letter-spacing: 0.02em;
+}
+
+.testimonial-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background-color: var(--paper-deep);
+  color: var(--navy);
+  flex-shrink: 0;
+  transition: transform 0.25s ease, background-color 0.2s ease;
+}
+
+.testimonial-card[open] .testimonial-chevron {
+  transform: rotate(180deg);
+  background-color: var(--navy);
+  color: #ffffff;
+}
+
+.testimonial-cue {
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--navy-soft);
+}
+
+.testimonial-card[open] .cue-read {
+  display: none;
+}
+
+.testimonial-card:not([open]) .cue-close {
+  display: none;
+}
+
+.testimonial-body {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--navy);
+}
+
+.testimonial-body p {
+  margin-bottom: 1rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.testimonial-body p:last-child {
+  margin-bottom: 0;
+}
+
