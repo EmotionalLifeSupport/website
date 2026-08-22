@@ -7,6 +7,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 const navigationItems = [
   { id: "support", label: "Support" },
   { id: "about", label: "About Chris" },
+  { id: "testimonials", label: "Testimonials" },
   { id: "process", label: "How it works" },
   { id: "pricing", label: "Pricing" },
   { id: "scope", label: "Safety" },
