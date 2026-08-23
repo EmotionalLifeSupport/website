@@ -5,7 +5,7 @@ const routes = ["/", "/chris", "/privacy", "/cookies", "/terms"];
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 const { default: worker } = await import(workerUrl.href);
 
-const basePath = process.env.BASE_PATH || "/website";
+const basePath = process.env.BASE_PATH ?? "";
 
 // Render routes and fix HTML subpaths & static images
 for (const route of routes) {
@@ -35,19 +35,19 @@ for (const route of routes) {
 
   let html = await response.text();
 
+  // 1. Convert Next.js image endpoint URLs to direct static assets
+  html = html.replace(/src="\/_next\/image\?url=%2F([^"&]+)[^"]*"/g, (match, filename) => {
+    return `src="${basePath}/${filename}"`;
+  });
+
+  // Strip dynamic Next.js srcSet / imageSrcSet attributes so static img src is used cleanly
+  html = html.replace(/\s(srcSet|srcset)="[^"]*"/gi, "");
+
+  // Fix React hydration / RSC payload image strings
+  html = html.replaceAll("/_next/image?url=%2F", `${basePath}/`);
+
   if (basePath) {
-    // 1. Convert Next.js image endpoint URLs to direct static assets
-    html = html.replace(/src="\/_next\/image\?url=%2F([^"&]+)[^"]*"/g, (match, filename) => {
-      return `src="${basePath}/${filename}"`;
-    });
-
-    // Strip dynamic Next.js srcSet / imageSrcSet attributes so static img src is used cleanly
-    html = html.replace(/\s(srcSet|srcset)="[^"]*"/gi, "");
-
-    // Fix React hydration / RSC payload image strings
-    html = html.replaceAll("/_next/image?url=%2F", `${basePath}/`);
-
-    // 2. Adjust internal route links
+    // 2. Adjust internal route links if basePath is set
     html = html.replaceAll(`href="/_next/`, `href="${basePath}/_next/`);
     html = html.replaceAll(`src="/_next/`, `src="${basePath}/_next/`);
     html = html.replaceAll(`href="/chris"`, `href="${basePath}/chris"`);
