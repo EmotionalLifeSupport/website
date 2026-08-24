@@ -4,11 +4,12 @@ import Link from "next/link";
 import SiteNavigation from "./components/SiteNavigation";
 import SiteFooter from "./components/SiteFooter";
 import Testimonials from "./components/Testimonials";
+import HubSpotMeeting from "./components/HubSpotMeeting";
 
 export const metadata: Metadata = {
-  title: "Emotional Life Support",
+  title: "Emotional Support Through Divorce | Emotional Life Support",
   description:
-    "Private emotional support through separation, divorce and rebuilding after an unhealthy relationship.",
+    "Calm, independent support while you navigate divorce and rebuild your life afterwards. Online across England and Wales and face-to-face in Bournemouth, Christchurch and Poole.",
   alternates: {
     canonical: "/",
   },
@@ -23,10 +24,12 @@ export default function Home() {
       <main id="main-content">
         <section className="page-section hero" aria-labelledby="hero-title">
           <div className="hero-copy">
-            <p className="hero-context">Support through separation, divorce and rebuilding</p>
+            <p className="hero-context">Support through divorce and rebuilding</p>
             <h1 id="hero-title">Emotional support through the end of an unhealthy relationship</h1>
             <p className="lead">
-              The care and honesty of a good friend, with time set aside entirely for you.
+              Calm, independent support from someone who understands difficult divorce
+              first-hand — with the care and honesty of a good friend and time set aside
+              entirely for you.
             </p>
           </div>
           <figure className="hero-media">
@@ -45,113 +48,83 @@ export default function Home() {
               One full hour focused on what would help you most. No preparation and no
               pressure to continue.
             </p>
-            <p className="hero-assurance">
-              Someone in your corner who understands difficult divorce first-hand and is
-              outside the situation.
-            </p>
-            <a className="scope-cue" href="#scope">Non-clinical support · Read the scope and safety note</a>
           </div>
         </section>
 
         <aside className="reassurance-strip" aria-label="What to expect">
           <span>Free 60-minute call</span>
-          <span>Private conversation</span>
-          <span>No pressure to continue</span>
-          <span>Non-clinical support</span>
+          <span>Lived experience of difficult divorce</span>
+          <span>One-to-one support</span>
+          <span>Non-clinical service</span>
         </aside>
 
         <section className="page-section relevance-section" aria-labelledby="relevance-title">
-          <p className="section-kicker">This may help if you are…</p>
           <h2 className="section-heading--supporting" id="relevance-title">
-            Trying to find steadier ground.
+            Support through the divorce itself — and the life after it.
           </h2>
           <div className="relevance-list">
             <article>
-              <p className="relevance-label">Leaving</p>
-              <p>Unsure whether to stay, go, or how to take the next safe step.</p>
+              <p className="relevance-label">Navigating divorce</p>
+              <p>
+                Carrying emotional strain, disruption, difficult conversations and
+                important decisions while your life is changing around you.
+              </p>
             </article>
             <article>
-              <p className="relevance-label">Divorcing</p>
-              <p>Carrying difficult decisions, disruption and emotional strain.</p>
+              <p className="relevance-label">Rebuilding your life</p>
+              <p>
+                Regaining stability, confidence and a sense of who you are while you begin
+                shaping what comes next.
+              </p>
             </article>
-            <article>
-              <p className="relevance-label">Rebuilding</p>
-              <p>Finding your confidence, identity and hope for what comes next.</p>
-            </article>
           </div>
-        </section>
-
-        <section className="page-section early-trust" aria-labelledby="early-trust-title">
-          <Image
-            className="early-trust-photo"
-            src="/chris-amc.jpg"
-            alt="Chris Heffer"
-            width={540}
-            height={900}
-            sizes="(max-width: 760px) 112px, 150px"
-          />
-          <div>
-            <p className="section-kicker">Meet Chris</p>
-            <h2 className="section-heading--supporting" id="early-trust-title">
-              Calm, independent support from someone who understands.
-            </h2>
-            <ul className="trust-summary">
-              <li>First-hand experience of a difficult divorce and rebuilding afterwards</li>
-              <li>Volunteer facilitator with ANDYSMANCLUB</li>
-              <li>Emotional Support training from Samaritans</li>
-            </ul>
-            <a className="text-link" href="/chris">Read Chris&apos;s full backstory</a>
-          </div>
-        </section>
-
-        <section className="page-section problem-section" aria-labelledby="problem-title">
-          <h2 className="section-heading--supporting" id="problem-title">
-            A difficult divorce can make everything feel uncertain at once.
-          </h2>
-          <div>
-            <p>
-              Home, finances, children, work, routines and your sense of self can all
-              shift while you are expected to make important decisions. Friends and family
-              may care deeply, but they cannot always give the time or independent perspective you need.
-            </p>
-            <p className="pull-quote">You do not have to hold the whole situation by yourself.</p>
-          </div>
-        </section>
-
-        <section className="page-section statement-section" aria-labelledby="deeper-title">
-          <p className="section-kicker">A steadier way through</p>
-          <h2 id="deeper-title">Divorce is painful. The right support can make it easier to carry.</h2>
-          <p>
-            You cannot remove every hard feeling or conversation. But emotional support,
-            practical perspective and space to think can make the situation feel less lonely
-            and overwhelming.
-          </p>
-          <p>The situation may still be difficult. You do not need to face it alone.</p>
         </section>
 
         <section className="page-section support-section" id="support" aria-labelledby="support-title">
-          <p className="section-kicker">What support looks like</p>
-          <h2 id="support-title">The right support at the right time.</h2>
-          <div className="support-parts">
+          <p className="section-kicker">Why this support is different</p>
+          <h2 id="support-title">Someone who understands. Time that is entirely yours. Honesty you can trust.</h2>
+          <p className="value-intro">
+            Friends may care deeply and professional support can be valuable. Emotional Life
+            Support is different: dedicated, guilt-free time with someone who has recently
+            lived through a difficult divorce and rebuilding afterwards.
+          </p>
+          <div className="support-parts value-parts">
             <article>
-              <h3>Emotional support</h3>
+              <h3>Lived experience</h3>
               <p>
-                Dedicated time to talk honestly about what is happening and how it is
-                affecting you, without judgement, guilt or pressure to feel differently.
+                Support from someone who remembers what it is like when divorce affects
+                almost every part of your life at once. I will never assume your experience
+                is the same as mine, but you will not need to explain why divorce can feel
+                all-consuming.
               </p>
             </article>
             <article>
-              <h3>A sounding board for difficult decisions</h3>
+              <h3>Guilt-free time entirely about you</h3>
               <p>
-                Someone to help you slow things down, explore your options and work out
-                which choices feel right for you. The decisions remain yours.
+                No need to shorten the story, protect the listener or remember to ask about
+                their life. This time is set aside entirely for what you need to talk through.
+              </p>
+            </article>
+            <article>
+              <h3>Independent and non-judgemental</h3>
+              <p>
+                Someone outside your family, friendships and professional team who can
+                listen without criticism, competing loyalties or a personal stake in the
+                outcome.
+              </p>
+            </article>
+            <article>
+              <h3>Honesty, not automatic agreement</h3>
+              <p>
+                I will not simply tell you what you want to hear. I can gently question
+                assumptions, share another perspective and say what I believe may be useful,
+                while leaving every decision with you.
               </p>
             </article>
           </div>
-          <p>
-            I will not position myself as the expert on your life or tell you what to do.
-            I can listen closely, share relevant experience where it may help, ask useful
-            questions and stay with the whole picture while you decide what comes next.
+          <p className="value-closing">
+            The decisions remain yours. My role is to listen, understand, ask useful questions
+            and stay with the whole picture while you work out what comes next.
           </p>
         </section>
 
@@ -166,28 +139,54 @@ export default function Home() {
               sizes="(max-width: 760px) calc(100vw - 72px), 380px"
             />
             <div className="about-copy">
-              <p className="section-kicker">Why Chris</p>
+              <p className="section-kicker">Meet Chris</p>
               <h2 id="about-title">Support from someone who understands.</h2>
               <p className="about-intro">
                 Hi, I&apos;m Chris. I&apos;ve lived through a difficult divorce and rebuilt my
-                life afterwards. I know how valuable it is to have someone calm,
+                life afterwards. I know how valuable it can be to have someone calm,
                 independent and genuinely present in your corner.
               </p>
-              <dl className="proof-list">
-                <div>
-                  <dt>Lived experience</dt>
-                  <dd>A nearly two-year divorce, serious illness and the work of rebuilding family life.</dd>
-                </div>
-                <div>
-                  <dt>Support experience</dt>
-                  <dd>Volunteer for ANDYSMANCLUB peer to peer support &amp; Samaritans emotional support</dd>
-                </div>
-                <div>
-                  <dt>Your choices stay yours</dt>
-                  <dd>I listen, ask useful questions and share perspective without assuming your experience is the same as mine.</dd>
-                </div>
-              </dl>
-              <a className="text-link" href="/chris">Find out more about my backstory</a>
+              <ul className="about-proof-list">
+                <li>Nearly two years navigating a difficult divorce and rebuilding afterwards</li>
+                <li>
+                  Volunteer for{" "}
+                  <a
+                    className="organisation-link"
+                    href="https://andysmanclub.co.uk/"
+                    target="_blank"
+                    rel="noreferrer"
+                    title="A men’s suicide prevention charity offering free peer-to-peer support groups across the UK and online."
+                    aria-describedby="andysmanclub-summary"
+                  >
+                    ANDYSMANCLUB
+                  </a>
+                  <span className="visually-hidden" id="andysmanclub-summary">
+                    A men’s suicide prevention charity offering free peer-to-peer support
+                    groups across the UK and online.
+                  </span>{" "}
+                  and{" "}
+                  <a
+                    className="organisation-link"
+                    href="https://www.samaritans.org/"
+                    target="_blank"
+                    rel="noreferrer"
+                    title="A charity providing confidential emotional support for anyone having a difficult time."
+                    aria-describedby="samaritans-summary"
+                  >
+                    Samaritans
+                  </a>
+                  <span className="visually-hidden" id="samaritans-summary">
+                    A charity providing confidential emotional support for anyone having a
+                    difficult time.
+                  </span>
+                </li>
+                <li>First-hand experience of rebuilding family life, health, confidence and purpose after divorce</li>
+              </ul>
+              <a className="text-link" href="/chris">Read my full story</a>
+              <p className="affiliation-note">
+                My volunteer roles are separate from Emotional Life Support. Neither
+                organisation provides or endorses this service.
+              </p>
             </div>
           </div>
         </section>
@@ -195,80 +194,110 @@ export default function Home() {
         <Testimonials />
 
         <section className="page-section process-section" id="process" aria-labelledby="journey-title">
-          <p className="section-kicker">Where you are now</p>
-          <h2 id="journey-title">Support for each part of the process.</h2>
+          <p className="section-kicker">A practical way forward</p>
+          <h2 id="journey-title">Peace. Courage. Wisdom.</h2>
+          <p className="process-intro">
+            I help you find peace in accepting what you cannot change, the courage to change
+            what you can, and the wisdom to know the difference.
+          </p>
           <ol className="journey-list">
             <li>
-              <p className="stage-cue">Uncertain and conflicted</p>
-              <h3>Leaving</h3>
-              <p>Make space for what you are feeling and think through whether, when and how to leave.</p>
+              <p className="stage-cue">Acceptance</p>
+              <h3>Peace</h3>
+              <p>
+                Recognising what cannot be controlled and finding a way to stop fighting
+                every unchangeable part of the situation.
+              </p>
             </li>
             <li>
-              <p className="stage-cue">Stretched and overwhelmed</p>
-              <h3>Divorcing</h3>
-              <p>Navigate emotional strain, practical disruption and decisions without losing sight of yourself.</p>
+              <p className="stage-cue">Action</p>
+              <h3>Courage</h3>
+              <p>
+                Identifying what is within your control and taking the next manageable step
+                towards changing it.
+              </p>
             </li>
             <li>
-              <p className="stage-cue">Ready for what comes next</p>
-              <h3>Rebuilding</h3>
-              <p>Recover confidence, rediscover yourself and decide what you want from the life ahead.</p>
+              <p className="stage-cue">Understanding</p>
+              <h3>Wisdom</h3>
+              <p>
+                Working out which parts of the situation need acceptance, which need action
+                and what matters most now.
+              </p>
             </li>
           </ol>
           <p>
-            You do not need to have made every decision before getting in touch, and
-            rebuilding often begins before the divorce itself is complete.
+            The aim is not to remove every difficult feeling or promise a particular outcome.
+            It is to help you feel more able to meet the situation as it is and shape the
+            life that comes next.
           </p>
         </section>
 
         <section className="page-section call-section" id="first-conversation" aria-labelledby="call-title">
           <div className="call-intro">
             <p className="section-kicker">Start with one conversation</p>
-            <h2 id="call-title">If you&apos;re struggling, give me an hour.</h2>
+            <h2 id="call-title">Take an hour that is entirely yours.</h2>
             <p>
-              Bring whatever feels hardest right now. We&apos;ll talk it through and see whether
+              Bring whatever feels hardest right now. We will talk it through and see whether
               you feel any calmer, clearer or less alone by the end.
             </p>
           </div>
           <ol className="plan-list plan-list--compact">
-            <li><strong>Book</strong><span>Choose a time that suits you.</span></li>
-            <li><strong>Talk</strong><span>Use the hour for what matters most.</span></li>
-            <li><strong>Decide</strong><span>Continue only if it feels useful.</span></li>
+            <li><strong>Book</strong><span>Choose a time using the calendar below.</span></li>
+            <li><strong>Talk</strong><span>Use the hour for whatever feels most important.</span></li>
+            <li><strong>Choose what comes next</strong><span>Continue only if another conversation feels useful.</span></li>
           </ol>
           <div className="meeting-booking">
             <div>
-              <p className="section-kicker">Your free support call</p>
-              <h3>Choose a time.</h3>
-              <p>
-                See Chris&apos;s live availability. Please add contact details only, not sensitive
-                personal information.
-              </p>
+              <p className="section-kicker">Book your free support call</p>
+              <h3>Choose a time from my live availability below.</h3>
             </div>
             <ul className="booking-assurances" aria-label="Booking details">
               <li>60 minutes</li>
-              <li>Private conversation</li>
+              <li>One-to-one conversation</li>
               <li>No pitch or pressure afterwards</li>
             </ul>
-            <a className="button booking-button" href={bookingUrl} target="_blank" rel="noreferrer">
-              View available times
-            </a>
-            <p className="booking-fallback">
-              Opens a booking page in a new tab. Read our <Link href="/privacy">privacy notice</Link>.
-            </p>
+            <HubSpotMeeting bookingUrl={bookingUrl} />
           </div>
+        </section>
+
+        <section
+          id="one-off-session"
+          className="page-section one-off-section"
+          aria-labelledby="one-off-title"
+        >
+            <div>
+              <p className="section-kicker">A one-off session</p>
+              <h2 id="one-off-title">One-Off Two-Hour Support Session</h2>
+              <p>
+                Two uninterrupted hours focused entirely on what is happening in your life
+                and what would help now.
+              </p>
+              <p>
+                This is an optional next step after your free support call, with no monthly
+                commitment and no requirement to continue afterwards.
+              </p>
+            </div>
+            <div className="one-off-action">
+              <p className="package-price">£300 <span>including VAT</span></p>
+              <a className="button" href="#first-conversation">
+                Start with the free hour
+              </a>
+            </div>
         </section>
 
         <section className="page-section pricing-section" id="pricing" aria-labelledby="packages-title">
           <p className="section-kicker">Ongoing support</p>
-          <h2 id="packages-title">Private support, month by month.</h2>
+          <h2 id="packages-title">Regular support for as long as you need it.</h2>
           <p>
-            Support rolls monthly and is billed on the same calendar date each month. You can
-            end it at any time with 30 days&apos; written notice. Consumer prices include VAT.
+            Choose a monthly plan when you want consistent time, attention and continuity.
+            We can discuss moving between plans as your needs change.
           </p>
 
           <aside className="pricing-guidance">
             <div>
               <h3>Not sure what you need?</h3>
-              <p>You do not need to choose a package before we have spoken.</p>
+              <p>You do not need to choose a plan before we have spoken.</p>
             </div>
             <a className="button button--secondary" href="#first-conversation">Start with the free hour</a>
           </aside>
@@ -277,31 +306,36 @@ export default function Home() {
             <article>
               <div className="package-heading">
                 <h3>Standard Support</h3>
-                <p className="package-price">£1,200 <span>including VAT · per month</span></p>
+                <p className="package-price">£1,200 <span>including VAT per month</span></p>
               </div>
-              <dl className="package-details">
-                <div><dt>Cadence</dt><dd>Two private sessions each week</dd></div>
-                <div><dt>Time</dt><dd>Two hours per session</dd></div>
-                <div><dt>Best for</dt><dd>Regular space to think, talk and make difficult decisions.</dd></div>
-                <div><dt>Renewal</dt><dd>Rolling monthly · 30 days&apos; notice to end</dd></div>
-              </dl>
-              <a className="text-link package-action" href="#first-conversation">Discuss this option</a>
+              <p className="package-frequency">Two two-hour support sessions each week.</p>
+              <p className="package-description">
+                Regular, protected time to talk, think through difficult decisions and deal
+                with whatever feels most important as the situation develops.
+              </p>
+              <a className="text-link package-action" href="#first-conversation">Discuss Standard Support</a>
             </article>
 
             <article>
               <div className="package-heading">
                 <h3>Enhanced Support</h3>
-                <p className="package-price">£3,000 <span>including VAT · per month</span></p>
+                <p className="package-price">£3,000 <span>including VAT per month</span></p>
               </div>
-              <dl className="package-details">
-                <div><dt>Cadence</dt><dd>Five private sessions each week</dd></div>
-                <div><dt>Time</dt><dd>Two hours per session</dd></div>
-                <div><dt>Best for</dt><dd>Periods when separation is affecting everyday life.</dd></div>
-                <div><dt>Renewal</dt><dd>Rolling monthly · 30 days&apos; notice to end</dd></div>
-              </dl>
-              <a className="text-link package-action" href="#first-conversation">Discuss this option</a>
+              <p className="package-frequency">Five two-hour support sessions each week.</p>
+              <p className="package-description">
+                Frequent, consistent support during periods when divorce is placing
+                exceptional pressure on everyday life and you want someone reliably in your
+                corner.
+              </p>
+              <a className="text-link package-action" href="#first-conversation">Discuss Enhanced Support</a>
             </article>
           </div>
+
+          <p className="plan-terms">
+            Prices include VAT. Plans continue monthly. Upgrades can take effect immediately,
+            subject to availability. Downgrades take effect on the next monthly billing date.
+            Thirty days&apos; written notice is required to end monthly support.
+          </p>
 
           <article className="concierge-panel">
             <div className="concierge-heading">
@@ -335,37 +369,57 @@ export default function Home() {
           <div className="session-location">
             <h3>Where sessions take place</h3>
             <p>
-              Sessions are available remotely or face-to-face in the Bournemouth area.
-              Other locations may be possible by arrangement, with travel time and expenses
-              agreed in advance.
+              Sessions are available online or face-to-face in the Bournemouth, Christchurch
+              and Poole area. Meetings elsewhere may be possible by arrangement, with any
+              travel time and expenses agreed in advance.
             </p>
           </div>
         </section>
 
-        <section className="page-section outcome-section" aria-labelledby="success-title">
-          <p className="section-kicker">What you are working towards</p>
-          <h2 id="success-title">Find peace with what has happened and hope for who you are becoming.</h2>
-          <div className="support-parts outcome-parts">
-            <article><h3>Peace</h3><p>Feel less consumed by the situation and more settled within yourself.</p></article>
-            <article><h3>Confidence</h3><p>Feel more able to make your own decisions and trust the choices you make.</p></article>
-            <article><h3>Hope</h3><p>Begin to feel enthusiasm and excitement for the life you can create next.</p></article>
+        <section className="page-section faq-section" aria-labelledby="faq-title">
+          <h2 className="section-kicker" id="faq-title">Questions you may have</h2>
+          <div className="faq-list">
+            <details>
+              <summary>Is this therapy or counselling?</summary>
+              <p>No. Emotional Life Support is a non-clinical support service. It does not diagnose or treat mental-health conditions and is not a replacement for therapy, counselling, crisis care or professional advice.</p>
+            </details>
+            <details>
+              <summary>Will you tell me what decisions to make?</summary>
+              <p>No. I can help you slow things down, think through what matters and consider different perspectives, but the decisions remain yours.</p>
+            </details>
+            <details>
+              <summary>What happens during the free call?</summary>
+              <p>Bring whatever feels most difficult or important. There is no required preparation and no need to tell your story in a particular order. We will use the hour for what would help you most.</p>
+            </details>
+            <details>
+              <summary>Do I have to continue after the free call?</summary>
+              <p>No. There is no pitch, obligation or pressure to book another session.</p>
+            </details>
+            <details>
+              <summary>What is the two-hour session for?</summary>
+              <p>It is a one-off opportunity for more uninterrupted time to explore what is happening and work out what would help next. It does not require a monthly commitment.</p>
+            </details>
+            <details>
+              <summary>Can I change monthly plans?</summary>
+              <p>Yes. Upgrades can take effect immediately, subject to availability. Downgrades take effect on the next monthly billing date.</p>
+            </details>
+            <details>
+              <summary>Where do sessions take place?</summary>
+              <p>Sessions are available online or face-to-face in the Bournemouth, Christchurch and Poole area. Other arrangements may be possible by agreement.</p>
+            </details>
+            <details>
+              <summary>Are conversations confidential?</summary>
+              <p>Conversations are private, but confidentiality is not absolute. Limited serious-safety, safeguarding and legal exceptions are explained in the privacy notice and at the start of the support relationship.</p>
+            </details>
           </div>
-          <p className="outcome-disclaimer">These are aims, not promised results. Outcomes vary and the service does not promise an emotional, legal, relationship or financial result.</p>
-        </section>
-
-        <section className="page-section stakes-section" aria-labelledby="stakes-title">
-          <h2 className="section-heading--supporting" id="stakes-title">
-            Without the right support, overwhelm can keep taking the lead.
-          </h2>
-          <p>
-            Important decisions can be delayed and isolation can grow. Having somewhere
-            to think and talk can help prevent feeling stuck from becoming the shape of everyday life.
-          </p>
         </section>
 
         <section className="page-section final-section" aria-labelledby="final-title">
           <h2 id="final-title">Start with one hour that is entirely about you.</h2>
-          <p>Bring the question, decision or feeling that is taking up the most space.</p>
+          <p>
+            Bring whatever feels most difficult or important right now. There is no
+            preparation and no pressure to continue afterwards.
+          </p>
           <a className="button" href="#first-conversation">Book my free one-hour support call</a>
         </section>
 
@@ -407,6 +461,10 @@ export default function Home() {
               <a href="https://www.gov.uk/guidance/domestic-abuse-how-to-get-help" target="_blank" rel="noreferrer">View support options</a>
             </article>
           </div>
+          <p className="outcome-disclaimer">
+            Emotional Life Support offers support, not guaranteed emotional, relationship,
+            legal or financial results.
+          </p>
         </section>
       </main>
 

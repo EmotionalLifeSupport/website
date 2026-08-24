@@ -1,0 +1,119 @@
+"use client";
+
+import { useEffect, useState, useSyncExternalStore } from "react";
+import Link from "next/link";
+import {
+  type ConsentChoice,
+  getServerConsentChoice,
+  readConsentChoice,
+  saveConsentChoice,
+  subscribeToConsentChoice,
+} from "../lib/consent";
+
+type AnalyticsWindow = Window & {
+  dataLayer?: unknown[];
+  gtag?: (...args: unknown[]) => void;
+};
+
+type CookieConsentProps = {
+  googleAnalyticsId?: string;
+};
+
+export default function CookieConsent({ googleAnalyticsId }: CookieConsentProps) {
+  const choice = useSyncExternalStore(
+    subscribeToConsentChoice,
+    readConsentChoice,
+    getServerConsentChoice,
+  );
+  const [showSettings, setShowSettings] = useState(false);
+
+  useEffect(() => {
+    if (!googleAnalyticsId || choice !== "optional") return;
+
+    const analyticsWindow = window as AnalyticsWindow;
+    analyticsWindow.dataLayer ??= [];
+    analyticsWindow.gtag ??= (...args: unknown[]) => {
+      analyticsWindow.dataLayer?.push(args);
+    };
+    analyticsWindow.gtag("consent", "update", {
+      analytics_storage: "granted",
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+    });
+    analyticsWindow.gtag("config", googleAnalyticsId, {
+      allow_google_signals: false,
+      allow_ad_personalization_signals: false,
+    });
+
+    if (document.getElementById("els-google-analytics")) return;
+
+    const script = document.createElement("script");
+    script.id = "els-google-analytics";
+    script.async = true;
+    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleAnalyticsId)}`;
+    document.head.appendChild(script);
+  }, [choice, googleAnalyticsId]);
+
+  const choose = (nextChoice: ConsentChoice) => {
+    saveConsentChoice(nextChoice);
+    setShowSettings(false);
+
+    if (nextChoice === "essential") {
+      (window as AnalyticsWindow).gtag?.("consent", "update", {
+        analytics_storage: "denied",
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+      });
+    }
+  };
+
+  if (choice !== null && !showSettings) {
+    return (
+      <button
+        className="cookie-settings-button"
+        type="button"
+        onClick={() => setShowSettings(true)}
+      >
+        Cookie settings
+      </button>
+    );
+  }
+
+  return (
+    <aside className="cookie-consent" aria-labelledby="cookie-consent-title">
+      <div className="cookie-consent-copy">
+        <h2 id="cookie-consent-title">Help us improve your experience</h2>
+        <p>
+          With your permission, we use optional HubSpot and Google Analytics cookies to
+          understand how people find and use this website. This helps us make the experience
+          more useful and understand which routes lead to enquiries and bookings. You can
+          change your choice at any time.
+        </p>
+        {showSettings ? (
+          <div className="cookie-category-copy">
+            <p><strong>Essential:</strong> Keeps the website working and remembers your choice.</p>
+            <p><strong>Optional:</strong> Loads the embedded booking calendar and, once configured, anonymous website analytics.</p>
+          </div>
+        ) : null}
+        <p className="cookie-notice-link">
+          Read the <Link href="/cookies">cookie notice</Link>.
+        </p>
+      </div>
+      <div className="cookie-consent-actions">
+        <button className="button" type="button" onClick={() => choose("optional")}>
+          Allow optional cookies
+        </button>
+        <button className="button button--secondary" type="button" onClick={() => choose("essential")}>
+          Essential cookies only
+        </button>
+        {!showSettings ? (
+          <button className="cookie-choose-button" type="button" onClick={() => setShowSettings(true)}>
+            Choose settings
+          </button>
+        ) : null}
+      </div>
+    </aside>
+  );
+}

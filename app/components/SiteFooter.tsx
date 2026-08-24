@@ -4,7 +4,10 @@ export default function SiteFooter() {
   return (
     <footer>
       <div className="footer-main">
-        <p>Emotional Life Support · Support through separation, divorce and rebuilding</p>
+        <p>
+          Emotional Life Support · Support through divorce and rebuilding · Online across
+          England and Wales and face-to-face in Bournemouth, Christchurch and Poole
+        </p>
         <nav className="footer-links" aria-label="Legal information">
           <Link href="/privacy">Privacy</Link>
           <Link href="/cookies">Cookies</Link>

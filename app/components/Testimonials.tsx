@@ -50,8 +50,8 @@ export default function Testimonials() {
       id="testimonials"
       aria-labelledby="testimonials-title"
     >
-      <p className="section-kicker">Client Experiences</p>
-      <h2 id="testimonials-title">Words from people I&apos;ve supported.</h2>
+      <p className="section-kicker">Testimonials</p>
+      <h2 id="testimonials-title">What people I&apos;ve supported say.</h2>
 
       <div className="testimonials-list">
         {testimonialsData.map((item) => (
