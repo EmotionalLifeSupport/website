@@ -55,6 +55,31 @@ This document tracks technical decisions, architectural context, and chronologic
 
 ---
 
+### [2026-08-21] — Migration from Codex to Google Antigravity & GitHub Pages Automation
+- **Context & Goal**: Migrated development workflow from Codex to Google Antigravity and moved website hosting from OpenAI ChatGPT Sites to GitHub Pages.
+- **Root Codebase Consolidation**:
+  - Identified that the live site source code was located inside `storybrand-wireframe/` (Next.js / Vinext application), while the workspace root contained an obsolete Phase 0 prototype (`index.html`).
+  - Promoted the Next.js / Vinext source code from `storybrand-wireframe/` directly to the project root directory.
+  - Removed outdated prototype files (`index.html`, `styles.css`, `script.js`).
+  - Added `.openai/hosting.json` and `build/sites-vite-plugin.ts` build shims to decouple Vite/Vinext builds from Codex sandbox proprietary dependencies.
+- **Static Site Export Engine (`scripts/export-static.mjs`)**:
+  - Created [`scripts/export-static.mjs`](file:///Users/chrisheffer/Library/Mobile%20Documents/com~apple~CloudDocs/Code/Emotional%20Life%20Support/scripts/export-static.mjs) which executes `dist/server/index.js` to pre-render static HTML files for all pages (`/`, `/chris`, `/privacy`, `/cookies`, `/terms`) into `./dist/client`.
+  - Added `"export": "npm run build && node scripts/export-static.mjs"` to `package.json`.
+  - Configured `.nojekyll` file creation inside `dist/client` to prevent GitHub Pages from skipping `_next/` directories.
+- **GitHub Actions Deployment Pipeline (`.github/workflows/deploy.yml`)**:
+  - Created `.github/workflows/deploy.yml` workflow to automate static build and deployment to GitHub Pages on pushes to `main`.
+  - Switched repository deployment setting from `legacy` branch mode to `workflow` mode via GitHub API.
+- **Next.js Static Image Optimization Fix**:
+  - **Issue**: Next.js `<Image>` component generated dynamic `/_next/image?url=...` resizer URLs and `srcset` query strings which returned 404 errors on static hosts.
+  - **Fix**: Added regex transformation logic to `scripts/export-static.mjs` to rewrite image `src` and `srcset` attributes directly to static public assets (`/hero-calm-relief-woman-v3.png`, `/chris-amc.jpg`).
+- **Files Created/Modified**:
+  - [`scripts/export-static.mjs`](file:///Users/chrisheffer/Library/Mobile%20Documents/com~apple~CloudDocs/Code/Emotional%20Life%20Support/scripts/export-static.mjs) (New)
+  - [`.github/workflows/deploy.yml`](file:///Users/chrisheffer/Library/Mobile%20Documents/com~apple~CloudDocs/Code/Emotional%20Life%20Support/.github/workflows/deploy.yml) (New)
+  - [`package.json`](file:///Users/chrisheffer/Library/Mobile%20Documents/com~apple~CloudDocs/Code/Emotional%20Life%20Support/package.json)
+  - [`.gitignore`](file:///Users/chrisheffer/Library/Mobile%20Documents/com~apple~CloudDocs/Code/Emotional%20Life%20Support/.gitignore)
+
+---
+
 ## 🧰 Development Commands Cheat Sheet
 
 ```bash
