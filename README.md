@@ -1,18 +1,39 @@
 # Emotional Life Support
 
-Calm, practical, one-to-one support after the end of an unhealthy relationship.
+Calm, practical, one-to-one support through separation, divorce, and rebuilding after an unhealthy relationship.
 
-## About
+Live site: [https://emotionallifesupport.com](https://emotionallifesupport.com)
 
-Emotional Life Support is a non-clinical, peer-to-peer support service offering guidance, clarity, and practical next steps for individuals navigating the end of an unhealthy relationship.
+---
 
-## Features
+## 📚 Development & Architecture Log
 
-- Fully responsive web application built with HTML, CSS, and Vanilla JavaScript
-- Interactive booking request modal with accessible dialog controls
-- Responsive mobile menu and scroll animations
-- Accessible typography, color contrast, and semantic layout
+> **For AI Assistants & Developers:**  
+> A detailed history of architectural decisions, component locations, build export rules (`basePath` settings), and change logs is maintained in **[`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)**. Please refer to `DEVELOPMENT_LOG.md` before making structural or deployment pipeline changes.
 
-## Development
+---
 
-Open `index.html` in your browser or run a local web server (e.g. `npx http-server`).
+## 🛠️ Tech Stack & Structure
+
+- **Framework**: Next.js / Vinext (Vite 8 + React 19 RSC)
+- **Styling**: Tailwind CSS v4 + CSS Variables (`var(--paper)`, `var(--serif)`, `var(--navy)`)
+- **Deployment**: GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`)
+- **Custom Domain**: `emotionallifesupport.com` (`public/CNAME`)
+
+---
+
+## 🚀 Quick Commands
+
+```bash
+# Start local development server (http://localhost:3000)
+npm run dev
+
+# Run linter checks
+npm run lint
+
+# Run HTML render unit tests
+npm run test
+
+# Build and export static site to ./dist/client
+npm run export
+```
