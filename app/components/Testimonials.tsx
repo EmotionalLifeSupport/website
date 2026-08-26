@@ -52,7 +52,7 @@ export default function Testimonials() {
       id="testimonials"
       aria-labelledby="testimonials-title"
     >
-      <p className="section-kicker">Testimonials</p>
+      <p className="section-kicker">Recommendations</p>
       <h2 id="testimonials-title">What people I&apos;ve supported say.</h2>
 
       <div className="testimonials-list">

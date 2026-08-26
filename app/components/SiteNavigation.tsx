@@ -5,7 +5,7 @@ import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 const navigationItems = [
-  { id: "support", label: "Support" },
+  { id: "support", label: "About you" },
   { id: "about", label: "About Chris" },
   { id: "testimonials", label: "Testimonials" },
   { id: "process", label: "How it works" },
@@ -82,7 +82,7 @@ export default function SiteNavigation({ isHomePage = false }: SiteNavigationPro
           </a>
         ))}
         <a className="button header-booking-button" href={bookingHref}>
-          Book your free first session
+          Book your first session free
         </a>
       </nav>
 
@@ -112,7 +112,7 @@ export default function SiteNavigation({ isHomePage = false }: SiteNavigationPro
               </a>
             ))}
             <a className="button mobile-booking-button" href={bookingHref} onClick={() => closeMenu()}>
-              Book your free first session
+              Book your first session free
             </a>
           </nav>
         )}

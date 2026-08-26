@@ -992,7 +992,7 @@ footer a:focus-visible {
 }
 
 .pricing-section > h2 {
-  max-width: 13ch;
+  max-width: none;
 }
 
 .one-off-section {
@@ -1381,6 +1381,38 @@ footer a:focus-visible {
   max-width: 48rem;
   margin: -0.25rem 0 1.5rem;
   color: var(--navy-soft);
+}
+
+.faq-list .faq-sample-email {
+  max-width: 48rem;
+  margin: 0 0 1.5rem;
+  border-top: 1px solid var(--line);
+  border-bottom: 0;
+}
+
+.faq-list .faq-sample-email summary {
+  padding: 1rem 2.5rem 1rem 0;
+  color: var(--terracotta);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.faq-list .faq-sample-email summary::after {
+  font-size: 1.2rem;
+}
+
+.faq-list .faq-sample-email > div {
+  padding: 0.25rem 1.25rem 0.25rem;
+  border-left: 3px solid var(--terracotta);
+  background: #fff7ed;
+}
+
+.faq-list .faq-sample-email p {
+  margin: 0 0 1rem;
+}
+
+.faq-list .faq-sample-email p:last-child {
+  margin-bottom: 0.75rem;
 }
 
 .final-section .button {
@@ -2174,7 +2206,7 @@ footer a:focus-visible,
   }
 
   .pricing-guidance {
-    padding: 1.3rem 0;
+    padding: 1.3rem 1rem;
     align-items: stretch;
     flex-direction: column;
   }
@@ -2838,7 +2870,30 @@ body {
 
 footer {
   border-top-color: rgba(8, 47, 115, 0.1);
-  background-color: #ffffff;
+  color: var(--navy-soft);
+  background-color: #f2f4f7;
+}
+
+.homepage + footer,
+.homepage ~ footer {
+  background: #f2f4f7;
+}
+
+footer a,
+footer .footer-cookie-settings {
+  color: var(--navy);
+}
+
+footer a:hover,
+footer a:focus-visible,
+footer .footer-cookie-settings:hover,
+footer .footer-cookie-settings:focus-visible {
+  color: var(--terracotta-dark);
+}
+
+footer .company-details {
+  border-top-color: rgba(8, 47, 115, 0.14);
+  color: #5b6d82;
 }
 
 .early-trust,
@@ -2943,6 +2998,60 @@ footer {
 }
 
 @media (max-width: 560px) {
+  .homepage .call-section {
+    width: 100%;
+    margin-inline: 0;
+    padding-inline: 1rem;
+    border-radius: 0;
+  }
+
+  .homepage .meeting-booking {
+    width: 100%;
+    min-width: 0;
+    padding: 1rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+  }
+
+  .homepage .meeting-booking > *,
+  .homepage .hubspot-meeting-frame,
+  .homepage .meetings-iframe-container {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .homepage .meeting-booking h3 {
+    max-width: none;
+  }
+
+  .homepage .booking-assurances {
+    width: 100%;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .homepage .booking-assurances li,
+  .homepage .booking-assurances li:last-child {
+    min-width: 0;
+    padding-inline: 0.3rem;
+    overflow-wrap: anywhere;
+  }
+
+  .homepage .meetings-iframe-container iframe {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-inline: auto;
+    display: block;
+  }
+
+  .homepage .hubspot-meeting-frame .booking-fallback {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 0.25rem;
+    overflow-wrap: anywhere;
+    text-align: center;
+  }
+
   .homepage .hero {
     padding-inline: 1.25rem;
   }

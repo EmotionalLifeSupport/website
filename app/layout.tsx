@@ -13,6 +13,28 @@ export const metadata: Metadata = {
   title: "Emotional Support Through Divorce | Emotional Life Support",
   description:
     "Calm, independent support while you navigate divorce and rebuild your life afterwards. Online across England and Wales and face-to-face in Bournemouth, Christchurch and Poole.",
+  openGraph: {
+    type: "website",
+    siteName: "Emotional Life Support",
+    title: "Emotional Support Through Divorce | Emotional Life Support",
+    description:
+      "Calm, independent support while you navigate divorce and rebuild your life afterwards.",
+    images: [
+      {
+        url: "/social-share-chair-v1.png",
+        width: 1200,
+        height: 630,
+        alt: "A comfortable blue chair beside a cup of tea and a green plant",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Emotional Support Through Divorce | Emotional Life Support",
+    description:
+      "Calm, independent support while you navigate divorce and rebuild your life afterwards.",
+    images: ["/social-share-chair-v1.png"],
+  },
 };
 
 export default async function RootLayout({

@@ -56,7 +56,7 @@ export default function HubSpotMeeting({ bookingUrl }: HubSpotMeetingProps) {
         page without changing your website cookie choice.
       </p>
       <a className="button booking-button" href={bookingUrl} target="_blank" rel="noreferrer">
-        Book your free first session
+        Book your first session free
       </a>
     </div>
   );

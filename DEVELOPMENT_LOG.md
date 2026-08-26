@@ -21,6 +21,111 @@ This document tracks technical decisions, architectural context, and chronologic
 
 ## 📜 Chronological Change Log
 
+### [2026-08-26] — Reworked Narrow-Screen Booking Layout and Added Social Preview Image
+- **Context / Motivation**: A 393px mobile screenshot showed the HubSpot calendar, assurances and fallback copy constrained inside the rounded booking section, while shared links had no dedicated social preview artwork.
+- **Key Changes**:
+  - Made the blue booking section full-bleed below 560px and kept the white booking card and HubSpot scheduler centred within the available width.
+  - Constrained the embedded scheduler, fallback text and three assurance cells to the mobile container, and restored internal padding to the pricing guidance panel.
+  - Reordered the duration copy to lead with the two-hour option.
+  - Created a 1200 × 630 social-share image using the site&apos;s chair, tea, plant and blue-background visual language.
+  - Added Open Graph and X/Twitter large-image metadata for link previews.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/layout.tsx`](./app/layout.tsx)
+  - [`app/globals.css`](./app/globals.css)
+  - [`public/social-share-chair-v1.png`](./public/social-share-chair-v1.png) (New)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted mobile-booking and social-preview update.
+
+### [2026-08-26] — Simplified Free-Session Prompts and Restored Footer Contrast
+- **Context / Motivation**: Browser review showed that leading with the shortest booking duration weakened the two-hour offer, the pricing heading was unnecessarily narrow, two lower prompts overcomplicated the free-session message and the footer inherited light text on a white surface.
+- **Key Changes**:
+  - Reframed the booking heading as “Up to two hours available. You choose how long.” while retaining all three selectable durations in the supporting copy.
+  - Allowed the ongoing-support heading to use the full content width.
+  - Replaced the pricing guidance and final call-to-action headings with “Get started for free” and added a confident explanation of the free first session.
+  - Added a light-grey footer surface with navy text, links and a visible company-details divider.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/globals.css`](./app/globals.css)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted browser-comment refinements.
+
+### [2026-08-26] — Repositioned the Free First-Session Offer
+- **Context / Motivation**: The HubSpot booking flow now lets visitors choose 30 minutes, one hour or two hours, allowing the opening offer to lead with the full value of a free first session without requiring a two-hour commitment.
+- **Key Changes**:
+  - Standardised primary CTA labels as “Book your first session free”.
+  - Introduced the “First session free · worth £300” message and explained that visitors can choose 30 minutes, one hour or up to two hours.
+  - Updated booking assurances, FAQs, the Chris page and consent fallback to reflect the selectable session duration.
+  - Clarified that the separately priced two-hour session is a paid option available after the free first session.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/chris/page.tsx`](./app/chris/page.tsx)
+  - [`app/components/SiteNavigation.tsx`](./app/components/SiteNavigation.tsx)
+  - [`app/components/HubSpotMeeting.tsx`](./app/components/HubSpotMeeting.tsx)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted free-session offer update.
+
+### [2026-08-26] — Added Financial-Settlement FAQ and Sample Solicitor Email
+- **Context / Motivation**: Visitors may need to understand whether the cost of independent support could be considered in their divorce financial settlement before deciding if they can afford it.
+- **Key Changes**:
+  - Added a FAQ explaining the possible routes for a former partner to contribute and the need to seek advice from a family solicitor.
+  - Included the supplied non-guarantee language and a nested, collapsible sample email for a solicitor.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/globals.css`](./app/globals.css)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted FAQ addition.
+
+### [2026-08-26] — Refined Navigation and Section Prompts
+- **Context / Motivation**: Browser review requested more visitor-centred labels, a clearer Meet Chris heading and a later placement for the reassurance booking prompt.
+- **Key Changes**:
+  - Renamed the Support navigation label to “About you”, Testimonials to “Recommendations” and the process label to “What you will get”.
+  - Updated the Meet Chris heading to “Get support from someone who understands.”
+  - Moved the reassurance booking prompt from the support section to directly after the testimonials section.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/components/SiteNavigation.tsx`](./app/components/SiteNavigation.tsx)
+  - [`app/components/Testimonials.tsx`](./app/components/Testimonials.tsx)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted browser-comment refinements.
+
+### [2026-08-26] — Reframed the Support-Difference Section
+- **Context / Motivation**: The supplied copy shifts the section from a service description to the immediate needs someone may have while divorce is changing their life.
+- **Key Changes**:
+  - Replaced the section kicker, heading and introduction with the supplied wording.
+  - Rewrote all six support cards, preserving their responsive layout, illustration and follow-on booking prompt.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted supplied-copy update.
+
+### [2026-08-26] — Refined Divorce Challenges Descriptions
+- **Context / Motivation**: The supplied wording better reflects the practical decisions and emotional experience of untangling a shared life and starting again after divorce.
+- **Key Changes**:
+  - Replaced both challenge-card descriptions with the supplied copy.
+  - Updated the second challenge-card title to “Finding yourself and rebuilding your life”.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted supplied-copy update.
+
+### [2026-08-26] — Updated Divorce Challenges Section Copy
+- **Context / Motivation**: The supplied homepage copy more clearly describes the practical and emotional challenge of moving through and beyond divorce.
+- **Key Changes**:
+  - Replaced the section heading and both challenge-card titles and descriptions with the supplied wording.
+  - Preserved the existing responsive section layout and visual treatment.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted supplied-copy update.
+
 ### [2026-08-26] — Refined Desktop CTA and Portrait Alignment
 - **Context / Motivation**: Browser review showed the post-benefits reassurance CTA constrained to one half of the desktop support grid and Chris's portrait vertically centred below the start of its accompanying copy.
 - **Key Changes**:

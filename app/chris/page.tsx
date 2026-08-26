@@ -124,15 +124,16 @@ export default function ChrisPage() {
       </article>
 
       <section className="page-section call-section profile-booking" aria-labelledby="profile-booking-title">
-        <h2 id="profile-booking-title">Book your free first session.</h2>
+        <h2 id="profile-booking-title">Your first session is free, worth £300.</h2>
         <p>
-          Choose a time for a private conversation focused entirely on what would help
-          you most. There is no preparation, pitch or pressure to continue afterwards.
+          Choose 30 minutes, one hour or up to two hours for a private conversation focused
+          entirely on what would help you most. There is no preparation, pitch or pressure to
+          continue afterwards.
         </p>
         <div className="meeting-booking">
           <div>
-            <p className="section-kicker">Your free support call</p>
-            <h3>Choose a time.</h3>
+            <p className="section-kicker">First session free</p>
+            <h3>Choose the amount of time that feels comfortable.</h3>
             <p className="booking-location">
               Meetings take place online by default. If you are in the Bournemouth area
               and would prefer to meet in person, reply to your confirmation email after
@@ -140,12 +141,12 @@ export default function ChrisPage() {
             </p>
           </div>
           <ul className="booking-assurances" aria-label="Booking details">
-            <li>60 minutes</li>
+            <li>30 minutes, one hour or two hours</li>
             <li>Private conversation</li>
             <li>No pitch or pressure afterwards</li>
           </ul>
           <a className="button booking-button" href="https://meetings-eu1.hubspot.com/chris247" target="_blank" rel="noreferrer">
-            Book your free first session
+            Book your first session free
           </a>
           <p className="booking-fallback">
             Opens a booking page in a new tab. Please do not put health, relationship, legal or

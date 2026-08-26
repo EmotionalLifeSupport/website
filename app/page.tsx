@@ -51,17 +51,17 @@ export default function Home() {
           </figure>
           <div className="hero-action">
             <a className="button" href="#first-conversation">
-              Book your free first session <ArrowRightIcon aria-hidden="true" />
+              Book your first session free <ArrowRightIcon aria-hidden="true" />
             </a>
             <p className="button-note">
-              One full hour focused on what would help you most. No preparation and no
-              pressure to continue.
+              Choose 30 minutes, one hour or up to two hours. With up to two hours available,
+              your free first session is worth £300. No preparation and no pressure to continue.
             </p>
           </div>
         </section>
 
         <aside className="reassurance-strip" aria-label="What to expect">
-          <span><CheckCircledIcon aria-hidden="true" />Free one-hour call</span>
+          <span><CheckCircledIcon aria-hidden="true" />First session free · worth £300</span>
           <span><HeartIcon aria-hidden="true" />Divorce experience</span>
           <span><ChatBubbleIcon aria-hidden="true" />One-to-one support</span>
           <span><LockClosedIcon aria-hidden="true" />Non-clinical support</span>
@@ -69,34 +69,38 @@ export default function Home() {
 
         <section className="page-section relevance-section" aria-labelledby="relevance-title">
           <h2 className="section-heading--supporting" id="relevance-title">
-            Support through the divorce itself and the life after it.
+            The challenges you face through and after divorce
           </h2>
           <div className="relevance-list">
             <article>
-              <p className="relevance-label">Navigating divorce</p>
+              <p className="relevance-label">Untangling yourself from your old life</p>
               <p>
-                Carrying emotional strain, disruption, difficult conversations and
-                important decisions while your life is changing around you.
+                Dismantling the life you built together, deciding what belongs where, and making
+                huge decisions about your future while dealing with heavy emotions, uncertainty
+                and difficult conversations.
               </p>
             </article>
             <article>
-              <p className="relevance-label">Rebuilding your life</p>
+              <p className="relevance-label">Finding yourself and rebuilding your life</p>
               <p>
-                Regaining stability, confidence and a sense of who you are while you begin
-                shaping what comes next.
+                Starting again can feel exciting and overwhelming. You have to work out what you
+                want, what you need, what matters most to your family, and what you want the next
+                chapter of your life to look like.
               </p>
             </article>
           </div>
         </section>
 
         <section className="page-section support-section" id="support" aria-labelledby="support-title">
-          <p className="section-kicker">Why this support is different</p>
-          <h2 id="support-title">Someone in your corner when life gets difficult.</h2>
+          <p className="section-kicker">What you may need right now</p>
+          <h2 id="support-title">What can help while everything is changing</h2>
           <p className="value-intro">
-            Friends may care deeply and professional support can be valuable, but sometimes you
-            need something different. Emotional Life Support gives you a consistent, independent
-            person who understands difficult divorce, gets to know your situation, and can support
-            you emotionally and practically as life unfolds.
+            Friends may care deeply and professional support can be valuable. But difficult divorce
+            can create needs that are easy to overlook.
+          </p>
+          <p className="value-intro">
+            Space to be honest. Time to think clearly. Independence from the situation. Continuity
+            as things change. Perspective when you feel stuck. Help working out what comes next.
           </p>
           <figure className="support-visual">
             <picture>
@@ -112,58 +116,71 @@ export default function Home() {
           </figure>
           <div className="support-parts value-parts">
             <article>
-              <h3>You don&apos;t have to pretend you&apos;re okay</h3>
+              <h3>Somewhere you don&apos;t have to pretend you&apos;re okay</h3>
               <p>
-                There are times when you need to hold things together for work, family or
-                friends. Here, you don&apos;t. You can say what is really going on without having
-                to soften it, tidy it up or reassure anyone else.
+                There are times when you have to hold things together for work, family or friends.
+                You also need somewhere you don&apos;t.
+              </p>
+              <p>
+                Somewhere you can say what is really going on without softening it, tidying it up
+                or reassuring the person listening.
               </p>
             </article>
             <article>
-              <h3>Lived experience of difficult divorce</h3>
+              <h3>Understanding of how much divorce affects</h3>
               <p>
-                I&apos;ve been through a difficult divorce myself. I won&apos;t assume your experience
-                is the same as mine, but you won&apos;t need to explain why divorce can affect almost
-                every part of your life at once.
+                Divorce can touch almost every part of your life at once. Your home, children,
+                finances, work, relationships and sense of who you are.
+              </p>
+              <p>
+                It helps when that complexity is understood, rather than having to explain why it
+                feels like so much.
               </p>
             </article>
             <article>
               <h3>Time entirely about you</h3>
               <p>
-                No need to shorten the story, protect the listener or remember to ask about their
-                life. Talk about it again if you need to. This time is deliberately yours.
+                You need space where you don&apos;t have to shorten the story, protect the listener or
+                remember to ask about their life.
+              </p>
+              <p>
+                If you need to talk about the same thing again, you can. The time is yours.
               </p>
             </article>
             <article>
-              <h3>Independent, but in your corner</h3>
+              <h3>Independence from the situation</h3>
               <p>
-                I&apos;m outside your family and friendship network, with no competing loyalties or
-                personal stake in the outcome. I can support you without judgement while still
-                being honest when I think something may not be helping you.
+                The people closest to you may have their own feelings, loyalties and opinions about
+                what should happen.
+              </p>
+              <p>
+                Sometimes it helps to have space that is outside those pressures, where you can
+                think about what feels right for you.
               </p>
             </article>
             <article>
-              <h3>Support as life happens</h3>
+              <h3>Continuity as things change</h3>
               <p>
-                Difficult moments do not wait for a weekly appointment. This is an ongoing
-                relationship with someone who knows the story and can support you as situations
-                change and new problems appear.
+                Divorce keeps moving.
+              </p>
+              <p>
+                New messages arrive, decisions need to be made and unexpected problems appear.
+              </p>
+              <p>
+                It can help when you don&apos;t have to start from the beginning every time something
+                changes.
               </p>
             </article>
             <article>
-              <h3>More than just someone to talk to</h3>
+              <h3>Help working out what comes next</h3>
               <p>
-                Sometimes you need to be heard. Sometimes you need help deciding what to do next.
-                I can help you think through messages, conversations, decisions and practical
-                problems as well as how you are feeling.
+                Sometimes you need to be heard. Sometimes you need another perspective.
+              </p>
+              <p>
+                And sometimes you need help thinking through a difficult conversation, a message,
+                a decision or a practical problem before deciding what to do next.
               </p>
             </article>
-          </div>
-          <div className="decision-point">
-            <p>You don&apos;t need to work out what kind of support you need before we talk.</p>
-            <a className="button" href="#first-conversation">
-              Book your free first session <ArrowRightIcon aria-hidden="true" />
-            </a>
           </div>
         </section>
 
@@ -179,7 +196,7 @@ export default function Home() {
             />
             <div className="about-copy">
               <p className="section-kicker">Meet Chris</p>
-              <h2 id="about-title">Support from someone who understands.</h2>
+              <h2 id="about-title">Get support from someone who understands.</h2>
               <p className="about-intro">
                 Hi, I&apos;m Chris. I&apos;ve lived through a difficult divorce and rebuilt my
                 life afterwards. I know how valuable it can be to have someone calm,
@@ -229,7 +246,7 @@ export default function Home() {
               <div className="about-action">
                 <p>Start with one conversation. We can work the rest out afterwards.</p>
                 <a className="button" href="#first-conversation">
-                  Book your free first session
+                  Book your first session free
                 </a>
               </div>
             </div>
@@ -238,8 +255,15 @@ export default function Home() {
 
         <Testimonials />
 
+        <div className="page-section decision-point">
+          <p>You don&apos;t need to work out what kind of support you need before we talk.</p>
+          <a className="button" href="#first-conversation">
+            Book your first session free <ArrowRightIcon aria-hidden="true" />
+          </a>
+        </div>
+
         <section className="page-section process-section" id="process" aria-labelledby="journey-title">
-          <p className="section-kicker">A practical way forward</p>
+          <p className="section-kicker">What you will get</p>
           <h2 id="journey-title">Peace. Courage. Wisdom.</h2>
           <p className="process-intro">
             I help you find peace in accepting what you cannot change, the courage to change
@@ -312,17 +336,21 @@ export default function Home() {
             </p>
           </div>
           <ol className="plan-list plan-list--compact">
-            <li><strong>Book your first session</strong><span>Start with one conversation. You do not need to choose a support package first.</span></li>
+            <li><strong>Book your first session free</strong><span>Start with one conversation. You do not need to choose a support package first.</span></li>
             <li><strong>Talk through what is happening</strong><span>Discuss what feels difficult and what would be most useful right now.</span></li>
             <li><strong>Decide what happens next</strong><span>Leave it there, return when needed, or choose ongoing support later.</span></li>
           </ol>
           <div className="meeting-booking">
             <div>
-              <p className="section-kicker">Book your free first session</p>
-              <h3>Choose a time from my live availability below.</h3>
+              <p className="section-kicker">First session free · worth £300</p>
+              <h3>Up to two hours available. You choose how long.</h3>
+              <p>
+                Select two hours, one hour, or 30 minutes in the calendar below. Your first session
+                is free whichever duration you choose.
+              </p>
             </div>
             <ul className="booking-assurances" aria-label="Booking details">
-              <li>60 minutes</li>
+              <li>Up to two hours available</li>
               <li>One-to-one conversation</li>
               <li>No pitch or pressure afterwards</li>
             </ul>
@@ -358,10 +386,10 @@ export default function Home() {
 
           <div className="pricing-guidance">
             <div>
-              <h3>No need to choose now</h3>
-              <p>The first conversation is the only decision you need to make right now.</p>
+              <h3>Get started for free</h3>
+              <p>Your first session is free, with up to two hours available. You choose how long.</p>
             </div>
-            <a className="button" href="#first-conversation">Book your free first session</a>
+            <a className="button" href="#first-conversation">Book your first session free</a>
           </div>
 
           <details className="support-options-disclosure">
@@ -382,7 +410,7 @@ export default function Home() {
                 </div>
                 <div className="one-off-action">
                   <p className="package-price">£300 <span>including VAT</span></p>
-                  <a className="button" href="#first-conversation">Book your free first session</a>
+                  <a className="button" href="#first-conversation">Book your first session free</a>
                 </div>
               </article>
 
@@ -397,7 +425,7 @@ export default function Home() {
                     Regular, protected time to talk, think through difficult decisions and deal
                     with whatever feels most important as the situation develops.
                   </p>
-                  <a className="text-link package-action" href="#first-conversation">Book your free first session</a>
+                  <a className="text-link package-action" href="#first-conversation">Book your first session free</a>
                 </article>
 
                 <article>
@@ -411,7 +439,7 @@ export default function Home() {
                     exceptional pressure on everyday life and you want someone reliably in your
                     corner.
                   </p>
-                  <a className="text-link package-action" href="#first-conversation">Book your free first session</a>
+                  <a className="text-link package-action" href="#first-conversation">Book your first session free</a>
                 </article>
               </div>
 
@@ -446,7 +474,7 @@ export default function Home() {
                     financial or tax advice. Availability is agreed as part of your monthly
                     arrangement; it is not an emergency service.
                   </p>
-                  <a className="button button--secondary" href="#first-conversation">Book your free first session</a>
+                  <a className="button button--secondary" href="#first-conversation">Book your first session free</a>
                 </div>
               </article>
 
@@ -474,20 +502,64 @@ export default function Home() {
               <p>No. I can help you slow things down, think through what matters and consider different perspectives, but the decisions remain yours.</p>
             </details>
             <details>
-              <summary>What happens during the free call?</summary>
-              <p>Bring whatever feels most difficult or important. There is no required preparation and no need to tell your story in a particular order. We will use the hour for what would help you most.</p>
+              <summary>What happens during my free first session?</summary>
+              <p>Bring whatever feels most difficult or important. There is no required preparation and no need to tell your story in a particular order. Choose 30 minutes, one hour or up to two hours, and we will use that time for what would help you most.</p>
             </details>
             <details>
-              <summary>Do I have to continue after the free call?</summary>
+              <summary>Do I have to continue after my free first session?</summary>
               <p>No. There is no pitch, obligation or pressure to book another session.</p>
             </details>
             <details>
-              <summary>What is the two-hour session for?</summary>
-              <p>It is a one-off opportunity for more uninterrupted time to explore what is happening and work out what would help next. It does not require a monthly commitment.</p>
+              <summary>What is the paid two-hour session for?</summary>
+              <p>After your free first session, it is a one-off opportunity for more uninterrupted time to explore what is happening and work out what would help next. It does not require a monthly commitment.</p>
             </details>
             <details>
               <summary>Can I change monthly plans?</summary>
               <p>Yes. Upgrades can take effect immediately, subject to availability. Downgrades take effect on the next monthly billing date.</p>
+            </details>
+            <details>
+              <summary>Can I get my ex to pay for this?</summary>
+              <p>Possibly.</p>
+              <p>If your ex agrees to contribute towards the cost, then yes.</p>
+              <p>
+                If they don&apos;t agree, or you would rather not ask them directly, it&apos;s worth
+                speaking to your family solicitor before ruling the service out on cost alone.
+              </p>
+              <p>
+                Ask your solicitor whether the cost of professional support during your divorce
+                could be taken into account when negotiating or determining your financial
+                settlement. Depending on your circumstances, this could affect the real cost to
+                you.
+              </p>
+              <p>
+                There are no guarantees, and I can&apos;t advise you how the cost will be treated in
+                your particular case. That&apos;s a question for your solicitor.
+              </p>
+              <details className="faq-sample-email">
+                <summary>Click to see sample email to solicitor</summary>
+                <div>
+                  <p>
+                    I&apos;m considering paying for professional emotional and practical support to
+                    help me through my divorce. The service would cost £[amount].
+                  </p>
+                  <p>
+                    Before I make a decision, could you advise me whether expenditure of this kind
+                    could be taken into account when negotiating or determining my financial
+                    settlement?
+                  </p>
+                  <p>
+                    In particular, I&apos;d like to understand whether paying for the support would
+                    ultimately reduce the assets available for division, be treated as an expense
+                    or liability on my side, or simply be treated as money I have chosen to spend
+                    personally.
+                  </p>
+                  <p>
+                    I&apos;m not looking to spend money simply to reduce the matrimonial assets. I want
+                    the support, but I&apos;d like to understand the likely net financial cost to me
+                    before deciding whether I can afford it.
+                  </p>
+                </div>
+              </details>
             </details>
             <details>
               <summary>Where do sessions take place?</summary>
@@ -501,13 +573,13 @@ export default function Home() {
         </section>
 
         <section className="page-section final-section" aria-labelledby="final-title">
-          <h2 id="final-title">The first conversation is the only decision to make now.</h2>
+          <h2 id="final-title">Get started for free.</h2>
           <p>
-            You don&apos;t need to choose a package or work out what kind of support you need
-            before we talk.
+            I&apos;m confident this support can help you move forward, so your first session is free,
+            with up to two hours available.
           </p>
           <a className="button" href="#first-conversation">
-            Book your free first session <ArrowRightIcon aria-hidden="true" />
+            Book your first session free <ArrowRightIcon aria-hidden="true" />
           </a>
         </section>
 
