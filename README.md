@@ -19,6 +19,7 @@ Live site: [https://emotionallifesupport.com](https://emotionallifesupport.com)
 - **Styling**: Tailwind CSS v4 + CSS Variables (`var(--paper)`, `var(--serif)`, `var(--navy)`)
 - **Deployment**: GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`)
 - **Custom Domain**: `emotionallifesupport.com` (`public/CNAME`)
+- **Analytics**: GA4 measurement ID `G-9KYHPSW76N`, loaded across all routes only after optional-cookie consent (`app/lib/analytics.ts`)
 
 ---
 

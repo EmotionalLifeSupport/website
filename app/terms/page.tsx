@@ -46,19 +46,19 @@ export default function TermsPage() {
         </p>
 
         <h2>3. The monthly offers</h2>
-        <h3>Standard Support — £1,200 including VAT</h3>
+        <h3>Standard Support: £1,200 including VAT</h3>
         <ul>
           <li>a rolling monthly agreement;</li>
           <li>two private two-hour sessions each week, making eight sessions in total; and</li>
           <li>administrative contact for arranging the sessions.</li>
         </ul>
-        <h3>Enhanced Support — £3,000 including VAT</h3>
+        <h3>Enhanced Support: £3,000 including VAT</h3>
         <ul>
           <li>a rolling monthly agreement;</li>
           <li>five private two-hour sessions each week, making 20 sessions in total; and</li>
           <li>administrative contact for arranging the sessions.</li>
         </ul>
-        <h3>Divorce Concierge — £10,000 including VAT</h3>
+        <h3>Divorce Concierge: £10,000 including VAT</h3>
         <ul>
           <li>a rolling monthly agreement;</li>
           <li>on-demand emotional and practical support, with priorities agreed in writing;</li>

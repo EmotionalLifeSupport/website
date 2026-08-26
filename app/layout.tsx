@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 import { permanentRedirect } from "next/navigation";
-import "@fontsource/cormorant-garamond/400.css";
-import "@fontsource/cormorant-garamond/500.css";
 import "@fontsource/dm-sans/400.css";
 import "@fontsource/dm-sans/500.css";
 import "@fontsource/dm-sans/600.css";
 import CookieConsent from "./components/CookieConsent";
+import { GOOGLE_ANALYTICS_MEASUREMENT_ID } from "./lib/analytics";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -34,7 +33,7 @@ export default async function RootLayout({
     <html lang="en-GB">
       <body>
         {children}
-        <CookieConsent googleAnalyticsId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID} />
+        <CookieConsent googleAnalyticsId={GOOGLE_ANALYTICS_MEASUREMENT_ID} />
       </body>
     </html>
   );

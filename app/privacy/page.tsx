@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       <article className="legal-page">
         <p className="hero-context">Privacy notice</p>
         <h1>How we use personal information</h1>
-        <p className="legal-version">Draft dated 19 August 2026 · Complete the launch actions below before accepting paid clients.</p>
+        <p className="legal-version">Updated 25 August 2026 · Complete the launch actions below before accepting paid clients.</p>
 
         <h2>Who is responsible for your information</h2>
         <p>
@@ -37,8 +37,9 @@ export default function PrivacyPage() {
           <li>contract, invoice and payment records;</li>
           <li>brief, factual service notes and records of agreed actions;</li>
           <li>information you choose to share about your relationships, family, health or wellbeing;</li>
-          <li>safety or safeguarding information, including information about other people; and</li>
-          <li>technical information needed to keep the website secure and remember a cookie choice.</li>
+          <li>safety or safeguarding information, including information about other people;</li>
+          <li>technical information needed to keep the website secure and remember a cookie choice; and</li>
+          <li>with permission, website usage, traffic-source and campaign-attribution information collected through HubSpot and Google Analytics.</li>
         </ul>
         <p>
           Please do not put sensitive information in the website booking form. The
@@ -55,6 +56,7 @@ export default function PrivacyPage() {
               <tr><td>Providing support, managing appointments and taking payment</td><td>Performance of a contract</td></tr>
               <tr><td>Invoices, tax records and legally required disclosures</td><td>Legal obligation</td></tr>
               <tr><td>Safety, complaints, legal claims and service quality</td><td>Legitimate interests, legal obligation or vital interests, depending on the circumstances</td></tr>
+              <tr><td>Understanding website use, traffic sources and which routes lead to enquiries and bookings</td><td>Consent for optional cookies and related analytics</td></tr>
               <tr><td>Optional email marketing</td><td>Consent, unless a lawful customer soft opt-in is documented and offered</td></tr>
             </tbody>
           </table>
@@ -83,6 +85,10 @@ export default function PrivacyPage() {
           or insurers, emergency services, or a safeguarding authority when justified.
           We do not sell personal information and do not use a client&apos;s support history
           for targeted advertising.
+        </p>
+        <p>
+          HubSpot provides the booking calendar and related CRM services. Google provides
+          website analytics when optional cookies are allowed.
         </p>
         <p className="launch-note">
           <strong>Launch action:</strong> name the final booking, email/calendar, video,

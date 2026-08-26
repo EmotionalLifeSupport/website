@@ -4,6 +4,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import {
   type ConsentChoice,
+  COOKIE_SETTINGS_EVENT,
   getServerConsentChoice,
   readConsentChoice,
   saveConsentChoice,
@@ -28,6 +29,12 @@ export default function CookieConsent({ googleAnalyticsId }: CookieConsentProps)
   const [showSettings, setShowSettings] = useState(false);
 
   useEffect(() => {
+    const openSettings = () => setShowSettings(true);
+    window.addEventListener(COOKIE_SETTINGS_EVENT, openSettings);
+    return () => window.removeEventListener(COOKIE_SETTINGS_EVENT, openSettings);
+  }, []);
+
+  useEffect(() => {
     if (!googleAnalyticsId || choice !== "optional") return;
 
     const analyticsWindow = window as AnalyticsWindow;
@@ -35,6 +42,7 @@ export default function CookieConsent({ googleAnalyticsId }: CookieConsentProps)
     analyticsWindow.gtag ??= (...args: unknown[]) => {
       analyticsWindow.dataLayer?.push(args);
     };
+    analyticsWindow.gtag("js", new Date());
     analyticsWindow.gtag("consent", "update", {
       analytics_storage: "granted",
       ad_storage: "denied",
@@ -70,15 +78,7 @@ export default function CookieConsent({ googleAnalyticsId }: CookieConsentProps)
   };
 
   if (choice !== null && !showSettings) {
-    return (
-      <button
-        className="cookie-settings-button"
-        type="button"
-        onClick={() => setShowSettings(true)}
-      >
-        Cookie settings
-      </button>
-    );
+    return null;
   }
 
   return (
@@ -94,7 +94,7 @@ export default function CookieConsent({ googleAnalyticsId }: CookieConsentProps)
         {showSettings ? (
           <div className="cookie-category-copy">
             <p><strong>Essential:</strong> Keeps the website working and remembers your choice.</p>
-            <p><strong>Optional:</strong> Loads the embedded booking calendar and, once configured, anonymous website analytics.</p>
+            <p><strong>Optional:</strong> Loads the embedded booking calendar and privacy-conscious website analytics.</p>
           </div>
         ) : null}
         <p className="cookie-notice-link">

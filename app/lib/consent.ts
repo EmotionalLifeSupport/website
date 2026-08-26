@@ -1,5 +1,6 @@
 export const CONSENT_STORAGE_KEY = "els_cookie_consent_v1";
 export const CONSENT_CHANGE_EVENT = "els:consent-change";
+export const COOKIE_SETTINGS_EVENT = "els:open-cookie-settings";
 
 export type ConsentChoice = "optional" | "essential";
 

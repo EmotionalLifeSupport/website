@@ -8,7 +8,7 @@ This document tracks technical decisions, architectural context, and chronologic
 
 ### Tech Stack
 - **Framework**: Next.js / Vinext (Vite 8 + React 19 RSC)
-- **Styling**: Tailwind CSS v4 (`@import "tailwindcss"`) + Custom CSS variables (`var(--paper)`, `var(--serif)`, `var(--navy)`)
+- **Styling**: Tailwind CSS v4 (`@import "tailwindcss"`) + Custom CSS variables (`var(--paper)`, `var(--sans)`, `var(--navy)`)
 - **Hosting & Deployment**: GitHub Pages via GitHub Actions (`.github/workflows/deploy.yml`)
 - **Custom Domain**: `emotionallifesupport.com` configured in `public/CNAME`
 
@@ -20,6 +20,222 @@ This document tracks technical decisions, architectural context, and chronologic
 ---
 
 ## 📜 Chronological Change Log
+
+### [2026-08-26] — Updated the Value Proposition
+- **Context / Motivation**: The supplied value-proposition manuscript more clearly explains the practical and emotional role of Emotional Life Support, and expands the original four reasons into six distinct benefits.
+- **Key Changes**:
+  - Replaced the Support-section heading and introductory copy with the supplied wording.
+  - Replaced the four existing reason cards with the six supplied propositions, preserving their order and full text.
+  - Removed the previous closing statement, which is now covered by the new proposition cards.
+  - Updated the desktop card grid to three columns so the expanded content remains readable, while preserving the existing two-column tablet and one-column mobile layouts.
+  - Updated the server-rendering content checks to validate the revised section rather than the superseded four-card copy.
+  - Verified the section at `1440 × 1000` desktop and `420 × 886` mobile CSS viewports, including navigation, card containment, clean browser logs and zero horizontal overflow.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/design-preview/preview.css`](./app/design-preview/preview.css)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted value-proposition content update.
+
+### [2026-08-26] — Added a Desktop-Wide Density System
+- **Context / Motivation**: The desktop preview retained mobile-like vertical stacking and generous section padding, so much of the page required multiple screens per section even when substantial horizontal space was available.
+- **Key Changes**:
+  - Added desktop-only spacing and sizing rules above `1100px`, leaving the mobile-first layouts unchanged.
+  - Reduced oversized desktop section padding, illustration heights and decorative whitespace while retaining normal reading-size typography.
+  - Changed testimonials to three columns, FAQs to two columns and tightened the Peace, Courage and Wisdom cards so each section fits within a desktop viewport.
+  - Reworked the Support illustration into a shallower panoramic divider and brought all four support cards plus the closing statement into the same desktop view.
+  - Placed pricing guidance beside the pricing introduction, condensed the plan cards and split the concierge feature list into two desktop columns.
+  - Arranged urgent support and complementary professional-support routes side by side on desktop.
+  - Verified `1440 × 1000` desktop and `420 × 886` mobile views, responsive stacking, navigation, card containment, clean browser logs and zero horizontal overflow.
+- **Files Modified**:
+  - [`app/design-preview/preview.css`](./app/design-preview/preview.css)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted desktop-density refinement.
+
+### [2026-08-26] — Reworked the Responsive Support-Difference Section
+- **Context / Motivation**: The desktop Support section used a narrow heading column that made the headline unusually tall, constrained its supporting paragraph and left the four reasons looking like an unconsidered table. The same landscape artwork was also being cropped into unsuitable proportions across desktop and mobile.
+- **Key Changes**:
+  - Rebuilt the section as a full-width reading sequence with a balanced headline, full-width introductory paragraph, panoramic illustration, responsive reason cards and full-width closing statement.
+  - Added a generated `2.5:1` desktop illustration that extends the existing path-and-hills visual language without stretching the mobile artwork.
+  - Retained the original `3:2` illustration for mobile through a responsive picture source.
+  - Changed the four reasons to an evenly spaced four-card row on desktop, two columns on tablet and a single padded column on mobile, with alternating light surfaces and restrained coral cues.
+  - Verified the section at `1440 × 1000` and `420 × 886`, including responsive image selection, card containment, navigation to the section, clean browser logs and zero horizontal overflow.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/design-preview/preview.css`](./app/design-preview/preview.css)
+  - [`public/journey-landscape-desktop-v2.png`](./public/journey-landscape-desktop-v2.png) (New)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted responsive Support-section redesign.
+
+### [2026-08-26] — Restored Mobile Phase Card Padding
+- **Context / Motivation**: The two mobile phase cards in the divorce and rebuilding section had suitable outer spacing, but a more specific homepage rule removed their horizontal internal padding and left the copy touching the card edges.
+- **Key Changes**:
+  - Added a mobile preview override with matching selector specificity for the standard, first and last phase cards.
+  - Restored `24px` of horizontal internal padding to both cards while preserving their stacked flow and connector.
+  - Verified both cards at an exact `420px` CSS viewport with equal left and right padding and no horizontal overflow.
+- **Files Modified**:
+  - [`app/design-preview/preview.css`](./app/design-preview/preview.css)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted mobile phase-card spacing correction.
+
+### [2026-08-26] — Reworked Outcomes, Booking and Specialist Routes
+- **Context / Motivation**: Chris identified a narrow support closing statement, outcome copy that appeared constrained by oval shapes, unnecessary numbering, insufficient contrast on the Wisdom panel, an awkward desktop booking layout and a need to direct visitors towards appropriate therapy and legal services.
+- **Key Changes**:
+  - Expanded the support closing statement across the complete support-card width.
+  - Replaced the strict outcome ovals with rounded arch panels that preserve the circular visual language while giving the lower copy a stable rectangular width.
+  - Removed outcome numbering visually and semantically by changing the ordered list to an unordered list.
+  - Increased the Wisdom panel contrast against the section background.
+  - Rebuilt the desktop booking section into a balanced two-column layout with a three-line introduction, vertical steps and a dedicated HubSpot calendar column.
+  - Added a separate professional-support area with links to the official BACP therapist search and GOV.UK legal-adviser guidance.
+  - Verified `1108px` desktop and `420px` mobile CSS widths, text containment, column separation, link destinations, responsive stacking, clean browser logs and zero horizontal overflow.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/design-preview/preview.css`](./app/design-preview/preview.css)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted outcomes, booking and specialist-route refinement.
+
+### [2026-08-26] — Refined Phase Flow, Testimonials and Booking Embed
+- **Context / Motivation**: Chris reviewed the preview at `1316 × 886` and `420 × 886` and identified an awkward desktop phase layout, cramped mobile phase cards, a portrait crop that removed part of his hair, inconsistent testimonial card colours and weak booking-help visibility around the native HubSpot embed.
+- **Key Changes**:
+  - Centred the phase section on desktop and balanced its two cards beneath the heading.
+  - Stacked the phase cards on mobile and added a subtle responsive arrow to communicate progression without numbering the phases or implying a fixed start and end.
+  - Made the Chris portrait taller and top anchored so the full hairline is preserved and the face sits centrally within the organic crop.
+  - Standardised testimonial card colours and introduced a responsive two-column grid that supports additional testimonial records without component changes, with odd final cards centred automatically.
+  - Added a rounded clipping boundary around the native HubSpot iframe and replaced the low-contrast fallback with a visible prompt for choosing another date or opening the booking page directly.
+  - Verified the updated desktop and mobile layouts, equal testimonial treatments, testimonial expansion, booking fallback contrast, iframe width containment and horizontal overflow in the in-app browser.
+- **Files Modified**:
+  - [`app/components/HubSpotMeeting.tsx`](./app/components/HubSpotMeeting.tsx)
+  - [`app/design-preview/preview.css`](./app/design-preview/preview.css)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted phase, testimonial and booking refinement.
+
+### [2026-08-25] — Standardised DM Sans and Repaired Responsive Layouts
+- **Context / Motivation**: Chris reviewed the design preview at several tablet and desktop widths and identified lingering serif typography, clipped labels and card copy, narrow heading columns, a misaligned portrait crop, weak text contrast and awkward footer cookie controls.
+- **Key Changes**:
+  - Removed the Cormorant Garamond imports and package dependency, replaced all remaining serif font references, and standardised the whole website on DM Sans.
+  - Reworked the relevance, Support, Peace/Courage/Wisdom, booking, final action and support-scope layouts at `698px`, `764px`, `822px` and `850px` so headings and card text use the available width without clipping or overflow.
+  - Repositioned Chris's photo within its organic crop and kept the face visually centred.
+  - Added explicit high-contrast colours to booking assurances, the HubSpot fallback link and final call-to-action copy.
+  - Moved the post-consent Cookie settings action from a fixed floating button to the footer legal row while retaining one-click access to the full settings panel.
+  - Verified DM Sans and zero horizontal overflow at `390 × 844` and `1440 × 1000`, with clean browser logs, passing ESLint, a successful production build and all rendered-route tests passing.
+- **Files Modified**:
+  - [`app/layout.tsx`](./app/layout.tsx)
+  - [`app/globals.css`](./app/globals.css)
+  - [`app/design-preview/preview.css`](./app/design-preview/preview.css)
+  - [`app/lib/consent.ts`](./app/lib/consent.ts)
+  - [`app/components/CookieConsent.tsx`](./app/components/CookieConsent.tsx)
+  - [`app/components/CookieSettingsButton.tsx`](./app/components/CookieSettingsButton.tsx) (New)
+  - [`app/components/SiteFooter.tsx`](./app/components/SiteFooter.tsx)
+  - [`package.json`](./package.json)
+  - [`package-lock.json`](./package-lock.json)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted DM Sans and responsive-layout refinement.
+
+### [2026-08-25] — Addressed Annotated Mobile Preview Feedback
+- **Context / Motivation**: Chris reviewed the localhost design preview at mobile size and identified cramped headings, insufficient card padding, an awkward portrait crop, unreadable text, an unhelpful decorative thread, proof-point copy and ordering changes, and a need for meaningful Peace, Courage and Wisdom illustrations.
+- **Key Changes**:
+  - Removed the repeating left-edge thread decoration and released the Support, Meet Chris and booking headings from narrow mobile width constraints.
+  - Rebalanced the mobile heading scale and corrected light-on-light and dark-on-dark text contrast, including the relevance cards and cobalt booking section.
+  - Added consistent padding, borders, spacing and white surfaces to the four support-difference cards.
+  - Changed Chris's portrait to a taller, lower crop that shows more hair, shoulders and surrounding context.
+  - Updated the first proof point to reference navigating divorce while undergoing cancer treatment, moved rebuilding to the second item and volunteering to the third.
+  - Added coordinated generated raster illustrations for Peace, Courage and Wisdom using a dove, lion, and owl with an open book.
+  - Shortened the four hero assurances so they fit cleanly within the responsive grid.
+  - Removed em dashes from all visible application copy, including testimonial attribution and support headings in the Terms page.
+  - Verified the revised route at `567 × 886`, `390 × 844` and `1440 × 1000`; mobile navigation and testimonial expansion work, no star ratings appear, browser logs are clean, the production build passes and all rendered-route tests pass.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/components/Testimonials.tsx`](./app/components/Testimonials.tsx)
+  - [`app/terms/page.tsx`](./app/terms/page.tsx)
+  - [`app/design-preview/preview.css`](./app/design-preview/preview.css)
+  - [`app/globals.css`](./app/globals.css)
+  - [`public/outcome-peace-dove-v1.png`](./public/outcome-peace-dove-v1.png) (New)
+  - [`public/outcome-courage-lion-v1.png`](./public/outcome-courage-lion-v1.png) (New)
+  - [`public/outcome-wisdom-owl-v1.png`](./public/outcome-wisdom-owl-v1.png) (New)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted annotated mobile-preview refinement.
+
+### [2026-08-25] — Built a Mobile-First Combined Design Preview
+- **Context / Motivation**: Chris approved the combined Emotional Life Support design direction and asked for a working localhost preview that applies the new visual template to all copy and content from the live homepage, while retaining the native HubSpot booking embed.
+- **Key Changes**:
+  - Added a separate `/design-preview` route that renders the existing homepage component, keeping all live copy, offers, safety information, FAQs, testimonials and booking content in sync without changing the production root route.
+  - Added a scoped mobile-first visual layer using predominantly white and warm-light surfaces, restrained cobalt, coral calls to action, editorial typography, organic section edges and a knot/thread motif that progressively loosens down the page.
+  - Added real raster artwork for the evolving journey thread and the final booking scene, including a comfortable armchair, plant, side table, mug and rug.
+  - Preserved the consent-aware native HubSpot meeting embed without attempting to restyle its internal calendar.
+  - Retained expandable full testimonial stories, added clear read/close cues through the existing component and confirmed that no unsupported star ratings appear.
+  - Verified the route at `390 × 844` and `1440 × 1000`, including mobile navigation, testimonial expansion, booking anchor, HubSpot loading, chair call-to-action and horizontal overflow; completed route ESLint and a successful production build.
+- **Files Modified**:
+  - [`app/design-preview/page.tsx`](./app/design-preview/page.tsx) (New)
+  - [`app/design-preview/preview.css`](./app/design-preview/preview.css) (New)
+  - [`public/conversation-chair-light-v1.png`](./public/conversation-chair-light-v1.png) (New)
+  - [`public/journey-thread-v1.png`](./public/journey-thread-v1.png) (New)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted localhost design-preview route.
+
+### [2026-08-25] — Replaced Textured Page Surfaces with a Clean White Foundation
+- **Context / Motivation**: Chris felt the paper-textured background made the reference-inspired preview look old-fashioned and asked for the cleaner white-background treatment shown in the selected example.
+- **Key Changes**:
+  - Removed the paper texture from the page, sticky header, footer, early-trust area and mobile navigation.
+  - Changed the primary page surface to true white and retained only restrained, flat warm-neutral and powder-blue panels where section separation helps readability.
+  - Made cards and reassurance surfaces white so the navy, coral and editorial photography provide the visual character instead of an all-over texture.
+  - Corrected the Meet Chris layout at narrow mobile widths after responsive browser verification exposed a two-column override.
+  - Rechecked desktop and mobile rendering, horizontal overflow, mobile-menu behavior and browser logs; updated the visual QA record and evidence.
+- **Files Modified**:
+  - [`app/globals.css`](./app/globals.css)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted clean white-background refinement.
+
+### [2026-08-25] — Enabled Consent-Aware Google Analytics Across the Published Site
+- **Context / Motivation**: Chris supplied the Emotional Life Support GA4 tracking code and asked for its details to be preserved for future agents and included on every relevant published page.
+- **Key Changes**:
+  - Recorded GA4 measurement ID `G-9KYHPSW76N` in a canonical application configuration module and in the repository guidance for future agents.
+  - Connected the measurement ID to the shared root layout so all five static routes initialise Google Analytics after a visitor allows optional cookies.
+  - Completed the standard Google tag initialisation sequence while retaining denied advertising storage, disabled Google signals and disabled advertising personalisation.
+  - Updated the Cookie Notice, Privacy Notice, consent-settings copy and tracking approval record to describe the enabled, consent-aware behaviour accurately.
+  - Added a rendered-route regression test requiring the shared GA4 configuration on every published route.
+- **Files Modified**:
+  - [`app/lib/analytics.ts`](./app/lib/analytics.ts) (New)
+  - [`app/layout.tsx`](./app/layout.tsx)
+  - [`app/components/CookieConsent.tsx`](./app/components/CookieConsent.tsx)
+  - [`app/cookies/page.tsx`](./app/cookies/page.tsx)
+  - [`app/privacy/page.tsx`](./app/privacy/page.tsx)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`AGENTS.md`](./AGENTS.md)
+  - [`README.md`](./README.md)
+  - [`TRACKING_NOTICE_COPY_APPROVAL.md`](./TRACKING_NOTICE_COPY_APPROVAL.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted consent-aware GA4 integration.
+
+### [2026-08-24] — Created Reference-Inspired Homepage Design Preview
+- **Context / Motivation**: Chris selected a warm navy, coral and cream editorial website concept as his preferred direction and asked for a working preview of the existing website in that style, while retaining the approved emotional-support content and functional booking journey.
+- **Key Changes**:
+  - Restyled the homepage around the selected concept's warm paper texture, bold sans-serif hero, editorial serif supporting headings, cobalt transition sections, coral calls to action, compact reassurance icons and softer card treatments.
+  - Preserved all approved service, pricing, safeguarding, FAQ and legal wording rather than shortening the real site to the concept's illustrative page length.
+  - Reworked the existing woman-and-mug hero into a reference-aligned editorial composition and added matching landscape and armchair raster assets.
+  - Added the generated landscape illustration to the support section and the furniture vignette to the closing call to action.
+  - Replaced the testimonial's inline chevron SVG with the existing Radix icon system and added Radix reassurance and action icons.
+  - Corrected mobile call-to-action ordering, long organisation-link wrapping and horizontal overflow; verified the mobile menu open and Escape-close behavior.
+  - Completed desktop/mobile browser verification, reference comparison, application linting, production build, rendered-route tests and the static export.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/globals.css`](./app/globals.css)
+  - [`app/components/Testimonials.tsx`](./app/components/Testimonials.tsx)
+  - [`public/hero-calm-relief-editorial-v1.png`](./public/hero-calm-relief-editorial-v1.png) (New)
+  - [`public/journey-landscape-v1.png`](./public/journey-landscape-v1.png) (New)
+  - [`public/conversation-chair-v2.png`](./public/conversation-chair-v2.png) (New)
+  - [`design-qa.md`](./design-qa.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted reference-inspired homepage preview.
 
 ### [2026-08-24] — Linked Volunteer Organisations with Accessible Summaries
 - **Context / Motivation**: Chris asked for the ANDYSMANCLUB and Samaritans names in his volunteer-experience statement to link to their official websites and explain each organisation on hover.

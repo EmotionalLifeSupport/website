@@ -1,4 +1,5 @@
 import Link from "next/link";
+import CookieSettingsButton from "./CookieSettingsButton";
 
 export default function SiteFooter() {
   return (
@@ -12,6 +13,7 @@ export default function SiteFooter() {
           <Link href="/privacy">Privacy</Link>
           <Link href="/cookies">Cookies</Link>
           <Link href="/terms">Service terms</Link>
+          <CookieSettingsButton />
         </nav>
       </div>
       <p className="company-details">

@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  ArrowRightIcon,
+  ChatBubbleIcon,
+  CheckCircledIcon,
+  HeartIcon,
+  LockClosedIcon,
+} from "@radix-ui/react-icons";
 import SiteNavigation from "./components/SiteNavigation";
 import SiteFooter from "./components/SiteFooter";
 import Testimonials from "./components/Testimonials";
@@ -21,20 +28,20 @@ export default function Home() {
   return (
     <>
       <SiteNavigation isHomePage />
-      <main id="main-content">
+      <main className="homepage" id="main-content">
         <section className="page-section hero" aria-labelledby="hero-title">
           <div className="hero-copy">
             <p className="hero-context">Support through divorce and rebuilding</p>
             <h1 id="hero-title">Emotional support through the end of an unhealthy relationship</h1>
             <p className="lead">
               Calm, independent support from someone who understands difficult divorce
-              first-hand — with the care and honesty of a good friend and time set aside
+              first-hand, with the care and honesty of a good friend and time set aside
               entirely for you.
             </p>
           </div>
           <figure className="hero-media">
             <Image
-              src="/hero-calm-relief-woman-v3.png"
+              src="/hero-calm-relief-editorial-v1.png"
               alt="A woman holding a cup of tea and looking peacefully towards a window"
               width={1122}
               height={1402}
@@ -43,7 +50,9 @@ export default function Home() {
             />
           </figure>
           <div className="hero-action">
-            <a className="button" href="#first-conversation">Book a free one-hour support call</a>
+            <a className="button" href="#first-conversation">
+              Book a free one-hour support call <ArrowRightIcon aria-hidden="true" />
+            </a>
             <p className="button-note">
               One full hour focused on what would help you most. No preparation and no
               pressure to continue.
@@ -52,15 +61,15 @@ export default function Home() {
         </section>
 
         <aside className="reassurance-strip" aria-label="What to expect">
-          <span>Free 60-minute call</span>
-          <span>Lived experience of difficult divorce</span>
-          <span>One-to-one support</span>
-          <span>Non-clinical service</span>
+          <span><CheckCircledIcon aria-hidden="true" />Free one-hour call</span>
+          <span><HeartIcon aria-hidden="true" />Divorce experience</span>
+          <span><ChatBubbleIcon aria-hidden="true" />One-to-one support</span>
+          <span><LockClosedIcon aria-hidden="true" />Non-clinical support</span>
         </aside>
 
         <section className="page-section relevance-section" aria-labelledby="relevance-title">
           <h2 className="section-heading--supporting" id="relevance-title">
-            Support through the divorce itself — and the life after it.
+            Support through the divorce itself and the life after it.
           </h2>
           <div className="relevance-list">
             <article>
@@ -82,50 +91,74 @@ export default function Home() {
 
         <section className="page-section support-section" id="support" aria-labelledby="support-title">
           <p className="section-kicker">Why this support is different</p>
-          <h2 id="support-title">Someone who understands. Time that is entirely yours. Honesty you can trust.</h2>
+          <h2 id="support-title">Someone in your corner when life gets difficult.</h2>
           <p className="value-intro">
-            Friends may care deeply and professional support can be valuable. Emotional Life
-            Support is different: dedicated, guilt-free time with someone who has recently
-            lived through a difficult divorce and rebuilding afterwards.
+            Friends may care deeply and professional support can be valuable, but sometimes you
+            need something different. Emotional Life Support gives you a consistent, independent
+            person who understands difficult divorce, gets to know your situation, and can support
+            you emotionally and practically as life unfolds.
           </p>
+          <figure className="support-visual">
+            <picture>
+              <source media="(min-width: 761px)" srcSet="/journey-landscape-desktop-v2.png" />
+              <Image
+                src="/journey-landscape-v1.png"
+                alt="An illustrated winding path moving through calm blue hills towards warm light"
+                width={1536}
+                height={1024}
+                sizes="(max-width: 760px) calc(100vw - 32px), min(1280px, calc(100vw - 80px))"
+              />
+            </picture>
+          </figure>
           <div className="support-parts value-parts">
             <article>
-              <h3>Lived experience</h3>
+              <h3>You don&apos;t have to pretend you&apos;re okay</h3>
               <p>
-                Support from someone who remembers what it is like when divorce affects
-                almost every part of your life at once. I will never assume your experience
-                is the same as mine, but you will not need to explain why divorce can feel
-                all-consuming.
+                There are times when you need to hold things together for work, family or
+                friends. Here, you don&apos;t. You can say what is really going on without having
+                to soften it, tidy it up or reassure anyone else.
               </p>
             </article>
             <article>
-              <h3>Guilt-free time entirely about you</h3>
+              <h3>Lived experience of difficult divorce</h3>
               <p>
-                No need to shorten the story, protect the listener or remember to ask about
-                their life. This time is set aside entirely for what you need to talk through.
+                I&apos;ve been through a difficult divorce myself. I won&apos;t assume your experience
+                is the same as mine, but you won&apos;t need to explain why divorce can affect almost
+                every part of your life at once.
               </p>
             </article>
             <article>
-              <h3>Independent and non-judgemental</h3>
+              <h3>Time entirely about you</h3>
               <p>
-                Someone outside your family, friendships and professional team who can
-                listen without criticism, competing loyalties or a personal stake in the
-                outcome.
+                No need to shorten the story, protect the listener or remember to ask about their
+                life. Talk about it again if you need to. This time is deliberately yours.
               </p>
             </article>
             <article>
-              <h3>Honesty, not automatic agreement</h3>
+              <h3>Independent, but in your corner</h3>
               <p>
-                I will not simply tell you what you want to hear. I can gently question
-                assumptions, share another perspective and say what I believe may be useful,
-                while leaving every decision with you.
+                I&apos;m outside your family and friendship network, with no competing loyalties or
+                personal stake in the outcome. I can support you without judgement while still
+                being honest when I think something may not be helping you.
+              </p>
+            </article>
+            <article>
+              <h3>Support as life happens</h3>
+              <p>
+                Difficult moments do not wait for a weekly appointment. This is an ongoing
+                relationship with someone who knows the story and can support you as situations
+                change and new problems appear.
+              </p>
+            </article>
+            <article>
+              <h3>More than just someone to talk to</h3>
+              <p>
+                Sometimes you need to be heard. Sometimes you need help deciding what to do next.
+                I can help you think through messages, conversations, decisions and practical
+                problems as well as how you are feeling.
               </p>
             </article>
           </div>
-          <p className="value-closing">
-            The decisions remain yours. My role is to listen, understand, ask useful questions
-            and stay with the whole picture while you work out what comes next.
-          </p>
         </section>
 
         <section className="page-section about-section" id="about" aria-labelledby="about-title">
@@ -147,7 +180,8 @@ export default function Home() {
                 independent and genuinely present in your corner.
               </p>
               <ul className="about-proof-list">
-                <li>Nearly two years navigating a difficult divorce and rebuilding afterwards</li>
+                <li>Nearly two years navigating a difficult divorce while undergoing cancer treatment</li>
+                <li>First-hand experience of rebuilding family life, health, confidence and purpose after divorce</li>
                 <li>
                   Volunteer for{" "}
                   <a
@@ -180,7 +214,6 @@ export default function Home() {
                     difficult time.
                   </span>
                 </li>
-                <li>First-hand experience of rebuilding family life, health, confidence and purpose after divorce</li>
               </ul>
               <a className="text-link" href="/chris">Read my full story</a>
               <p className="affiliation-note">
@@ -200,8 +233,16 @@ export default function Home() {
             I help you find peace in accepting what you cannot change, the courage to change
             what you can, and the wisdom to know the difference.
           </p>
-          <ol className="journey-list">
+          <ul className="journey-list">
             <li>
+              <Image
+                className="journey-illustration"
+                src="/outcome-peace-dove-v1.png"
+                alt="A white dove carrying an olive branch"
+                width={1254}
+                height={1254}
+                sizes="(max-width: 760px) 160px, 180px"
+              />
               <p className="stage-cue">Acceptance</p>
               <h3>Peace</h3>
               <p>
@@ -210,6 +251,14 @@ export default function Home() {
               </p>
             </li>
             <li>
+              <Image
+                className="journey-illustration"
+                src="/outcome-courage-lion-v1.png"
+                alt="A calm lion representing courage"
+                width={1254}
+                height={1254}
+                sizes="(max-width: 760px) 160px, 180px"
+              />
               <p className="stage-cue">Action</p>
               <h3>Courage</h3>
               <p>
@@ -218,6 +267,14 @@ export default function Home() {
               </p>
             </li>
             <li>
+              <Image
+                className="journey-illustration"
+                src="/outcome-wisdom-owl-v1.png"
+                alt="An owl perched above an open book"
+                width={1254}
+                height={1254}
+                sizes="(max-width: 760px) 160px, 180px"
+              />
               <p className="stage-cue">Understanding</p>
               <h3>Wisdom</h3>
               <p>
@@ -225,7 +282,7 @@ export default function Home() {
                 and what matters most now.
               </p>
             </li>
-          </ol>
+          </ul>
           <p>
             The aim is not to remove every difficult feeling or promise a particular outcome.
             It is to help you feel more able to meet the situation as it is and shape the
@@ -420,7 +477,9 @@ export default function Home() {
             Bring whatever feels most difficult or important right now. There is no
             preparation and no pressure to continue afterwards.
           </p>
-          <a className="button" href="#first-conversation">Book my free one-hour support call</a>
+          <a className="button" href="#first-conversation">
+            Book my free one-hour support call <ArrowRightIcon aria-hidden="true" />
+          </a>
         </section>
 
         <section className="page-section scope-section" id="scope" aria-labelledby="scope-title">
@@ -459,6 +518,46 @@ export default function Home() {
                 <em>Only use this link if it is safe for you to do so.</em>
               </div>
               <a href="https://www.gov.uk/guidance/domestic-abuse-how-to-get-help" target="_blank" rel="noreferrer">View support options</a>
+            </article>
+          </div>
+          <h3 className="scope-resources-title professional-support-title">
+            Professional support alongside this service
+          </h3>
+          <p className="button-note">
+            These independent directories can help when therapy or legal advice would be
+            useful alongside, or instead of, Emotional Life Support.
+          </p>
+          <div className="support-routes support-routes--complementary">
+            <article className="support-route">
+              <div>
+                <strong>Looking for therapy</strong>
+                <span>
+                  Search the BACP directory for registered or accredited counsellors and
+                  psychotherapists.
+                </span>
+              </div>
+              <a
+                href="https://www.bacp.co.uk/search/Therapists"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Find a therapist
+              </a>
+            </article>
+            <article className="support-route">
+              <div>
+                <strong>Looking for legal advice</strong>
+                <span>
+                  Use GOV.UK to find legal advice about divorce, children, money or property.
+                </span>
+              </div>
+              <a
+                href="https://www.gov.uk/find-legal-advice/find-legal-adviser"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Find a legal adviser
+              </a>
             </article>
           </div>
           <p className="outcome-disclaimer">

@@ -1,9 +1,10 @@
 # Emotional Life Support — Tracking Notice Copy Approval
 
-**Status:** Required before enabling the embedded HubSpot calendar or Google Analytics  
-**Implementation authority:** None. The existing legal-page wording remains unchanged until Chris approves this document.
+**Status:** Implemented on 25 August 2026
 
-Round 3 approved the customer-facing cookie banner. The current Cookie Notice still says that the website does not embed HubSpot or load analytics. The following changes are therefore required before the new calendar or analytics can be enabled on the live site.
+**Implementation authority:** Chris supplied GA4 measurement ID `G-9KYHPSW76N` and asked for Analytics to be documented and included across all published pages. The proposed consent-aware Cookie Notice and Privacy Notice changes below were implemented with that request.
+
+Round 3 approved the customer-facing cookie banner. The legal notices previously said that the website did not embed HubSpot or load analytics. The changes recorded below were implemented when Analytics was enabled.
 
 ## 1. Cookie Notice — what the site uses
 
@@ -11,7 +12,7 @@ Round 3 approved the customer-facing cookie banner. The current Cookie Notice st
 | --- | --- |
 | **What the site uses**<br><br>The main website does not load advertising or HubSpot analytics trackers. It may use strictly necessary technology for security, delivery and remembering a privacy choice. These functions do not require optional-cookie consent. | **What the site uses**<br><br>The website uses essential technology for security, delivery and remembering your privacy choice. With your permission, it can also load the embedded HubSpot booking calendar and Google Analytics.<br><br>Essential technology operates without optional-cookie consent. HubSpot and Google Analytics remain disabled until you select **Allow optional cookies**. |
 
-- [ ] Approve the proposed replacement
+- [x] Approve the proposed replacement
 - [ ] Keep the existing copy and do not enable the calendar or analytics
 - [ ] Revise
 
@@ -25,7 +26,7 @@ Round 3 approved the customer-facing cookie banner. The current Cookie Notice st
 | --- | --- |
 | **HubSpot booking page**<br><br>The website does not embed HubSpot or load HubSpot code. If you choose “View available times”, you leave this website and open HubSpot in a new tab. HubSpot may then receive your IP address, browser and device information and use cookies for its meeting service or measurement. That separate visit is governed by the notices and controls shown on HubSpot's website. | **HubSpot booking calendar**<br><br>If you allow optional cookies, the website loads HubSpot's embedded booking calendar. HubSpot may receive your IP address, browser and device information, use cookies needed for the calendar and measurement, and receive the information you enter when booking.<br><br>If you choose **Essential cookies only**, the calendar does not load on this website. You can still open the separate HubSpot booking page. That visit is governed by the notices and controls shown by HubSpot. |
 
-- [ ] Approve the proposed replacement
+- [x] Approve the proposed replacement
 - [ ] Revise
 
 **Comments:**
@@ -38,7 +39,7 @@ Round 3 approved the customer-facing cookie banner. The current Cookie Notice st
 | --- | --- |
 | No Google Analytics section currently exists. | **Google Analytics**<br><br>If you allow optional cookies, Google Analytics helps us understand how people find and use the website and which routes lead to enquiries and bookings. We configure it without advertising personalisation or Google signals and do not send names, email addresses, phone numbers or booking-form content to Google Analytics.<br><br>Google Analytics remains disabled if you select **Essential cookies only**. |
 
-- [ ] Approve the proposed new section
+- [x] Approve the proposed new section
 - [ ] Revise
 
 **Comments:**
@@ -51,7 +52,7 @@ Round 3 approved the customer-facing cookie banner. The current Cookie Notice st
 | --- | --- |
 | **Changes**<br><br>Any future embedded booking tool, analytics, advertising pixels, chat tools or recordings must remain disabled until an equally prominent accept and reject choice has been made. This notice and the consent control must be updated before adding them. | **Changing your choice**<br><br>You can reopen **Cookie settings** from any page and change your choice at any time. Choosing essential cookies only prevents optional tools from loading on future page views. You can also clear cookies through your browser settings. |
 
-- [ ] Approve the proposed replacement
+- [x] Approve the proposed replacement
 - [ ] Revise
 
 **Comments:**
@@ -78,7 +79,7 @@ Round 3 approved the customer-facing cookie banner. The current Cookie Notice st
 | --- | --- |
 | The notice refers generally to booking and website providers. | Add: **HubSpot provides the booking calendar and related CRM services. Google provides website analytics when optional cookies are allowed.** |
 
-- [ ] Approve all three Privacy Notice additions
+- [x] Approve all three Privacy Notice additions
 - [ ] Revise individual additions below
 
 **Comments:**
@@ -87,9 +88,9 @@ Round 3 approved the customer-facing cookie banner. The current Cookie Notice st
 
 ## Final approval
 
-- [ ] I approve my selected Cookie Notice and Privacy Notice changes for implementation.
+- [x] Approved for implementation through the 25 August 2026 Analytics request.
 
-**Implementation information still required:**
+**Implementation information:**
 
-- Google Analytics measurement ID;
-- confirmation of the HubSpot tracking portal ID if separate HubSpot website analytics are required.
+- Google Analytics measurement ID: supplied (`G-9KYHPSW76N`);
+- confirmation of the HubSpot tracking portal ID is still required if separate HubSpot website analytics are requested.

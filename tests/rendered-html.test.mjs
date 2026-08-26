@@ -32,7 +32,9 @@ test("server-renders the complete homepage journey", async () => {
   assert.match(html, /Book a free hour/);
   assert.match(html, /Support through the divorce itself/);
   assert.match(html, /Peace\. Courage\. Wisdom\./);
-  assert.match(html, /Guilt-free time entirely about you/);
+  assert.match(html, /Someone in your corner when life gets difficult/);
+  assert.match(html, /You don&#x27;t have to pretend you&#x27;re okay/);
+  assert.match(html, /More than just someone to talk to/);
   assert.match(html, /Meet Chris/);
   assert.match(html, /href="https:\/\/andysmanclub\.co\.uk\/"/);
   assert.match(html, /href="https:\/\/www\.samaritans\.org\/"/);
@@ -69,5 +71,16 @@ test("server-renders the Chris and legal routes", async () => {
     const response = await render(pathname);
     assert.equal(response.status, 200, `${pathname} should render successfully`);
     assert.match(await response.text(), expected);
+  }
+});
+
+test("every published route includes the consent-aware Google Analytics configuration", async () => {
+  const routes = ["/", "/chris", "/privacy", "/cookies", "/terms"];
+
+  for (const pathname of routes) {
+    const response = await render(pathname);
+    assert.equal(response.status, 200, `${pathname} should render successfully`);
+    const html = await response.text();
+    assert.match(html, /G-9KYHPSW76N/, `${pathname} should include the shared GA4 measurement ID`);
   }
 });
