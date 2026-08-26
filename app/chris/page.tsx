@@ -124,7 +124,7 @@ export default function ChrisPage() {
       </article>
 
       <section className="page-section call-section profile-booking" aria-labelledby="profile-booking-title">
-        <h2 id="profile-booking-title">Book a free one-hour support call.</h2>
+        <h2 id="profile-booking-title">Book your free first session.</h2>
         <p>
           Choose a time for a private conversation focused entirely on what would help
           you most. There is no preparation, pitch or pressure to continue afterwards.
@@ -145,7 +145,7 @@ export default function ChrisPage() {
             <li>No pitch or pressure afterwards</li>
           </ul>
           <a className="button booking-button" href="https://meetings-eu1.hubspot.com/chris247" target="_blank" rel="noreferrer">
-            View available times
+            Book your free first session
           </a>
           <p className="booking-fallback">
             Opens a booking page in a new tab. Please do not put health, relationship, legal or

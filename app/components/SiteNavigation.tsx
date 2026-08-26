@@ -82,7 +82,7 @@ export default function SiteNavigation({ isHomePage = false }: SiteNavigationPro
           </a>
         ))}
         <a className="button header-booking-button" href={bookingHref}>
-          Book a free hour
+          Book your free first session
         </a>
       </nav>
 
@@ -112,7 +112,7 @@ export default function SiteNavigation({ isHomePage = false }: SiteNavigationPro
               </a>
             ))}
             <a className="button mobile-booking-button" href={bookingHref} onClick={() => closeMenu()}>
-              Book a free hour
+              Book your free first session
             </a>
           </nav>
         )}

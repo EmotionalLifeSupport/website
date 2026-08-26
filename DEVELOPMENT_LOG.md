@@ -21,6 +21,37 @@ This document tracks technical decisions, architectural context, and chronologic
 
 ## 📜 Chronological Change Log
 
+### [2026-08-26] — Refined Desktop CTA and Portrait Alignment
+- **Context / Motivation**: Browser review showed the post-benefits reassurance CTA constrained to one half of the desktop support grid and Chris's portrait vertically centred below the start of its accompanying copy.
+- **Key Changes**:
+  - Made the reassurance CTA span the full width of the desktop support section.
+  - Top-aligned Chris's portrait with the adjacent introduction on desktop.
+  - Preserved the existing single-column mobile layouts.
+- **Files Modified**:
+  - [`app/globals.css`](./app/globals.css)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted browser-comment refinements.
+
+### [2026-08-26] — Simplified the First-Conversation Conversion Flow
+- **Context / Motivation**: Visitors were being asked to process several service levels, prices and competing action labels before deciding whether to have an initial conversation.
+- **Key Changes**:
+  - Standardised the primary action across the homepage, navigation, booking surface and Chris page as “Book your free first session”.
+  - Added calm decision-point prompts after the six support benefits and Chris's introduction.
+  - Reframed the booking section as a three-step “How it works” journey centred on one conversation.
+  - Separated the free first session from later support, presenting three simple continuation categories before an expandable pricing and package section.
+  - Kept FAQs and testimonials progressively disclosed and moved detailed service boundaries and specialist routes behind an accessible disclosure while retaining a visible reassurance.
+  - Added responsive styles, large tap targets and visible keyboard focus for the new disclosures and mobile layouts.
+  - Updated server-rendering checks for the revised hierarchy and CTA wording.
+- **Files Modified**:
+  - [`app/page.tsx`](./app/page.tsx)
+  - [`app/chris/page.tsx`](./app/chris/page.tsx)
+  - [`app/components/HubSpotMeeting.tsx`](./app/components/HubSpotMeeting.tsx)
+  - [`app/components/SiteNavigation.tsx`](./app/components/SiteNavigation.tsx)
+  - [`app/globals.css`](./app/globals.css)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Uncommitted conversion-flow simplification.
+
 ### [2026-08-26] — Updated the Value Proposition
 - **Context / Motivation**: The supplied value-proposition manuscript more clearly explains the practical and emotional role of Emotional Life Support, and expands the original four reasons into six distinct benefits.
 - **Key Changes**:

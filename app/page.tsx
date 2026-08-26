@@ -51,7 +51,7 @@ export default function Home() {
           </figure>
           <div className="hero-action">
             <a className="button" href="#first-conversation">
-              Book a free one-hour support call <ArrowRightIcon aria-hidden="true" />
+              Book your free first session <ArrowRightIcon aria-hidden="true" />
             </a>
             <p className="button-note">
               One full hour focused on what would help you most. No preparation and no
@@ -159,6 +159,12 @@ export default function Home() {
               </p>
             </article>
           </div>
+          <div className="decision-point">
+            <p>You don&apos;t need to work out what kind of support you need before we talk.</p>
+            <a className="button" href="#first-conversation">
+              Book your free first session <ArrowRightIcon aria-hidden="true" />
+            </a>
+          </div>
         </section>
 
         <section className="page-section about-section" id="about" aria-labelledby="about-title">
@@ -220,6 +226,12 @@ export default function Home() {
                 My volunteer roles are separate from Emotional Life Support. Neither
                 organisation provides or endorses this service.
               </p>
+              <div className="about-action">
+                <p>Start with one conversation. We can work the rest out afterwards.</p>
+                <a className="button" href="#first-conversation">
+                  Book your free first session
+                </a>
+              </div>
             </div>
           </div>
         </section>
@@ -292,21 +304,21 @@ export default function Home() {
 
         <section className="page-section call-section" id="first-conversation" aria-labelledby="call-title">
           <div className="call-intro">
-            <p className="section-kicker">Start with one conversation</p>
-            <h2 id="call-title">Take an hour that is entirely yours.</h2>
+            <p className="section-kicker">How it works</p>
+            <h2 id="call-title">Start with one conversation.</h2>
             <p>
-              Bring whatever feels hardest right now. We will talk it through and see whether
-              you feel any calmer, clearer or less alone by the end.
+              You only need to decide whether you want to have the first conversation.
+              Everything else can be worked out afterwards.
             </p>
           </div>
           <ol className="plan-list plan-list--compact">
-            <li><strong>Book</strong><span>Choose a time using the calendar below.</span></li>
-            <li><strong>Talk</strong><span>Use the hour for whatever feels most important.</span></li>
-            <li><strong>Choose what comes next</strong><span>Continue only if another conversation feels useful.</span></li>
+            <li><strong>Book your first session</strong><span>Start with one conversation. You do not need to choose a support package first.</span></li>
+            <li><strong>Talk through what is happening</strong><span>Discuss what feels difficult and what would be most useful right now.</span></li>
+            <li><strong>Decide what happens next</strong><span>Leave it there, return when needed, or choose ongoing support later.</span></li>
           </ol>
           <div className="meeting-booking">
             <div>
-              <p className="section-kicker">Book your free support call</p>
+              <p className="section-kicker">Book your free first session</p>
               <h3>Choose a time from my live availability below.</h3>
             </div>
             <ul className="booking-assurances" aria-label="Booking details">
@@ -318,119 +330,136 @@ export default function Home() {
           </div>
         </section>
 
-        <section
-          id="one-off-session"
-          className="page-section one-off-section"
-          aria-labelledby="one-off-title"
-        >
-            <div>
-              <p className="section-kicker">A one-off session</p>
-              <h2 id="one-off-title">One-Off Two-Hour Support Session</h2>
-              <p>
-                Two uninterrupted hours focused entirely on what is happening in your life
-                and what would help now.
-              </p>
-              <p>
-                This is an optional next step after your free support call, with no monthly
-                commitment and no requirement to continue afterwards.
-              </p>
-            </div>
-            <div className="one-off-action">
-              <p className="package-price">£300 <span>including VAT</span></p>
-              <a className="button" href="#first-conversation">
-                Start with the free hour
-              </a>
-            </div>
-        </section>
-
         <section className="page-section pricing-section" id="pricing" aria-labelledby="packages-title">
-          <p className="section-kicker">Ongoing support</p>
-          <h2 id="packages-title">Regular support for as long as you need it.</h2>
+          <p className="section-kicker">If you&apos;d like support afterwards</p>
+          <h2 id="packages-title">Choose what comes next only when you&apos;re ready.</h2>
           <p>
-            Choose a monthly plan when you want consistent time, attention and continuity.
-            We can discuss moving between plans as your needs change.
+            Your first session stands on its own. Afterwards, you can leave it there or
+            choose the kind of support that feels useful once we have spoken.
           </p>
 
-          <aside className="pricing-guidance">
+          <div className="support-category-list">
+            <article>
+              <p className="category-number">01</p>
+              <h3>One-off support</h3>
+              <p>Come back whenever another conversation would be useful.</p>
+            </article>
+            <article>
+              <p className="category-number">02</p>
+              <h3>Ongoing support</h3>
+              <p>Regular support for as long as it continues to be useful.</p>
+            </article>
+            <article>
+              <p className="category-number">03</p>
+              <h3>More involved support</h3>
+              <p>Considerably more practical and emotional help navigating separation or divorce.</p>
+            </article>
+          </div>
+
+          <div className="pricing-guidance">
             <div>
-              <h3>Not sure what you need?</h3>
-              <p>You do not need to choose a plan before we have spoken.</p>
+              <h3>No need to choose now</h3>
+              <p>The first conversation is the only decision you need to make right now.</p>
             </div>
-            <a className="button button--secondary" href="#first-conversation">Start with the free hour</a>
-          </aside>
-
-          <div className="package-list">
-            <article>
-              <div className="package-heading">
-                <h3>Standard Support</h3>
-                <p className="package-price">£1,200 <span>including VAT per month</span></p>
-              </div>
-              <p className="package-frequency">Two two-hour support sessions each week.</p>
-              <p className="package-description">
-                Regular, protected time to talk, think through difficult decisions and deal
-                with whatever feels most important as the situation develops.
-              </p>
-              <a className="text-link package-action" href="#first-conversation">Discuss Standard Support</a>
-            </article>
-
-            <article>
-              <div className="package-heading">
-                <h3>Enhanced Support</h3>
-                <p className="package-price">£3,000 <span>including VAT per month</span></p>
-              </div>
-              <p className="package-frequency">Five two-hour support sessions each week.</p>
-              <p className="package-description">
-                Frequent, consistent support during periods when divorce is placing
-                exceptional pressure on everyday life and you want someone reliably in your
-                corner.
-              </p>
-              <a className="text-link package-action" href="#first-conversation">Discuss Enhanced Support</a>
-            </article>
+            <a className="button" href="#first-conversation">Book your free first session</a>
           </div>
 
-          <p className="plan-terms">
-            Prices include VAT. Plans continue monthly. Upgrades can take effect immediately,
-            subject to availability. Downgrades take effect on the next monthly billing date.
-            Thirty days&apos; written notice is required to end monthly support.
-          </p>
+          <details className="support-options-disclosure">
+            <summary>View ongoing support options and pricing</summary>
+            <div className="support-options-content">
+              <article id="one-off-session" className="one-off-section" aria-labelledby="one-off-title">
+                <div>
+                  <p className="section-kicker">A one-off session</p>
+                  <h3 id="one-off-title">One-Off Two-Hour Support Session</h3>
+                  <p>
+                    Two uninterrupted hours focused entirely on what is happening in your life
+                    and what would help now.
+                  </p>
+                  <p>
+                    This is an optional next step after your free first session, with no monthly
+                    commitment and no requirement to continue afterwards.
+                  </p>
+                </div>
+                <div className="one-off-action">
+                  <p className="package-price">£300 <span>including VAT</span></p>
+                  <a className="button" href="#first-conversation">Book your free first session</a>
+                </div>
+              </article>
 
-          <article className="concierge-panel">
-            <div className="concierge-heading">
-              <p className="section-kicker">Bespoke support</p>
-              <h3>Divorce Concierge</h3>
-              <p className="package-price">£10,000 <span>including VAT · per month</span></p>
-            </div>
-            <div className="concierge-copy">
-              <p>
-                Intensive emotional, decision and practical support for clients whose
-                divorce places exceptional demands on their time, attention and privacy.
-              </p>
-              <ul>
-                <li>On-demand emotional and practical support, shaped around what you need</li>
-                <li>Priority response</li>
-                <li>Organising correspondence, chronologies, deadlines and next steps</li>
-                <li>Emotional and practical support preparing for, attending and debriefing after professional appointments</li>
-                <li>Communication-management support to reduce pressure and stress</li>
-                <li>Administrative liaison with professional advisers when you authorise it in writing</li>
-              </ul>
-              <p className="scope-inline">
-                You remain in control of communications and decisions. The service does not
-                contact a former partner, access your accounts or money, or provide legal,
-                financial or tax advice. Availability is agreed as part of your monthly
-                arrangement; it is not an emergency service.
-              </p>
-              <a className="button button--secondary" href="#first-conversation">Discuss concierge support</a>
-            </div>
-          </article>
+              <div className="package-list">
+                <article>
+                  <div className="package-heading">
+                    <h3>Standard Support</h3>
+                    <p className="package-price">£1,200 <span>including VAT per month</span></p>
+                  </div>
+                  <p className="package-frequency">Two two-hour support sessions each week.</p>
+                  <p className="package-description">
+                    Regular, protected time to talk, think through difficult decisions and deal
+                    with whatever feels most important as the situation develops.
+                  </p>
+                  <a className="text-link package-action" href="#first-conversation">Book your free first session</a>
+                </article>
 
-          <div className="session-location">
-            <h3>Where sessions take place</h3>
-            <p>
-              Sessions are available online or face-to-face in the Bournemouth, Christchurch
-              and Poole area. Meetings elsewhere may be possible by arrangement, with any
-              travel time and expenses agreed in advance.
-            </p>
-          </div>
+                <article>
+                  <div className="package-heading">
+                    <h3>Enhanced Support</h3>
+                    <p className="package-price">£3,000 <span>including VAT per month</span></p>
+                  </div>
+                  <p className="package-frequency">Five two-hour support sessions each week.</p>
+                  <p className="package-description">
+                    Frequent, consistent support during periods when divorce is placing
+                    exceptional pressure on everyday life and you want someone reliably in your
+                    corner.
+                  </p>
+                  <a className="text-link package-action" href="#first-conversation">Book your free first session</a>
+                </article>
+              </div>
+
+              <p className="plan-terms">
+                Prices include VAT. Plans continue monthly. Upgrades can take effect immediately,
+                subject to availability. Downgrades take effect on the next monthly billing date.
+                Thirty days&apos; written notice is required to end monthly support.
+              </p>
+
+              <article className="concierge-panel">
+                <div className="concierge-heading">
+                  <p className="section-kicker">Bespoke support</p>
+                  <h3>Divorce Concierge</h3>
+                  <p className="package-price">£10,000 <span>including VAT · per month</span></p>
+                </div>
+                <div className="concierge-copy">
+                  <p>
+                    Intensive emotional, decision and practical support for clients whose
+                    divorce places exceptional demands on their time, attention and privacy.
+                  </p>
+                  <ul>
+                    <li>On-demand emotional and practical support, shaped around what you need</li>
+                    <li>Priority response</li>
+                    <li>Organising correspondence, chronologies, deadlines and next steps</li>
+                    <li>Emotional and practical support preparing for, attending and debriefing after professional appointments</li>
+                    <li>Communication-management support to reduce pressure and stress</li>
+                    <li>Administrative liaison with professional advisers when you authorise it in writing</li>
+                  </ul>
+                  <p className="scope-inline">
+                    You remain in control of communications and decisions. The service does not
+                    contact a former partner, access your accounts or money, or provide legal,
+                    financial or tax advice. Availability is agreed as part of your monthly
+                    arrangement; it is not an emergency service.
+                  </p>
+                  <a className="button button--secondary" href="#first-conversation">Book your free first session</a>
+                </div>
+              </article>
+
+              <div className="session-location">
+                <h3>Where sessions take place</h3>
+                <p>
+                  Sessions are available online or face-to-face in the Bournemouth, Christchurch
+                  and Poole area. Meetings elsewhere may be possible by arrangement, with any
+                  travel time and expenses agreed in advance.
+                </p>
+              </div>
+            </div>
+          </details>
         </section>
 
         <section className="page-section faq-section" aria-labelledby="faq-title">
@@ -472,33 +501,40 @@ export default function Home() {
         </section>
 
         <section className="page-section final-section" aria-labelledby="final-title">
-          <h2 id="final-title">Start with one hour that is entirely about you.</h2>
+          <h2 id="final-title">The first conversation is the only decision to make now.</h2>
           <p>
-            Bring whatever feels most difficult or important right now. There is no
-            preparation and no pressure to continue afterwards.
+            You don&apos;t need to choose a package or work out what kind of support you need
+            before we talk.
           </p>
           <a className="button" href="#first-conversation">
-            Book my free one-hour support call <ArrowRightIcon aria-hidden="true" />
+            Book your free first session <ArrowRightIcon aria-hidden="true" />
           </a>
         </section>
 
         <section className="page-section scope-section" id="scope" aria-labelledby="scope-title">
           <p className="section-kicker">Scope and safety</p>
           <h2 id="scope-title">Clear about what this support is and is not.</h2>
-          <p>
-            Emotional Life Support is a non-clinical support service. It is not therapy,
-            crisis care, domestic-abuse advocacy, mediation, or legal, financial, tax or
-            medical advice. When specialist help is needed, part of the role is to recognise
-            that and help you find an appropriate route.
+          <p className="scope-reassurance">
+            Emotional Life Support is a private, non-clinical service for adults. It can sit
+            alongside professional help, but does not replace therapy, crisis care or legal,
+            financial, tax or medical advice.
           </p>
-          <p>
-            It is for adults aged 18 or over and is not monitored as an emergency service.
-            Conversations are private, subject to limited serious-safety, safeguarding and
-            legal exceptions described in the <Link href="/privacy">privacy notice</Link>.
-          </p>
-          <h3 className="scope-resources-title">Urgent and specialist support</h3>
-          <p className="button-note">Emotional Life Support is not affiliated with or endorsed by these services.</p>
-          <div className="support-routes">
+          <details className="scope-disclosure">
+            <summary>Read about boundaries, urgent help and specialist support</summary>
+            <div className="scope-disclosure-content">
+              <p>
+                Emotional Life Support is not therapy, crisis care, domestic-abuse advocacy or
+                mediation. When specialist help is needed, part of the role is to recognise that
+                and help you find an appropriate route.
+              </p>
+              <p>
+                It is for adults aged 18 or over and is not monitored as an emergency service.
+                Conversations are private, subject to limited serious-safety, safeguarding and
+                legal exceptions described in the <Link href="/privacy">privacy notice</Link>.
+              </p>
+              <h3 className="scope-resources-title">Urgent and specialist support</h3>
+              <p className="button-note">Emotional Life Support is not affiliated with or endorsed by these services.</p>
+              <div className="support-routes">
             <article className="support-route support-route--urgent">
               <div><strong>Immediate danger</strong><span>If you or someone else is at immediate risk.</span></div>
               <a href="tel:999">Call 999</a>
@@ -519,15 +555,15 @@ export default function Home() {
               </div>
               <a href="https://www.gov.uk/guidance/domestic-abuse-how-to-get-help" target="_blank" rel="noreferrer">View support options</a>
             </article>
-          </div>
-          <h3 className="scope-resources-title professional-support-title">
-            Professional support alongside this service
-          </h3>
-          <p className="button-note">
-            These independent directories can help when therapy or legal advice would be
-            useful alongside, or instead of, Emotional Life Support.
-          </p>
-          <div className="support-routes support-routes--complementary">
+              </div>
+              <h3 className="scope-resources-title professional-support-title">
+                Professional support alongside this service
+              </h3>
+              <p className="button-note">
+                These independent directories can help when therapy or legal advice would be
+                useful alongside, or instead of, Emotional Life Support.
+              </p>
+              <div className="support-routes support-routes--complementary">
             <article className="support-route">
               <div>
                 <strong>Looking for therapy</strong>
@@ -559,11 +595,13 @@ export default function Home() {
                 Find a legal adviser
               </a>
             </article>
-          </div>
-          <p className="outcome-disclaimer">
-            Emotional Life Support offers support, not guaranteed emotional, relationship,
-            legal or financial results.
-          </p>
+              </div>
+              <p className="outcome-disclaimer">
+                Emotional Life Support offers support, not guaranteed emotional, relationship,
+                legal or financial results.
+              </p>
+            </div>
+          </details>
         </section>
       </main>
 
