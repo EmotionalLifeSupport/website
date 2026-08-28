@@ -29,6 +29,7 @@ test("server-renders the complete homepage journey", async () => {
 
   const html = await response.text();
   assert.match(html, /<title>Emotional Support Through Divorce \| Emotional Life Support<\/title>/i);
+  assert.match(html, /href="\/favicon\.png"/);
   assert.match(html, /Book your first session free/);
   assert.match(html, /First session free · worth £300/);
   assert.match(html, /Lived experience/);

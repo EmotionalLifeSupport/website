@@ -13,6 +13,9 @@ export const metadata: Metadata = {
   title: "Emotional Support Through Divorce | Emotional Life Support",
   description:
     "Calm, independent support while you navigate divorce and rebuild your life afterwards. Online across England and Wales and face-to-face in Bournemouth, Christchurch and Poole.",
+  icons: {
+    icon: [{ url: "/favicon.png", type: "image/png", sizes: "512x512" }],
+  },
   openGraph: {
     type: "website",
     siteName: "Emotional Life Support",
