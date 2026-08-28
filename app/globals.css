@@ -601,18 +601,19 @@ footer a:focus-visible {
   gap: clamp(2rem, 5vw, 5rem);
 }
 
-.support-parts article {
+.support-parts details {
   padding-top: 1.7rem;
   border-top: 1px solid var(--terracotta);
 }
 
-.support-parts article p {
+.support-parts details p {
   margin-bottom: 0;
   color: var(--navy-soft);
 }
 
 .decision-point {
   margin-top: clamp(2.5rem, 5vw, 4rem);
+  margin-bottom: clamp(3rem, 6vw, 5.5rem);
   padding: clamp(1.4rem, 3vw, 2rem);
   display: flex;
   align-items: center;
@@ -1371,10 +1372,40 @@ footer a:focus-visible {
   font-family: var(--sans);
   font-size: 1.5rem;
   transform: translateY(-50%);
+  transition: transform 220ms ease;
 }
 
-.faq-list details[open] summary::after {
+.faq-list details[open] > summary::after {
   content: "−";
+  transform: translateY(-50%) rotate(180deg);
+}
+
+@supports (interpolate-size: allow-keywords) {
+  .faq-list {
+    interpolate-size: allow-keywords;
+  }
+
+  .faq-list details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      content-visibility 240ms allow-discrete,
+      block-size 240ms ease,
+      opacity 180ms ease;
+  }
+
+  .faq-list details[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq-list summary::after,
+  .faq-list details::details-content {
+    transition-duration: 0.01ms;
+  }
 }
 
 .faq-list details p {
@@ -2512,7 +2543,8 @@ body {
     "action media";
   grid-template-rows: 1fr auto;
   column-gap: clamp(2rem, 4vw, 4.5rem);
-  overflow: hidden;
+  /* Keep any overspill tidy at the page edge, not at the edge of the image panel. */
+  overflow: visible;
 }
 
 .homepage .hero-copy {
@@ -2548,12 +2580,20 @@ body {
   height: 645px;
   min-height: 0;
   align-self: end;
+  position: relative;
+  overflow: visible;
 }
 
 .homepage .hero-media img {
-  border-radius: 8rem 8rem 0 0;
-  object-fit: cover;
-  object-position: center top;
+  position: absolute;
+  top: 7rem;
+  left: -7em;
+  width: min(80vw, 69rem);
+  height: auto;
+  aspect-ratio: auto;
+  max-width: none;
+  border-radius: 0;
+  object-fit: initial;
 }
 
 .homepage .hero-action {
@@ -2684,19 +2724,95 @@ body {
 }
 
 .homepage .support-parts {
-  gap: 1rem;
+  max-width: 58rem;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
 }
 
-.homepage .support-parts article {
-  padding: clamp(1.4rem, 3vw, 2rem);
+.homepage .support-parts details {
+  padding: 0;
+  overflow: hidden;
   border: 1px solid #e5ded4;
-  border-top: 3px solid var(--terracotta);
   border-radius: 0.7rem;
   background: #ffffff;
 }
 
+.homepage .support-parts summary {
+  min-height: 4.75rem;
+  padding: 1.15rem clamp(1.35rem, 3vw, 2rem);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  cursor: pointer;
+  list-style: none;
+  border-left: 3px solid var(--terracotta);
+}
+
+.homepage .support-parts summary::-webkit-details-marker {
+  display: none;
+}
+
+.homepage .support-parts summary::after {
+  content: "+";
+  flex: 0 0 auto;
+  color: var(--terracotta-dark);
+  font-size: 1.7rem;
+  font-weight: 400;
+  line-height: 1;
+  transition: transform 220ms ease;
+}
+
+.homepage .support-parts details[open] summary::after {
+  content: "−";
+  transform: rotate(180deg);
+}
+
+@supports (interpolate-size: allow-keywords) {
+  .homepage .support-parts {
+    interpolate-size: allow-keywords;
+  }
+
+  .homepage .support-parts details::details-content {
+    block-size: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition:
+      content-visibility 240ms allow-discrete,
+      block-size 240ms ease,
+      opacity 180ms ease;
+  }
+
+  .homepage .support-parts details[open]::details-content {
+    block-size: auto;
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .homepage .support-parts summary::after,
+  .homepage .support-parts details::details-content {
+    transition-duration: 0.01ms;
+  }
+}
+
+.homepage .support-parts summary:focus-visible {
+  outline: 3px solid rgba(182, 61, 32, 0.38);
+  outline-offset: -4px;
+}
+
+.homepage .support-parts .support-detail {
+  padding: 0 clamp(1.35rem, 3vw, 2rem) 1.5rem;
+  border-left: 3px solid var(--terracotta);
+}
+
+.homepage .support-parts .support-detail p + p {
+  margin-top: 0.6rem;
+}
+
 .homepage .support-parts h3 {
-  font-size: clamp(1.7rem, 2vw, 2.15rem);
+  margin: 0;
+  font-size: clamp(1.35rem, 1.8vw, 1.75rem);
 }
 
 .homepage .about-section {
@@ -2745,10 +2861,6 @@ body {
 .homepage .testimonial-card:first-child {
   padding: clamp(2rem, 5vw, 4rem);
   background: #f7f9ff;
-}
-
-.homepage .testimonial-card:first-child .testimonial-headline {
-  font-size: clamp(2rem, 3.6vw, 3.5rem);
 }
 
 .homepage .testimonial-headline {
@@ -2911,7 +3023,13 @@ footer .company-details {
   }
 
   .homepage .hero-media {
-    height: 570px;
+    height: 25rem;
+  }
+
+  .homepage .hero-media img {
+    top: -8rem;
+    left: -9rem;
+    width: min(90vw, 60rem);
   }
 
   .homepage .support-section {
@@ -2940,15 +3058,22 @@ footer .company-details {
   }
 
   .homepage .hero-media {
-    width: min(100%, 35rem);
-    height: auto;
-    aspect-ratio: 4 / 5;
-    margin: 0 auto;
+    width: calc(100% + var(--gutter));
+    max-width: none;
+    height: 18rem;
+    aspect-ratio: auto;
+    margin: 0.25rem calc(-1 * var(--gutter)) 0 0;
     order: 3;
+    overflow: visible;
   }
 
   .homepage .hero-media img {
-    border-radius: 5rem 5rem 0.8rem 0.8rem;
+    top: -2rem;
+    left: clamp(2rem, 12vw, 6rem);
+    width: 130vw;
+    height: auto;
+    aspect-ratio: auto;
+    border-radius: 0;
   }
 
   .homepage .hero-action {
@@ -2984,7 +3109,7 @@ footer .company-details {
   }
 
   .homepage .support-parts {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
   }
 
   .homepage .final-section {
@@ -2998,6 +3123,16 @@ footer .company-details {
 }
 
 @media (max-width: 560px) {
+  .homepage .hero-media {
+    height: 10.5rem;
+  }
+
+  .homepage .hero-media img {
+    top: -4rem;
+    left: -17vw;
+    width: 145vw;
+  }
+
   .homepage .call-section {
     width: 100%;
     margin-inline: 0;
@@ -3089,8 +3224,12 @@ footer .company-details {
     border-bottom: 0;
   }
 
-  .homepage .support-parts article {
-    padding: 1.35rem;
+  .homepage .support-parts summary {
+    padding-inline: 1.2rem;
+  }
+
+  .homepage .support-parts .support-detail {
+    padding-inline: 1.2rem;
   }
 
   .homepage .final-section {

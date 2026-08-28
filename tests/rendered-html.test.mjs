@@ -31,7 +31,8 @@ test("server-renders the complete homepage journey", async () => {
   assert.match(html, /<title>Emotional Support Through Divorce \| Emotional Life Support<\/title>/i);
   assert.match(html, /Book your first session free/);
   assert.match(html, /First session free · worth £300/);
-  assert.match(html, /Choose 30 minutes, one hour or up to two hours/);
+  assert.match(html, /Lived experience/);
+  assert.match(html, /Choose two hours, one hour, or 30 minutes/);
   assert.match(html, /Select two hours, one hour, or 30 minutes/);
   assert.match(html, /social-share-chair-v1\.png/);
   assert.match(html, /summary_large_image/);
@@ -42,6 +43,16 @@ test("server-renders the complete homepage journey", async () => {
   assert.match(html, /What can help while everything is changing/);
   assert.match(html, /Somewhere you don&#x27;t have to pretend you&#x27;re okay/);
   assert.match(html, /Help working out what comes next/);
+  assert.equal(
+    (html.match(/<details name="support-offering">/g) ?? []).length,
+    6,
+    "all six support topics should belong to the same exclusive accordion group",
+  );
+  assert.doesNotMatch(
+    html,
+    /<details[^>]*name="support-offering"[^>]*\bopen\b/,
+    "the support accordion should start fully collapsed",
+  );
   assert.match(html, /Get support from someone who understands/);
   assert.match(html, /About you/);
   assert.match(html, /Recommendations/);
@@ -51,7 +62,13 @@ test("server-renders the complete homepage journey", async () => {
   assert.match(html, /href="https:\/\/www\.samaritans\.org\/"/);
   assert.match(html, /A men’s suicide prevention charity offering free peer-to-peer support groups/);
   assert.match(html, /A charity providing confidential emotional support/);
+  assert.ok(
+    html.indexOf("Volunteer for") < html.indexOf("Nearly two years navigating"),
+    "the volunteering proof point should appear first",
+  );
   assert.match(html, /Start with one conversation/);
+  assert.doesNotMatch(html, /Start with one conversation\. We can work the rest out afterwards\./);
+  assert.doesNotMatch(html, /You only need to decide whether you want to have the first conversation\./);
   assert.match(html, /Get started for free/);
   assert.match(html, /Up to two hours available\. You choose how long/);
   assert.match(html, /View ongoing support options and pricing/);

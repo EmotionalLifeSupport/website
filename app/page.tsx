@@ -41,12 +41,12 @@ export default function Home() {
           </div>
           <figure className="hero-media">
             <Image
-              src="/hero-calm-relief-editorial-v1.png"
-              alt="A woman holding a cup of tea and looking peacefully towards a window"
-              width={1122}
-              height={1402}
+              src="/hero-emotional-journey-knot-small.png"
+              alt="Abstract red and blue lines moving from emotional overwhelm towards clarity"
+              width={2172}
+              height={724}
               priority
-              sizes="(max-width: 760px) calc(100vw - 40px), (max-width: 1200px) 42vw, 560px"
+              sizes="(max-width: 560px) 145vw, (max-width: 820px) 130vw, (max-width: 1060px) 90vw, 80vw"
             />
           </figure>
           <div className="hero-action">
@@ -54,15 +54,15 @@ export default function Home() {
               Book your first session free <ArrowRightIcon aria-hidden="true" />
             </a>
             <p className="button-note">
-              Choose 30 minutes, one hour or up to two hours. With up to two hours available,
-              your free first session is worth £300. No preparation and no pressure to continue.
+              Choose two hours, one hour, or 30 minutes. Your free first session is worth £300.
+              No preparation and no pressure to continue.
             </p>
           </div>
         </section>
 
         <aside className="reassurance-strip" aria-label="What to expect">
           <span><CheckCircledIcon aria-hidden="true" />First session free · worth £300</span>
-          <span><HeartIcon aria-hidden="true" />Divorce experience</span>
+          <span><HeartIcon aria-hidden="true" />Lived experience</span>
           <span><ChatBubbleIcon aria-hidden="true" />One-to-one support</span>
           <span><LockClosedIcon aria-hidden="true" />Non-clinical support</span>
         </aside>
@@ -115,72 +115,82 @@ export default function Home() {
             </picture>
           </figure>
           <div className="support-parts value-parts">
-            <article>
-              <h3>Somewhere you don&apos;t have to pretend you&apos;re okay</h3>
-              <p>
-                There are times when you have to hold things together for work, family or friends.
-                You also need somewhere you don&apos;t.
-              </p>
-              <p>
-                Somewhere you can say what is really going on without softening it, tidying it up
-                or reassuring the person listening.
-              </p>
-            </article>
-            <article>
-              <h3>Understanding of how much divorce affects</h3>
-              <p>
-                Divorce can touch almost every part of your life at once. Your home, children,
-                finances, work, relationships and sense of who you are.
-              </p>
-              <p>
-                It helps when that complexity is understood, rather than having to explain why it
-                feels like so much.
-              </p>
-            </article>
-            <article>
-              <h3>Time entirely about you</h3>
-              <p>
-                You need space where you don&apos;t have to shorten the story, protect the listener or
-                remember to ask about their life.
-              </p>
-              <p>
-                If you need to talk about the same thing again, you can. The time is yours.
-              </p>
-            </article>
-            <article>
-              <h3>Independence from the situation</h3>
-              <p>
-                The people closest to you may have their own feelings, loyalties and opinions about
-                what should happen.
-              </p>
-              <p>
-                Sometimes it helps to have space that is outside those pressures, where you can
-                think about what feels right for you.
-              </p>
-            </article>
-            <article>
-              <h3>Continuity as things change</h3>
-              <p>
-                Divorce keeps moving.
-              </p>
-              <p>
-                New messages arrive, decisions need to be made and unexpected problems appear.
-              </p>
-              <p>
-                It can help when you don&apos;t have to start from the beginning every time something
-                changes.
-              </p>
-            </article>
-            <article>
-              <h3>Help working out what comes next</h3>
-              <p>
-                Sometimes you need to be heard. Sometimes you need another perspective.
-              </p>
-              <p>
-                And sometimes you need help thinking through a difficult conversation, a message,
-                a decision or a practical problem before deciding what to do next.
-              </p>
-            </article>
+            <details name="support-offering">
+              <summary><h3>Somewhere you don&apos;t have to pretend you&apos;re okay</h3></summary>
+              <div className="support-detail">
+                <p>
+                  There are times when you have to hold things together for work, family or friends.
+                  You also need somewhere you don&apos;t.
+                </p>
+                <p>
+                  Somewhere you can say what is really going on without softening it, tidying it up
+                  or reassuring the person listening.
+                </p>
+              </div>
+            </details>
+            <details name="support-offering">
+              <summary><h3>Understanding of how much divorce affects</h3></summary>
+              <div className="support-detail">
+                <p>
+                  Divorce can touch almost every part of your life at once. Your home, children,
+                  finances, work, relationships and sense of who you are.
+                </p>
+                <p>
+                  It helps when that complexity is understood, rather than having to explain why it
+                  feels like so much.
+                </p>
+              </div>
+            </details>
+            <details name="support-offering">
+              <summary><h3>Time entirely about you</h3></summary>
+              <div className="support-detail">
+                <p>
+                  You need space where you don&apos;t have to shorten the story, protect the listener or
+                  remember to ask about their life.
+                </p>
+                <p>
+                  If you need to talk about the same thing again, you can. The time is yours.
+                </p>
+              </div>
+            </details>
+            <details name="support-offering">
+              <summary><h3>Independence from the situation</h3></summary>
+              <div className="support-detail">
+                <p>
+                  The people closest to you may have their own feelings, loyalties and opinions about
+                  what should happen.
+                </p>
+                <p>
+                  Sometimes it helps to have space that is outside those pressures, where you can
+                  think about what feels right for you.
+                </p>
+              </div>
+            </details>
+            <details name="support-offering">
+              <summary><h3>Continuity as things change</h3></summary>
+              <div className="support-detail">
+                <p>Divorce keeps moving.</p>
+                <p>
+                  New messages arrive, decisions need to be made and unexpected problems appear.
+                </p>
+                <p>
+                  It can help when you don&apos;t have to start from the beginning every time something
+                  changes.
+                </p>
+              </div>
+            </details>
+            <details name="support-offering">
+              <summary><h3>Help working out what comes next</h3></summary>
+              <div className="support-detail">
+                <p>
+                  Sometimes you need to be heard. Sometimes you need another perspective.
+                </p>
+                <p>
+                  And sometimes you need help thinking through a difficult conversation, a message,
+                  a decision or a practical problem before deciding what to do next.
+                </p>
+              </div>
+            </details>
           </div>
         </section>
 
@@ -203,8 +213,6 @@ export default function Home() {
                 independent and genuinely present in your corner.
               </p>
               <ul className="about-proof-list">
-                <li>Nearly two years navigating a difficult divorce while undergoing cancer treatment</li>
-                <li>First-hand experience of rebuilding family life, health, confidence and purpose after divorce</li>
                 <li>
                   Volunteer for{" "}
                   <a
@@ -237,6 +245,8 @@ export default function Home() {
                     difficult time.
                   </span>
                 </li>
+                <li>Nearly two years navigating a difficult divorce while undergoing cancer treatment</li>
+                <li>First-hand experience of rebuilding family life, health, confidence and purpose after divorce</li>
               </ul>
               <a className="text-link" href="/chris">Read my full story</a>
               <p className="affiliation-note">
@@ -244,7 +254,6 @@ export default function Home() {
                 organisation provides or endorses this service.
               </p>
               <div className="about-action">
-                <p>Start with one conversation. We can work the rest out afterwards.</p>
                 <a className="button" href="#first-conversation">
                   Book your first session free
                 </a>
@@ -330,10 +339,6 @@ export default function Home() {
           <div className="call-intro">
             <p className="section-kicker">How it works</p>
             <h2 id="call-title">Start with one conversation.</h2>
-            <p>
-              You only need to decide whether you want to have the first conversation.
-              Everything else can be worked out afterwards.
-            </p>
           </div>
           <ol className="plan-list plan-list--compact">
             <li><strong>Book your first session free</strong><span>Start with one conversation. You do not need to choose a support package first.</span></li>
