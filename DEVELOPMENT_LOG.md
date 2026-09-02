@@ -21,6 +21,54 @@ This document tracks technical decisions, architectural context, and chronologic
 
 ## 📜 Chronological Change Log
 
+### [2026-09-02] — Replaced Final Home-Page Artwork with Heart-Mug Scene
+- **Context / Motivation**: The closing home-page image needed to use the new chair scene whose heart-marked mug visually matches the website’s new logo.
+- **Key Changes**:
+  - Added the supplied 1536 × 1024 chair, plant and heart-mug artwork with a descriptive web filename.
+  - Updated the closing call-to-action section to use the new image while retaining its existing responsive layout and crop treatment.
+- **Files Modified**:
+  - [`app/globals.css`](./app/globals.css)
+  - [`public/support-chair-heart-mug.png`](./public/support-chair-heart-mug.png) (New)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: `Refresh website branding and imagery`.
+
+### [2026-09-02] — Refined Booking Heading Width and Footer Emphasis
+- **Context / Motivation**: Browser review showed that the free-session heading wrapped much more narrowly than its supporting copy, while the statutory company details drew more attention than intended within the footer.
+- **Key Changes**:
+  - Matched the free-session heading’s maximum width to the paragraph beneath it.
+  - Softened the statutory company-details text and divider so they sit closer to the footer background while remaining readable.
+- **Files Modified**:
+  - [`app/globals.css`](./app/globals.css)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: `Refresh website branding and imagery`.
+
+### [2026-09-02] — Added Social Media Footer Links
+- **Context / Motivation**: Visitors need a direct, unobtrusive route from the website to Emotional Life Support's social profiles.
+- **Key Changes**:
+  - Added accessible Instagram, TikTok and Facebook icon links to the shared footer, opening each profile in a new tab.
+  - Styled the social icons as compact circular controls with clear hover and keyboard-focus states.
+  - Added rendered-output coverage for both profile URLs and the social-navigation label.
+- **Files Modified**:
+  - [`app/components/SiteFooter.tsx`](./app/components/SiteFooter.tsx)
+  - [`app/globals.css`](./app/globals.css)
+  - [`tests/rendered-html.test.mjs`](./tests/rendered-html.test.mjs)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: `Refresh website branding and imagery`.
+
+### [2026-09-02] — Added New Mug Logo to Site Navigation and Favicon
+- **Context / Motivation**: The website needed to adopt the new Emotional Life Support mug artwork as its visible brand mark and browser icon.
+- **Key Changes**:
+  - Added the mug logo to the shared site navigation, positioned immediately before the “Emotional Life Support” name on desktop and mobile.
+  - Replaced the existing favicon artwork with the new mug logo.
+  - Added a web-sized transparent logo asset and responsive sizing for the navigation lockup.
+- **Files Modified**:
+  - [`app/components/SiteNavigation.tsx`](./app/components/SiteNavigation.tsx)
+  - [`app/globals.css`](./app/globals.css)
+  - [`public/emotional-life-support-logo.png`](./public/emotional-life-support-logo.png) (New)
+  - [`public/favicon.png`](./public/favicon.png)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: `Refresh website branding and imagery`.
+
 ### [2026-08-26] — Reworked Narrow-Screen Booking Layout and Added Social Preview Image
 - **Context / Motivation**: A 393px mobile screenshot showed the HubSpot calendar, assurances and fallback copy constrained inside the rounded booking section, while shared links had no dedicated social preview artwork.
 - **Key Changes**:

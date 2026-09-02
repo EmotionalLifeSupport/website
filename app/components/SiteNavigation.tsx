@@ -1,6 +1,7 @@
 "use client";
 
 import { Cross2Icon, HamburgerMenuIcon } from "@radix-ui/react-icons";
+import Image from "next/image";
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 
@@ -67,7 +68,15 @@ export default function SiteNavigation({ isHomePage = false }: SiteNavigationPro
   return (
     <header className="site-header">
       <Link className="brand-link" href="/">
-        Emotional Life Support
+        <Image
+          className="brand-logo"
+          src="/emotional-life-support-logo.png"
+          alt=""
+          width={256}
+          height={256}
+          priority
+        />
+        <span>Emotional Life Support</span>
       </Link>
 
       <nav className="site-nav desktop-nav" aria-label="Main navigation">

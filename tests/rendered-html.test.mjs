@@ -90,6 +90,10 @@ test("server-renders the complete homepage journey", async () => {
   assert.match(html, /Urgent and specialist support/);
   assert.match(html, /Read about boundaries, urgent help and specialist support/);
   assert.match(html, /Privacy/);
+  assert.match(html, /href="https:\/\/www\.instagram\.com\/EmotionalLifeSupport\/"/);
+  assert.match(html, /href="https:\/\/www\.tiktok\.com\/@EmotionalLifeSupport"/);
+  assert.match(html, /href="https:\/\/www\.facebook\.com\/profile\.php\?id=61593985436193"/);
+  assert.match(html, /aria-label="Social media"/);
   assert.doesNotMatch(html, /<h3>Leaving<\/h3>/i);
   assert.match(html, /One-Off Two-Hour Support Session/);
   assert.match(html, /£300/);
