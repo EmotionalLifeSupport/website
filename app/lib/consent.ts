@@ -4,7 +4,10 @@ export const COOKIE_SETTINGS_EVENT = "els:open-cookie-settings";
 
 export type ConsentChoice = "optional" | "essential";
 
+let pageChoice: ConsentChoice | undefined;
+
 export function readConsentChoice(): ConsentChoice | null {
+  if (pageChoice !== undefined) return pageChoice;
   try {
     const stored = window.localStorage.getItem(CONSENT_STORAGE_KEY);
     return stored === "optional" || stored === "essential" ? stored : null;
@@ -14,6 +17,7 @@ export function readConsentChoice(): ConsentChoice | null {
 }
 
 export function saveConsentChoice(choice: ConsentChoice) {
+  pageChoice = choice;
   try {
     window.localStorage.setItem(CONSENT_STORAGE_KEY, choice);
   } catch {
@@ -27,11 +31,16 @@ export function saveConsentChoice(choice: ConsentChoice) {
 
 export function subscribeToConsentChoice(onStoreChange: () => void) {
   const handleChange = () => onStoreChange();
+  const handleStorage = (event: StorageEvent) => {
+    if (event.key !== null && event.key !== CONSENT_STORAGE_KEY) return;
+    pageChoice = undefined;
+    onStoreChange();
+  };
   window.addEventListener(CONSENT_CHANGE_EVENT, handleChange);
-  window.addEventListener("storage", handleChange);
+  window.addEventListener("storage", handleStorage);
   return () => {
     window.removeEventListener(CONSENT_CHANGE_EVENT, handleChange);
-    window.removeEventListener("storage", handleChange);
+    window.removeEventListener("storage", handleStorage);
   };
 }
 

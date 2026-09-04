@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
+import { applyAnalyticsConsent } from "../lib/google-analytics";
 import {
   type ConsentChoice,
   COOKIE_SETTINGS_EVENT,
@@ -10,11 +11,6 @@ import {
   saveConsentChoice,
   subscribeToConsentChoice,
 } from "../lib/consent";
-
-type AnalyticsWindow = Window & {
-  dataLayer?: unknown[];
-  gtag?: (...args: unknown[]) => void;
-};
 
 type CookieConsentProps = {
   googleAnalyticsId?: string;
@@ -35,46 +31,14 @@ export default function CookieConsent({ googleAnalyticsId }: CookieConsentProps)
   }, []);
 
   useEffect(() => {
-    if (!googleAnalyticsId || choice !== "optional") return;
-
-    const analyticsWindow = window as AnalyticsWindow;
-    analyticsWindow.dataLayer ??= [];
-    analyticsWindow.gtag ??= (...args: unknown[]) => {
-      analyticsWindow.dataLayer?.push(args);
-    };
-    analyticsWindow.gtag("js", new Date());
-    analyticsWindow.gtag("consent", "update", {
-      analytics_storage: "granted",
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-    });
-    analyticsWindow.gtag("config", googleAnalyticsId, {
-      allow_google_signals: false,
-      allow_ad_personalization_signals: false,
-    });
-
-    if (document.getElementById("els-google-analytics")) return;
-
-    const script = document.createElement("script");
-    script.id = "els-google-analytics";
-    script.async = true;
-    script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(googleAnalyticsId)}`;
-    document.head.appendChild(script);
+    applyAnalyticsConsent(choice, googleAnalyticsId);
   }, [choice, googleAnalyticsId]);
 
   const choose = (nextChoice: ConsentChoice) => {
     saveConsentChoice(nextChoice);
     setShowSettings(false);
 
-    if (nextChoice === "essential") {
-      (window as AnalyticsWindow).gtag?.("consent", "update", {
-        analytics_storage: "denied",
-        ad_storage: "denied",
-        ad_user_data: "denied",
-        ad_personalization: "denied",
-      });
-    }
+    if (nextChoice === "essential") applyAnalyticsConsent(nextChoice, googleAnalyticsId);
   };
 
   if (choice !== null && !showSettings) {

@@ -1,0 +1,30 @@
+# Analytics measurement assessment — 4 September 2026
+
+## Decision and scope
+
+Chris requested the fullest lawful Google Analytics and HubSpot measurement without an optional-cookie acceptance click. No pre-consent analytics has been enabled. This is an implementation assessment, not a legal opinion or a claim that these products can never qualify for an exception.
+
+The site's confirmed GA command-queue bug has been repaired locally. Commands now use Google's Arguments protocol. Repeated consent effects no longer queue duplicate configuration calls. Withdrawal disables GA collection and reloads the page to unload the running tag; consent remains effective for the current page when local storage fails. Advertising storage, advertising personalisation and Google signals remain disabled.
+
+## Evidence
+
+- Live homepage: no Google requests before consent; after acceptance, gtag.js returned HTTP 200 but no collection request. Replacing the queue wrapper only in a temporary test browser generated a page_view for G-9KYHPSW76N. That diagnostic collection request was intercepted, not sent to GA.
+- The open EmotionalLifeSupport.com GA property matches G-9KYHPSW76N and reports no data. Its retention screen showed event data: 2 months; user data: 14 months; reset on new activity: enabled. These settings were inspected, not changed. Retained individual records do not establish an aggregate-only implementation.
+- The website contains a HubSpot meeting embed, not a general HubSpot website tracking installation. Its external booking link is available without accepting this site's optional cookies.
+- Chris confirmed that HubSpot portal **149126092** owns the chris247 scheduling page. The connected HubSpot connector still points to Pipeline Builders (25797724), which must not be used for this project. After Chris signed in, the browser verified Emotional Life Support portal 149126092. Advanced Tracking showed emotionallifesupport.com as an external domain. Intent data access was ON and secure-cookies-only was OFF; these were changed to OFF and ON respectively and saved. Automatic cross-domain linking remains OFF and bot filtering remains ON. The cookie tool showed no configured domain-specific or default consent banners. The Meetings tool showed initial setup rather than the existing scheduling-page editor; no booking page was modified.
+
+## Legal and product boundaries
+
+The [ICO exceptions guidance](https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guidance-on-the-use-of-storage-and-access-technologies/what-are-the-exceptions/) distinguishes strictly necessary functions from statistical measurement. Preference and security storage cannot be reused for attribution. Aggregate service-improvement statistics may qualify with clear disclosure, a free objection mechanism, suitable aggregation and deletion, and provider restrictions. Retaining individual activity, profiling, and advertising measurement do not qualify. UK GDPR and international-transfer requirements also need assessment.
+
+[Google advanced consent mode](https://developers.google.com/tag-platform/security/concepts/consent-mode) sends cookieless measurements, but enabling it does not establish a lawful exemption. [Behavioural modelling](https://support.google.com/analytics/answer/11161109?hl=en-GB) also has significant traffic thresholds; do not promise complete reports for visitors who decline.
+
+[HubSpot's cookie inventory](https://knowledge.hubspot.com/privacy-and-consent/what-cookies-does-hubspot-set-in-a-visitor-s-browser) distinguishes functional cookies from analytics identifiers. Its [tracking documentation](https://knowledge.hubspot.com/reports/data-collected-by-the-hubspot-tracking-code) describes visitor IDs, page activity and potential provider reuse through intent data access. Those functions cannot simply be classified as essential.
+
+## Remaining implementation path
+
+1. Use confirmed HubSpot portal **149126092**. Account tracking settings have been inspected and restricted as recorded above. Open the existing chris247 scheduling-page editor using its owner account; the current signed-in user sees only Meetings initial setup. A voluntary, optional “How did you hear about us?” question can provide source information without device tracking; it must not imply marketing permission. Do not create properties or change tracking settings in Pipeline Builders or any other portal.
+2. For any proposed no-click statistics, document the actual provider data flow, retention/aggregation, processor-only use, sharing, geographic applicability and UK GDPR basis. Verify these against real settings and contracts before activating tags. The current GA settings alone do not satisfy this assessment.
+3. If GA/HubSpot cannot meet the aggregate-only requirements, use a separate minimal aggregate collector, subject to the same assessment. GitHub Pages has no application server for this; a receiving service and aggregate storage would be required. Do not send synthetic visitor events or fabricated client IDs to GA as a workaround. Aggregate reporting can be combined in a dashboard without attaching it to HubSpot contacts.
+4. Implement a clear statistics notice and free opt-out before activation. Respect existing essential-only choices. Keep contact-level tracking and marketing consent separate. Update both public notices and regression checks together.
+5. Publish the validated repair through the existing GitHub Pages workflow, then confirm an actual consenting visit in GA Realtime. Verify all five routes and page navigation for missing/duplicate events. The website repair is prepared for publication through that workflow; confirm deployment status and actual collection before declaring it live.

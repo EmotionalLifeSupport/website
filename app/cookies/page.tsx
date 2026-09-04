@@ -15,7 +15,7 @@ export default function CookiesPage() {
       <article className="legal-page">
         <p className="hero-context">Cookie notice</p>
         <h1>Your privacy choices on this website</h1>
-        <p className="legal-version">Updated 25 August 2026</p>
+        <p className="legal-version">Updated 4 September 2026</p>
 
         <h2>What the site uses</h2>
         <p>
@@ -26,6 +26,12 @@ export default function CookiesPage() {
         <p>
           Essential technology operates without optional-cookie consent. HubSpot and
           Google Analytics remain disabled until you select <strong>Allow optional cookies</strong>.
+        </p>
+        <p>
+          We store your cookie preference in your browser to remember your choice. This
+          essential storage is used only for your privacy settings, not to identify you
+          for marketing or record where you came from. If browser storage is unavailable,
+          your choice applies for the current page only.
         </p>
 
         <h2>HubSpot booking calendar</h2>
@@ -56,9 +62,10 @@ export default function CookiesPage() {
         <h2>Changing your choice</h2>
         <p>
           You can reopen <strong>Cookie settings</strong> from any page and change your
-          choice at any time. Choosing essential cookies only prevents optional tools from
-          loading on future page views. You can also clear cookies through your browser
-          settings.
+          choice at any time. If Google Analytics is already running, choosing essential
+          cookies only reloads the page to stop it. Optional tools then remain blocked.
+          Existing cookies may remain in your browser; you can clear them through your
+          browser settings.
         </p>
       </article>
       <SiteFooter />

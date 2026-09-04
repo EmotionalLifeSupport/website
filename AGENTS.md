@@ -24,3 +24,8 @@ This repository uses a mandatory development logging system to maintain complete
 - **All-Page Integration**: [`app/layout.tsx`](./app/layout.tsx) passes the ID to the shared consent component, so every published route is covered.
 - **Consent Requirement**: [`app/components/CookieConsent.tsx`](./app/components/CookieConsent.tsx) must load `gtag.js` and configure GA only after the visitor selects **Allow optional cookies**. Do not place an unconditional Google tag in the document head.
 - **Privacy Configuration**: Keep Google signals, advertising storage and advertising personalisation disabled. If the ID or behaviour changes, update the Cookie Notice, Privacy Notice, tests and `DEVELOPMENT_LOG.md` together.
+
+## HubSpot
+- **Booking portal ID**: `149126092`, confirmed by Chris on 4 September 2026.
+- **Booking page**: `https://meetings-eu1.hubspot.com/chris247`.
+- Verify the active HubSpot portal before account changes or installing tracking. The connector may be linked to Pipeline Builders (`25797724`), which is a different account and must not be used for this website.

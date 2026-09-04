@@ -17,7 +17,7 @@ export default function PrivacyPage() {
       <article className="legal-page">
         <p className="hero-context">Privacy notice</p>
         <h1>How we use personal information</h1>
-        <p className="legal-version">Updated 25 August 2026 · Complete the launch actions below before accepting paid clients.</p>
+        <p className="legal-version">Updated 4 September 2026 · Complete the launch actions below before accepting paid clients.</p>
 
         <h2>Who is responsible for your information</h2>
         <p>
@@ -89,6 +89,13 @@ export default function PrivacyPage() {
         <p>
           HubSpot provides the booking calendar and related CRM services. Google provides
           website analytics when optional cookies are allowed.
+        </p>
+        <p>
+          You can use the separate HubSpot booking page without accepting optional cookies
+          on this website. Information you submit to request an appointment is used to
+          handle your booking; it does not give us permission for optional website
+          tracking or email marketing. You can withdraw optional website tracking through
+          Cookie settings. If analytics is running, the website reloads to stop it.
         </p>
         <p className="launch-note">
           <strong>Launch action:</strong> name the final booking, email/calendar, video,

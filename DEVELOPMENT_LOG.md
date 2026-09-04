@@ -21,6 +21,53 @@ This document tracks technical decisions, architectural context, and chronologic
 
 ## 📜 Chronological Change Log
 
+### [2026-09-04] — Restricted HubSpot Provider Sharing and Prepared Analytics Repair for Release
+- **Context / Motivation**: After Chris signed in to the confirmed ELS portal, its settings could be checked against the requested lawful measurement limits.
+- **Key Changes**:
+  - Verified Emotional Life Support portal `149126092` and its external website domain.
+  - Saved HubSpot Intent data access OFF and Use secure cookies only ON. Retained cross-domain linking OFF and bot filtering ON.
+  - Confirmed the cookie tool has no configured consent banners; no pre-consent tracker was installed.
+  - Recorded that the current user's Meetings screen shows initial setup, preventing an edit to the existing booking form from that screen.
+  - Prepared the previously tested GA protocol repair and consent changes for the existing GitHub Pages deployment.
+  - Revalidated the static export, all eight tests and changed-source lint. Full type-check still reports existing missing Cloudflare types in db/index.ts and worker/index.ts; the analytics module has no type errors.
+- **Files Modified**:
+  - [`legal/06-analytics-measurement-assessment.md`](./legal/06-analytics-measurement-assessment.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: `Repair consent-aware analytics and document measurement limits`; HubSpot settings saved separately in the live portal.
+
+### [2026-09-04] — Recorded Confirmed HubSpot Booking Portal
+- **Context / Motivation**: Chris confirmed that portal `149126092` owns the website's booking calendar, resolving the earlier account-identity uncertainty.
+- **Key Changes**:
+  - Recorded the correct portal and booking URL for future agents.
+  - Updated the measurement assessment to distinguish confirmed ownership from outstanding authenticated access.
+  - Retained the restriction against changing the unrelated Pipeline Builders portal.
+- **Files Modified**:
+  - [`AGENTS.md`](./AGENTS.md)
+  - [`legal/06-analytics-measurement-assessment.md`](./legal/06-analytics-measurement-assessment.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Documentation only; no HubSpot settings or production deployment changed.
+
+### [2026-09-04] — Repaired GA Commands and Assessed Consent-Free Measurement
+- **Context / Motivation**: The live site loaded Google's script after consent but sent no events. Chris also requested the fullest lawful measurement without cookie acceptance.
+- **Key Changes**:
+  - Repaired the gtag Arguments command protocol and prevented repeated initial configuration.
+  - Disabled GA and reloaded the page on withdrawal, preserving the consent gate rather than introducing unverified pre-consent pings.
+  - Made consent work in memory when browser storage is blocked and respond to preference changes in other tabs.
+  - Updated public notices and documented the UK statistical exception, GA retention findings and unverified HubSpot portal ownership.
+  - Added five focused consent/analytics regression tests and included them in the standard test command.
+  - Validation: static export succeeded with `.nojekyll`; all eight tests passed; changed-source lint and whitespace checks passed.
+- **Files Modified**:
+  - [`app/lib/google-analytics.ts`](./app/lib/google-analytics.ts) (New)
+  - [`app/lib/consent.ts`](./app/lib/consent.ts)
+  - [`app/components/CookieConsent.tsx`](./app/components/CookieConsent.tsx)
+  - [`app/cookies/page.tsx`](./app/cookies/page.tsx)
+  - [`app/privacy/page.tsx`](./app/privacy/page.tsx)
+  - [`tests/analytics-consent.test.mjs`](./tests/analytics-consent.test.mjs) (New)
+  - [`package.json`](./package.json)
+  - [`legal/06-analytics-measurement-assessment.md`](./legal/06-analytics-measurement-assessment.md) (New)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Local working changes; no production deployment or vendor account changes.
+
 ### [2026-09-02] — Replaced Final Home-Page Artwork with Heart-Mug Scene
 - **Context / Motivation**: The closing home-page image needed to use the new chair scene whose heart-marked mug visually matches the website’s new logo.
 - **Key Changes**:
