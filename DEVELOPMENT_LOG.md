@@ -21,6 +21,18 @@ This document tracks technical decisions, architectural context, and chronologic
 
 ## 📜 Chronological Change Log
 
+### [2026-09-04] — Verified Live Analytics Collection
+- **Context / Motivation**: The analytics repair needed confirmation on the published website and inside the correct GA4 property.
+- **Key Changes**:
+  - Published repair commit `32e8e05` through GitHub Pages; the Pages deployment API returned `succeed`.
+  - Verified the updated live cookie notice and exercised optional-cookie acceptance.
+  - Confirmed GA4 Realtime now shows one active user, homepage and cookie-notice views, and page_view, first_visit, session_start, scroll and user_engagement events.
+  - Stopped a redundant deployment retry after the original publication was confirmed. No pre-consent tracking was enabled.
+- **Files Modified**:
+  - [`legal/06-analytics-measurement-assessment.md`](./legal/06-analytics-measurement-assessment.md)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Live application `32e8e05`; documentation-only verification record.
+
 ### [2026-09-04] — Restricted HubSpot Provider Sharing and Prepared Analytics Repair for Release
 - **Context / Motivation**: After Chris signed in to the confirmed ELS portal, its settings could be checked against the requested lawful measurement limits.
 - **Key Changes**:
