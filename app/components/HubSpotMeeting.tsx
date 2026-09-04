@@ -40,9 +40,9 @@ export default function HubSpotMeeting({ bookingUrl }: HubSpotMeetingProps) {
           data-src={`${bookingUrl}?embed=true`}
         />
         <p className="booking-fallback">
-          Need to choose another date or having trouble with the calendar?{" "}
+          Having trouble with the calendar?{" "}
           <a href={bookingUrl} target="_blank" rel="noreferrer">
-            Open the booking page
+            Try this link
           </a>.
         </p>
       </div>

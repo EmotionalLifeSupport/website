@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 
-const routes = ["/", "/chris", "/privacy", "/cookies", "/terms"];
+const routes = ["/", "/book", "/chris", "/privacy", "/cookies", "/terms"];
 const workerUrl = new URL("../dist/server/index.js", import.meta.url);
 const { default: worker } = await import(workerUrl.href);
 
@@ -50,6 +50,7 @@ for (const route of routes) {
     // 2. Adjust internal route links if basePath is set
     html = html.replaceAll(`href="/_next/`, `href="${basePath}/_next/`);
     html = html.replaceAll(`src="/_next/`, `src="${basePath}/_next/`);
+    html = html.replaceAll(`href="/book"`, `href="${basePath}/book"`);
     html = html.replaceAll(`href="/chris"`, `href="${basePath}/chris"`);
     html = html.replaceAll(`href="/privacy"`, `href="${basePath}/privacy"`);
     html = html.replaceAll(`href="/cookies"`, `href="${basePath}/cookies"`);

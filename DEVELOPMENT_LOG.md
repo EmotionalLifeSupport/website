@@ -21,6 +21,55 @@ This document tracks technical decisions, architectural context, and chronologic
 
 ## 📜 Chronological Change Log
 
+### [2026-09-04] — Release Dedicated Booking Page
+- **Context / Motivation**: Chris requested publication of the reviewed booking page and wording changes.
+- **Key Changes**:
+  - Prepared `/book`, homepage booking links and all reviewed copy changes for the existing GitHub Pages deployment.
+  - Validation: fresh static export, all nine tests and `git diff --check` passed; export includes `/book/index.html` and `.nojekyll`.
+- **Files Modified**: [Booking page](./app/book/page.tsx), [booking styles](./app/book/booking.css), [homepage](./app/page.tsx), [navigation](./app/components/SiteNavigation.tsx), [HubSpot component](./app/components/HubSpotMeeting.tsx), [export script](./scripts/export-static.mjs), [tests](./tests/rendered-html.test.mjs), [development log](./DEVELOPMENT_LOG.md).
+- **Commit / Version**: Publish dedicated booking page and reviewed copy.
+
+### [2026-09-04] — Clarify Calendar Fallback Link
+- **Context / Motivation**: “Open the booking page” was confusing on the dedicated booking page.
+- **Key Changes**:
+  - Changed the fallback to “Having trouble with the calendar? Try this link.”
+  - Retained the direct HubSpot destination and new-tab behaviour.
+  - Validation: checked the component text and unchanged link attributes; `git diff --check` passed.
+- **Files Modified**: [HubSpot meeting component](./app/components/HubSpotMeeting.tsx), [development log](./DEVELOPMENT_LOG.md).
+- **Commit / Version**: Local wording update; not published.
+
+### [2026-09-04] — List Booking Durations Longest First
+- **Context / Motivation**: Chris clarified that only the order of the session durations should change.
+- **Key Changes**:
+  - Updated the booking sentence to “Choose 2 hours, 1 hour, or just 30 minutes.” and matched the page description.
+  - Retained the existing duration choices and free-session reassurance.
+  - Validation: verified the replacement in source and checked the diff for whitespace errors.
+- **Files Modified**: [Booking page](./app/book/page.tsx), [development log](./DEVELOPMENT_LOG.md).
+- **Commit / Version**: Local copy update; not published.
+
+### [2026-09-04] — Booking Page Copy Feedback
+- **Context / Motivation**: Apply Chris's annotated feedback to the booking landing page.
+- **Key Changes**:
+  - Changed the headline to “Book your first session free, saving £300.”
+  - Removed the booking-form warning and its unused styling; privacy remains available in the footer.
+  - Explained that face-to-face requests should be made by booking an online session, then replying to the booking confirmation email.
+  - Validation: checked the revised page at 811px and 390px in Chrome with Playwright; expected copy present, warning removed, no horizontal overflow or page errors. `git diff --check` passed.
+  - Duration wording subsequently clarified: retain the three existing durations, listed longest first.
+- **Files Modified**: [Booking page](./app/book/page.tsx), [booking styles](./app/book/booking.css), [development log](./DEVELOPMENT_LOG.md).
+- **Commit / Version**: Local copy revision; not published.
+
+### [2026-09-04] — Dedicated Booking Landing Page
+- **Context / Motivation**: Separate the homepage journey from booking-page visits for clearer measurement and a focused booking experience.
+- **Key Changes**:
+  - Moved the consent-aware HubSpot scheduler from the homepage to `/book`, with duration choices, brief reassurance, expectations and privacy guidance.
+  - Routed all homepage booking calls to action, including desktop/mobile navigation, to `/book` in a new tab; kept the old section anchor for existing inbound links.
+  - Added a minimal branded header/footer, responsive styling, page metadata and canonical URL.
+  - Included `/book` in static export and the existing all-page analytics checks. Existing consent behaviour and GA ID are unchanged; page visits are not completed-booking events.
+  - Validation: static export and all nine tests passed; `.nojekyll` generated; `git diff --check` passed. Playwright/Chrome verified homepage new-tab navigation, mobile navigation destination, page identity, consent-gated script loading, live HubSpot iframe, desktop (1440px) and fresh mobile (390px) renders without page errors or horizontal page overflow. Browser plugin not available.
+  - Known provider limitation: shrinking an already-loaded desktop HubSpot calendar to mobile width can clip its internal layout until reload. No real booking was submitted and completed-booking analytics were not verified.
+- **Files Modified**: [Homepage](./app/page.tsx), [navigation](./app/components/SiteNavigation.tsx), [booking page](./app/book/page.tsx), [booking styles](./app/book/booking.css), [static export](./scripts/export-static.mjs), [rendered tests](./tests/rendered-html.test.mjs), [development log](./DEVELOPMENT_LOG.md).
+- **Commit / Version**: Local implementation; not yet published.
+
 ### [2026-09-04] — Left-Aligned the Single-Column Portrait
 - **Context / Motivation**: Chris requested left alignment after reviewing the local portrait preview.
 - **Key Changes**:

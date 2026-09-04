@@ -34,7 +34,8 @@ test("server-renders the complete homepage journey", async () => {
   assert.match(html, /First session free · worth £300/);
   assert.match(html, /Lived experience/);
   assert.match(html, /Choose two hours, one hour, or 30 minutes/);
-  assert.match(html, /Select two hours, one hour, or 30 minutes/);
+  assert.match(html, /href="\/book" target="_blank" rel="noopener"/);
+  assert.doesNotMatch(html, /href="#first-conversation"|booking-consent-placeholder/);
   assert.match(html, /social-share-chair-v1\.png/);
   assert.match(html, /summary_large_image/);
   assert.match(html, /The challenges you face through and after divorce/);
@@ -71,7 +72,6 @@ test("server-renders the complete homepage journey", async () => {
   assert.doesNotMatch(html, /Start with one conversation\. We can work the rest out afterwards\./);
   assert.doesNotMatch(html, /You only need to decide whether you want to have the first conversation\./);
   assert.match(html, /Get started for free/);
-  assert.match(html, /Up to two hours available\. You choose how long/);
   assert.match(html, /View ongoing support options and pricing/);
   assert.match(html, /Regular support for as long as it continues to be useful/);
   assert.match(html, /Divorce Concierge/);
@@ -120,7 +120,7 @@ test("server-renders the Chris and legal routes", async () => {
 });
 
 test("every published route includes the consent-aware Google Analytics configuration", async () => {
-  const routes = ["/", "/chris", "/privacy", "/cookies", "/terms"];
+  const routes = ["/", "/book", "/chris", "/privacy", "/cookies", "/terms"];
 
   for (const pathname of routes) {
     const response = await render(pathname);
@@ -128,4 +128,17 @@ test("every published route includes the consent-aware Google Analytics configur
     const html = await response.text();
     assert.match(html, /G-9KYHPSW76N/, `${pathname} should include the shared GA4 measurement ID`);
   }
+});
+
+
+test("booking page renders the scheduler fallback without loading optional services", async () => {
+  const response = await render("/book");
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /<title>Book Your First Session \| Emotional Life Support<\/title>/);
+  assert.match(html, /rel="canonical" href="https:\/\/emotionallifesupport.com\/book"/);
+  assert.match(html, /booking-consent-placeholder/);
+  assert.match(html, /https:\/\/meetings-eu1.hubspot.com\/chris247/);
+  assert.match(html, /No preparation needed/);
+  assert.doesNotMatch(html, /<script[^>]+src="https:\/\/(static.hsappstatic.net|www.googletagmanager.com)/);
 });

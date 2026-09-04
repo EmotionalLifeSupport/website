@@ -1,0 +1,34 @@
+.booking-header {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.booking-back { font-size: 0.85rem; }
+.booking-page { max-width: 1040px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+.booking-intro { text-align: center; }
+.booking-intro h1 { max-width: none; font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.12; }
+.booking-lead { max-width: 650px; margin: 1.25rem auto; font-size: 1.1rem; }
+.booking-reassurance { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.75rem; padding: 0; margin: 1.5rem 0 2rem; list-style: none; font-size: 0.9rem; }
+.booking-reassurance li::before { content: "✓"; margin-right: 0.5rem; color: var(--olive); }
+.booking-calendar { padding: clamp(1.25rem, 3vw, 2.5rem); border: 1px solid var(--line); border-radius: 1.25rem; background: var(--paper-light); box-shadow: 0 12px 40px #0d2a4c08; }
+.booking-calendar h2, .booking-expectations h2 { font-size: clamp(1.5rem, 3vw, 2rem); max-width: none; }
+.booking-calendar .hubspot-meeting-frame { padding-top: 0; border: 0; }
+.booking-expectations { max-width: 720px; margin: 2.5rem auto 0; }
+.booking-expectations p { color: var(--navy-soft); }
+.booking-footer { padding: 1.5rem; text-align: center; }
+.booking-footer p { margin: 0 0 0.75rem; }
+.booking-footer nav { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+@media (max-width: 600px) {
+  .booking-header { align-items: flex-start; }
+  .booking-header .brand-link { font-size: 0.9rem; }
+  .booking-back { max-width: 5.5rem; flex-shrink: 0; text-align: right; }
+  .booking-page { padding: 1.5rem 1rem 3rem; }
+  .booking-reassurance { gap: 0.4rem 1rem; }
+  .booking-calendar .booking-consent-placeholder { flex-direction: column; align-items: stretch; gap: 1rem; }
+  .booking-calendar .booking-consent-placeholder .booking-button { min-width: 0; white-space: normal; }
+}

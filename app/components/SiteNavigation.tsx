@@ -24,7 +24,7 @@ export default function SiteNavigation({ isHomePage = false }: SiteNavigationPro
   const menuButtonRef = useRef<HTMLButtonElement>(null);
 
   const sectionHref = (id: string) => (isHomePage ? `#${id}` : `/#${id}`);
-  const bookingHref = isHomePage ? "#first-conversation" : "/#first-conversation";
+  const bookingHref = "/book";
 
   const closeMenu = useCallback((restoreFocus = false) => {
     setIsOpen(false);
@@ -90,7 +90,7 @@ export default function SiteNavigation({ isHomePage = false }: SiteNavigationPro
             {item.label}
           </a>
         ))}
-        <a className="button header-booking-button" href={bookingHref}>
+        <a className="button header-booking-button" href={bookingHref} target="_blank" rel="noopener" title="Opens in a new tab">
           Book your first session free
         </a>
       </nav>
@@ -120,7 +120,7 @@ export default function SiteNavigation({ isHomePage = false }: SiteNavigationPro
                 {item.label}
               </a>
             ))}
-            <a className="button mobile-booking-button" href={bookingHref} onClick={() => closeMenu()}>
+            <a className="button mobile-booking-button" href={bookingHref} target="_blank" rel="noopener" title="Opens in a new tab" onClick={() => closeMenu()}>
               Book your first session free
             </a>
           </nav>

@@ -11,7 +11,6 @@ import {
 import SiteNavigation from "./components/SiteNavigation";
 import SiteFooter from "./components/SiteFooter";
 import Testimonials from "./components/Testimonials";
-import HubSpotMeeting from "./components/HubSpotMeeting";
 
 export const metadata: Metadata = {
   title: "Emotional Support Through Divorce | Emotional Life Support",
@@ -21,8 +20,6 @@ export const metadata: Metadata = {
     canonical: "/",
   },
 };
-
-const bookingUrl = "https://meetings-eu1.hubspot.com/chris247";
 
 export default function Home() {
   return (
@@ -50,7 +47,7 @@ export default function Home() {
             />
           </figure>
           <div className="hero-action">
-            <a className="button" href="#first-conversation">
+            <a className="button" href="/book" target="_blank" rel="noopener" title="Opens in a new tab">
               Book your first session free <ArrowRightIcon aria-hidden="true" />
             </a>
             <p className="button-note">
@@ -254,7 +251,7 @@ export default function Home() {
                 organisation provides or endorses this service.
               </p>
               <div className="about-action">
-                <a className="button" href="#first-conversation">
+                <a className="button" href="/book" target="_blank" rel="noopener" title="Opens in a new tab">
                   Book your first session free
                 </a>
               </div>
@@ -266,7 +263,7 @@ export default function Home() {
 
         <div className="page-section decision-point">
           <p>You don&apos;t need to work out what kind of support you need before we talk.</p>
-          <a className="button" href="#first-conversation">
+          <a className="button" href="/book" target="_blank" rel="noopener" title="Opens in a new tab">
             Book your first session free <ArrowRightIcon aria-hidden="true" />
           </a>
         </div>
@@ -345,22 +342,9 @@ export default function Home() {
             <li><strong>Talk through what is happening</strong><span>Discuss what feels difficult and what would be most useful right now.</span></li>
             <li><strong>Decide what happens next</strong><span>Leave it there, return when needed, or choose ongoing support later.</span></li>
           </ol>
-          <div className="meeting-booking">
-            <div>
-              <p className="section-kicker">First session free · worth £300</p>
-              <h3>Up to two hours available. You choose how long.</h3>
-              <p>
-                Select two hours, one hour, or 30 minutes in the calendar below. Your first session
-                is free whichever duration you choose.
-              </p>
-            </div>
-            <ul className="booking-assurances" aria-label="Booking details">
-              <li>Up to two hours available</li>
-              <li>One-to-one conversation</li>
-              <li>No pitch or pressure afterwards</li>
-            </ul>
-            <HubSpotMeeting bookingUrl={bookingUrl} />
-          </div>
+          <a className="button" href="/book" target="_blank" rel="noopener" title="Opens in a new tab">
+            Book your first session free <ArrowRightIcon aria-hidden="true" />
+          </a>
         </section>
 
         <section className="page-section pricing-section" id="pricing" aria-labelledby="packages-title">
@@ -394,7 +378,7 @@ export default function Home() {
               <h3>Get started for free</h3>
               <p>Your first session is free, with up to two hours available. You choose how long.</p>
             </div>
-            <a className="button" href="#first-conversation">Book your first session free</a>
+            <a className="button" href="/book" target="_blank" rel="noopener" title="Opens in a new tab">Book your first session free</a>
           </div>
 
           <details className="support-options-disclosure">
@@ -415,7 +399,7 @@ export default function Home() {
                 </div>
                 <div className="one-off-action">
                   <p className="package-price">£300 <span>including VAT</span></p>
-                  <a className="button" href="#first-conversation">Book your first session free</a>
+                  <a className="button" href="/book" target="_blank" rel="noopener" title="Opens in a new tab">Book your first session free</a>
                 </div>
               </article>
 
@@ -430,7 +414,7 @@ export default function Home() {
                     Regular, protected time to talk, think through difficult decisions and deal
                     with whatever feels most important as the situation develops.
                   </p>
-                  <a className="text-link package-action" href="#first-conversation">Book your first session free</a>
+                  <a className="text-link package-action" href="/book" target="_blank" rel="noopener" title="Opens in a new tab">Book your first session free</a>
                 </article>
 
                 <article>
@@ -444,7 +428,7 @@ export default function Home() {
                     exceptional pressure on everyday life and you want someone reliably in your
                     corner.
                   </p>
-                  <a className="text-link package-action" href="#first-conversation">Book your first session free</a>
+                  <a className="text-link package-action" href="/book" target="_blank" rel="noopener" title="Opens in a new tab">Book your first session free</a>
                 </article>
               </div>
 
@@ -479,7 +463,7 @@ export default function Home() {
                     financial or tax advice. Availability is agreed as part of your monthly
                     arrangement; it is not an emergency service.
                   </p>
-                  <a className="button button--secondary" href="#first-conversation">Book your first session free</a>
+                  <a className="button button--secondary" href="/book" target="_blank" rel="noopener" title="Opens in a new tab">Book your first session free</a>
                 </div>
               </article>
 
@@ -583,7 +567,7 @@ export default function Home() {
             I&apos;m confident this support can help you move forward, so your first session is free,
             with up to two hours available.
           </p>
-          <a className="button" href="#first-conversation">
+          <a className="button" href="/book" target="_blank" rel="noopener" title="Opens in a new tab">
             Book your first session free <ArrowRightIcon aria-hidden="true" />
           </a>
         </section>
