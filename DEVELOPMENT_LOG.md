@@ -21,6 +21,28 @@ This document tracks technical decisions, architectural context, and chronologic
 
 ## 📜 Chronological Change Log
 
+### [2026-09-04] — Left-Aligned the Single-Column Portrait
+- **Context / Motivation**: Chris requested left alignment after reviewing the local portrait preview.
+- **Key Changes**:
+  - Align the portrait to the start of its grid column at widths up to 820px.
+  - Retain its 336px width cap, original proportions and uncropped presentation; desktop remains unchanged.
+- **Files Modified**:
+  - [`app/globals.css`](./app/globals.css)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: `Fix portrait proportions and left alignment on smaller screens`; approved for GitHub publication by Chris.
+
+### [2026-09-04] — Preserved Portrait Proportions in Single-Column Layout
+- **Context / Motivation**: Chris's portrait became too wide and cropped his face when the homepage switched to one column on tablets and phones.
+- **Key Changes**:
+  - At the existing 820px single-column breakpoint, cap the portrait at 336px wide, centre it, and allow it to shrink to fit smaller screens.
+  - Use automatic height and remove the height cap to preserve the original 540 × 900 proportions without cropping.
+  - Replace the arched mask with gently rounded corners in this layout; preserve desktop styling.
+  - Validation: static export succeeded with `.nojekyll`, all eight existing tests passed, and `git diff --check` passed. Browser visual verification has not been performed.
+- **Files Modified**:
+  - [`app/globals.css`](./app/globals.css)
+  - [`DEVELOPMENT_LOG.md`](./DEVELOPMENT_LOG.md)
+- **Commit / Version**: Local responsive portrait fix; not yet published.
+
 ### [2026-09-04] — Verified Live Analytics Collection
 - **Context / Motivation**: The analytics repair needed confirmation on the published website and inside the correct GA4 property.
 - **Key Changes**:

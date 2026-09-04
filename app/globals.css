@@ -3158,6 +3158,15 @@ footer .company-details {
     grid-template-columns: minmax(0, 1fr);
   }
 
+  .homepage .profile-photo {
+    width: min(100%, 336px);
+    height: auto;
+    max-height: none;
+    justify-self: start;
+    object-fit: contain;
+    border-radius: 1rem;
+  }
+
   .homepage .support-visual {
     margin-top: 2.5rem;
   }
